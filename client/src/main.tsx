@@ -5,11 +5,16 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import RootLayout from "./layouts/RootLayout.tsx";
 import Root from "./routes/root.tsx";
 import MainLayout from "./layouts/MainLayout.tsx";
+import LearnSwr from "./routes/test-action.tsx";
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+  },
+  {
+    path: "/learnswr",
+    element: <LearnSwr />,
   },
   // define other routes eg login/register
   {
