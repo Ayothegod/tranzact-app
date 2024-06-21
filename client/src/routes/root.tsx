@@ -1,3 +1,4 @@
+import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
 export default function Root() {
@@ -5,12 +6,12 @@ export default function Root() {
 
   return (
     <div>
-      <main className="">
-        <h1 className="">Welcome to Next.js Starter!</h1>
+      <main className="flex items-center justify-center my-20 flex-col gap-4">
+        <h1 className="text-4xl font-bold">Welcome to React.js and Hono.dev Starter!</h1>
         <p className="">
           Get started by editing <code className="">pages/index.js</code>
         </p>
-        <button onClick={() => setCount(count + 1)}>Count: {count}</button>
+        <Button onClick={() => setCount(count + 1)}>Count: {count}</Button>
       </main>
     </div>
   );
