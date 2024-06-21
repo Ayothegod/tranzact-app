@@ -13,23 +13,34 @@ const schema = z.object({
 
 type Todo = z.infer<typeof schema>;
 
-const todos: Todo[] = [{ id: "a32554afs6", title: "Hello doers" }];
+const todos: Todo[] = [];
 
 const testRoute = app
-  .get((c) => {
-    return c.json({
-      todos,
-    });
-  })
-  .post("/todo", zValidator("form", schema), (c) => {
-    const todo = c.req.valid("form");
+  .post("/todo", zValidator("json", schema), (c) => {
+    const requestBody = c.req.json();
+    console.log(requestBody);
+    
+    const todo = c.req.valid("json");
     todos.push(todo);
     return c.json({
       message: "created!",
     });
+  })
+  .get((c) => {
+    return c.json({
+      todos,
+    });
   });
 
-export default testRoute;
-export type AppType = typeof testRoute;
+//   .get((c) => {
+//     return new Promise((resolve) => {
+//       setTimeout(() => {
+//         resolve(c.json({ todos }));
+//       }, 3000); // 2 seconds delay
+//     });
+//   });
 
+export default testRoute;
+
+// export type AppType = typeof testRoute;
 // export const onRequest = handle(app, '/api')
