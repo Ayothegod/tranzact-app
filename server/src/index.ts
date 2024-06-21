@@ -19,3 +19,6 @@ serve({
   fetch: app.fetch,
   port
 })
+
+// git rm -r --cached node_modules
+// git rm --cached .env
