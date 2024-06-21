@@ -11,6 +11,9 @@ importers:
       '@hono/node-server':
         specifier: ^1.11.4
         version: 1.11.4
+      '@hono/zod-validator':
+        specifier: ^0.2.2
+        version: 0.2.2(hono@4.4.7)(zod@3.23.8)
       hono:
         specifier: ^4.4.7
         version: 4.4.7
@@ -20,6 +23,9 @@ importers:
       resend:
         specifier: ^3.3.0
         version: 3.3.0
+      zod:
+        specifier: ^3.23.8
+        version: 3.23.8
     devDependencies:
       '@prisma/client':
         specifier: ^5.15.1
@@ -174,6 +180,12 @@ packages:
   '@hono/node-server@1.11.4':
     resolution: {integrity: sha512-8TOiiiAqcFC6f62P7M9p6adQREAlWdVi1awehAwgWW+3R65/rKzHnLARO/Hu/466z01VNViBoogqatqXJMyItA==}
     engines: {node: '>=18.14.1'}
+
+  '@hono/zod-validator@0.2.2':
+    resolution: {integrity: sha512-dSDxaPV70Py8wuIU2QNpoVEIOSzSXZ/6/B/h4xA7eOMz7+AarKTSGV8E6QwrdcCbBLkpqfJ4Q2TmBO0eP1tCBQ==}
+    peerDependencies:
+      hono: '>=3.9.0'
+      zod: ^3.19.1
 
   '@isaacs/cliui@8.0.2':
     resolution: {integrity: sha512-O8jcjabXaleOG9DQ0+ARXWZBTfnP4WNAqzuiJK7ll44AmxGKv/J2M4TPjxjY3znBCfvBXFzucm1twdyFybFqEA==}
@@ -493,6 +505,9 @@ packages:
     resolution: {integrity: sha512-si7QWI6zUMq56bESFvagtmzMdGOtoxfR+Sez11Mobfc7tm+VkUckk9bW2UeffTGVUbOksxmSw0AA2gs8g71NCQ==}
     engines: {node: '>=12'}
 
+  zod@3.23.8:
+    resolution: {integrity: sha512-XBx9AXhXktjUqnepgTiE5flcKIYWi/rme0Eaj+5Y0lftuGBq+jyRu/md4WnuxqgP1ubdpNCsYEYPxrzVHD8d6g==}
+
 snapshots:
 
   '@esbuild/aix-ppc64@0.21.5':
@@ -565,6 +580,11 @@ snapshots:
     optional: true
 
   '@hono/node-server@1.11.4': {}
+
+  '@hono/zod-validator@0.2.2(hono@4.4.7)(zod@3.23.8)':
+    dependencies:
+      hono: 4.4.7
+      zod: 3.23.8
 
   '@isaacs/cliui@8.0.2':
     dependencies:
@@ -910,3 +930,5 @@ snapshots:
       ansi-styles: 6.2.1
       string-width: 5.1.2
       strip-ansi: 7.1.0
+
+  zod@3.23.8: {}
