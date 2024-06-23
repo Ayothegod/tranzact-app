@@ -18,7 +18,6 @@ app.get("/users", async (c) => {
   return c.json(users);
 });
 
-
 const port = 3000;
 console.log(`Server is running on port ${port}`);
 
