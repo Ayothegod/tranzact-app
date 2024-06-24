@@ -1,37 +1,44 @@
 import { Hono } from "hono";
-import {
-  setCookie,
-  getCookie,
-  deleteCookie,
-  getSignedCookie,
-  setSignedCookie,
-} from "hono/cookie";
+import { sessionMiddleware, CookieStore, Session } from "hono-sessions";
 import { z } from "zod";
+import { prisma } from "../lib/client";
 
-const app = new Hono();
+const app = new Hono<{
+  Variables: {
+    session: Session;
+    session_key_rotation: boolean;
+  };
+}>();
 
 const authRoute = app
-  .post("/login", (c) => {
-    setCookie;
+  .post("/login", async (c) => {
+    // gotten user account from DB
+    // const user = await prisma.user.findMany()
+    const userId = "jhjhs7632ha7";
+
+    // Create cookie for that session
+    const session = c.get("session");
+    session.set("auth-cookie", userId);
+
     return c.json({ msg: "User loggedin" }, { status: 200 });
   })
+  .get("profile", async (c) => {
+    const session = c.get("session");
+    const authCookie = session.get("auth-cookie");
+    console.log("cookie" + JSON.stringify(c.get("session")));
+    const trial = "cookie" + JSON.stringify(c.get("session"))
 
-  .get("/cookie", (c) => {
-    const allCookies = getCookie(c);
+    if (!authCookie) {
+      return c.json({ msg: "Access Denied!" });
+    }
 
-    setCookie(c, "auth-cookie", "userIn", {
-      path: "/",
-      secure: true,
-      domain: "",
-      httpOnly: true,
-      maxAge: 1000,
-      expires: new Date(Date.UTC(2000, 11, 24, 10, 30, 59, 900)),
-      sameSite: "Strict",
-    });
-    deleteCookie(c, "delicious_cookie");
-    const delicious_cookie = getCookie(c, "delicious_cookie");
+    return c.json({ user: { name: "Ayomide", id: authCookie }, trial });
+  })
+  .delete("logout", async (c) => {
+    const session = c.get("session");
+    session.deleteSession();
 
-    return c.json({ delicious_cookie, allCookies });
+    return c.json({ msg: "User logout successfully" });
   });
 
 export default authRoute;
