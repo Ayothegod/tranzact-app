@@ -31,12 +31,5 @@ const testRoute = app
     });
   });
 
-//   .get((c) => {
-//     return new Promise((resolve) => {
-//       setTimeout(() => {
-//         resolve(c.json({ todos }));
-//       }, 3000); // 2 seconds delay
-//     });
-//   });
 
 export default testRoute;
