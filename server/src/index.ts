@@ -2,12 +2,12 @@ import { serve } from "@hono/node-server";
 import { Hono } from "hono";
 import { prisma } from "./lib/client";
 import testRoute from "./routes/test.route";
+import authRoute from "./routes/auth.route";
 import { cors } from 'hono/cors'
 
 const app = new Hono();
 app.use('*', cors())
 
-app.route("/api", testRoute)
 app.get("/", (c) => {
   return c.text("Hello Hono!");
 });
@@ -17,6 +17,9 @@ app.get("/users", async (c) => {
   console.log(users);
   return c.json(users);
 });
+
+app.route("/api", testRoute)
+app.route("/api", authRoute)
 
 const port = 3000;
 console.log(`Server is running on port ${port}`);

@@ -1,6 +1,5 @@
 // functions/api/[[route]].ts
 import { Hono } from "hono";
-import { handle } from "hono/cloudflare-pages";
 import { z } from "zod";
 import { zValidator } from "@hono/zod-validator";
 
@@ -41,6 +40,3 @@ const testRoute = app
 //   });
 
 export default testRoute;
-
-// export type AppType = typeof testRoute;
-// export const onRequest = handle(app, '/api')
