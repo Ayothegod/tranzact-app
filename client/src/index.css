@@ -77,4 +77,8 @@
     .debug {
       @apply border border-red-200
     }
+
+    .box {
+      @apply bg-white rounded-lg
+    }
   }
