@@ -11,6 +11,7 @@ import LearnSwr, {
 } from "./routes/test-action.tsx";
 import Learn from "./routes/learn.tsx";
 import Dashboard from "./routes/dashboard.tsx";
+import Transactions from "./routes/transactions.tsx";
 // NOTE: make sure to add errorBoundary to all routes that throw error from loader and actions
 
 const router = createBrowserRouter([
@@ -35,10 +36,13 @@ const router = createBrowserRouter([
   {
     element: <MainLayout />,
     children: [
-      // define routes with the same layout
       {
         path: "/dashboard",
         element: <Dashboard />,
+      },
+      {
+        path: "/transactions",
+        element: <Transactions />,
       },
       // {
       //   path: "/messages",

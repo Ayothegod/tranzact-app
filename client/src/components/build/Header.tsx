@@ -12,14 +12,14 @@ export function Header() {
 
   return (
     <div className="flex items-center justify-between gap-8 px-4 py-2">
-      <div className="bg-white flex items-center gap-1 py-2 px-4 rounded-full">
+      <div className="bg-white h-12 flex items-center gap-1 py-2 px-4 rounded-full">
         <img src={logo} alt="logo" className="h-5 w-5" />
         <h1 className="font-bold ">Tranzact</h1>
       </div>
 
       <div>
         {!isUser ? (
-          <ul className="bg-white py-2 px-8 rounded-full flex gap-8">
+          <ul className="bg-white py- px-8 rounded-full flex gap-8 h-12 items-center">
             {userNav.map((data) => {
               return (
                 <Link
@@ -37,7 +37,7 @@ export function Header() {
         )}
       </div>
 
-      <div className="bg-white py-2 px-4 rounded-full flex items-center gap-2">
+      <div className="bg-white py-2 px-4 rounded-full flex items-center gap-2 h-12">
         <div>
           <Input className="h-8 rounded-full" placeholder="Search here" />
         </div>
