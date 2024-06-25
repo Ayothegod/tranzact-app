@@ -4,6 +4,7 @@ import { userNav } from "@/lib/data";
 import { Link, useLocation } from "react-router-dom";
 import { Input } from "../ui/input";
 import { Bell } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 export function Header() {
   const { isUser } = useAuthStore();
@@ -43,6 +44,13 @@ export function Header() {
         </div>
         <div className="border rounded-full p-1">
           <Bell className="h-5 w-5" />
+        </div>
+
+        <div>
+          <Avatar className="h-8 w-8 border">
+            <AvatarImage src={logo} alt="@shadcn" />
+            <AvatarFallback>CN</AvatarFallback>
+          </Avatar>
         </div>
       </div>
     </div>
