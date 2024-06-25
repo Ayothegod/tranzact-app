@@ -71,3 +71,85 @@
 //     </div>
 //   );
 // };
+
+
+const Layout = ({ children }: any) => {
+  return (
+    <div className="flex min-h-screen">
+      <aside className="w-64 bg-gray-800 text-white sticky top-0 h-screen">
+        <nav>
+          <ul>
+            <li className="p-4">Item 1</li>
+            <li className="p-4">Item 2</li>
+            <li className="p-4">Item 3</li>
+          </ul>
+        </nav>
+      </aside>
+      <div className="flex flex-col flex-1">
+        <header className="bg-gray-900 text-white p-4 sticky top-0 z-10">
+          <h1>Header</h1>
+        </header>
+        <main className="p-4">
+          {children}
+        </main>
+      </div>
+    </div>
+  );
+};
+
+
+export default function Learn() {
+  return (
+    <Layout>
+      <h2 className="text-2xl font-bold mb-4">Home Page</h2>
+      <p>This is the home page content. It will scroll below the sticky header and sidebar.</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      {/* Add more content to see the scrolling effect */}
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      {/* Add more content to see the scrolling effect */}
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      {/* Add more content to see the scrolling effect */}
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      {/* Add more content to see the scrolling effect */}
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      {/* Add more content to see the scrolling effect */}
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+    </Layout>
+  );
+};
+
+

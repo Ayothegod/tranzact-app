@@ -9,7 +9,7 @@ export default function Root() {
   return (
     <>
       <Helmet>
-        <title>Tranzact - HomePage</title>
+        <title>Tranzact - Homepage</title>
         <meta name="description" content="This is the home page description" />
       </Helmet>
       <div>

@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "tsx watch src/index.ts"
+    "dev": "tsx watch src/index.ts",
+    "migrate": "prisma migrate dev"
   },
   "dependencies": {
     "@hono/node-server": "^1.11.4",

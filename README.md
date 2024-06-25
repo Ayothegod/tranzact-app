@@ -18,3 +18,17 @@ and the result should be like so
 origin  https://new.url/repo.git (fetch)
 origin  https://new.url/repo.git (push)
 ```
+
+
+### Project todo - what and how to build the project
+---- Needed
+
+#### ROUTES
+- DASHBOARD
+- TRANSACTION
+- MANAGE
+- SETTINGS
+
+- history(chart on spend data)
+- recent transaction(table for all resent transactions) can filter the table
+- summary {weekly, monthly}

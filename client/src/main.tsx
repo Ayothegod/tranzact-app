@@ -9,6 +9,8 @@ import LearnSwr, {
 	ErrorBoundary,
 	Loader as swrLoader,
 } from "./routes/test-action.tsx";
+import Learn from "./routes/learn.tsx";
+import Dashboard from "./routes/dashboard.tsx";
 // NOTE: make sure to add errorBoundary to all routes that throw error from loader and actions
 
 const router = createBrowserRouter([
@@ -24,15 +26,20 @@ const router = createBrowserRouter([
     errorElement: <ErrorBoundary />,
     loader: swrLoader,
   },
+  {
+    path: "/learn",
+    element: <Learn/>,
+    errorElement: <ErrorBoundary />,
+  },
   // define other routes eg login/register
   {
     element: <MainLayout />,
     children: [
       // define routes with the same layout
-      // {
-      //   path: "/dashboard",
-      //   element: <Dashboard />,
-      // },
+      {
+        path: "/dashboard",
+        element: <Dashboard />,
+      },
       // {
       //   path: "/messages",
       //   element: <Messages />,

@@ -13,3 +13,7 @@ open http://localhost:3000
 // USE VERCEL FROM THE COMMAND LINE
 // npm install -g vercel
 // vercel
+
+
+### TODO
+- configure oauth login for hono and nodejs
