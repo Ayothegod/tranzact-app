@@ -3,6 +3,7 @@ import { Hono } from "hono";
 import { prisma } from "./lib/client";
 import testRoute from "./routes/test.route";
 import authRoute from "./routes/auth.route";
+import mainRoute from "./routes/main.route";
 import { cors } from "hono/cors";
 import { sessionMiddleware, CookieStore, Session } from "hono-sessions";
 
@@ -30,21 +31,12 @@ app.use(
 );
 
 app.get("/", (c) => {
-  // const session = c.get("session");
-  // if (session.get("counter")) {
-  //   session.set("counter", (session.get("counter") as number) + 1);
-  // } else {
-  //   session.set("counter", 1);
-  // }
-  // return c.html(
-  //   `<h1>You have visited this page ${session.get("counter")} times</h1>`
-  // );
-  
   return c.text("Hello Hono!");
 });
 
 app.route("/api", testRoute);
 app.route("/api", authRoute);
+app.route("/api", mainRoute);
 
 const port = 3000;
 console.log(`Server is running on port ${port}`);

@@ -11,17 +11,22 @@ datasource db {
 }
 
 model User {
-  id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
-  posts Post[]
+  id           String        @id @default(cuid())
+  email        String        @unique
+  username     String        @unique
+  name         String
+  password     String
+  transactions Transaction[]
 }
 
-model Post {
-  id        Int     @id @default(autoincrement())
-  title     String
-  content   String?
-  published Boolean @default(false)
-  author    User    @relation(fields: [authorId], references: [id])
-  authorId  Int
+model Transaction {
+  id              String   @id @default(cuid())
+  transactionType String
+  description     String?
+  amount          Decimal
+  category        String
+  createdAt       DateTime @default(now())
+  updatedAt       DateTime @updatedAt
+  userId          String
+  user            User     @relation(fields: [userId], references: [id])
 }
