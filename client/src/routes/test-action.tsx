@@ -13,7 +13,7 @@ export default function LearnSwr() {
   const { data, error, isLoading } = useSWR(
     "http://localhost:3000/api/todo",
     fetcher
-  ); //   $ pnpm i hono/client
+  ); 
 
   const createTodo = async () => {
     setDataLoading(!dataLoading);

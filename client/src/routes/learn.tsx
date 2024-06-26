@@ -98,23 +98,23 @@ const Layout = ({ children }: any) => {
 };
 
 
+// <Layout>
+//   <h2 className="text-2xl font-bold mb-4">Home Page</h2>
+//   <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
+
+//   <div className="grid grid-cols-3 gap-4 p-4">
+//   <div className="bg-blue-500 h-24">Box 1</div>
+//   <div className="bg-blue-500 h-24">Box 2</div>
+//   <div className="bg-blue-500 h-24">Box 3</div>
+  
+//   <div className="bg-green-500 h-24 col-span-2">Item 1</div>
+//   <div className="bg-green-500 h-24">Item 2</div>
+// </div>
+// </Layout>
+
 export default function Learn() {
   return (
-    <Layout>
-      <h2 className="text-2xl font-bold mb-4">Home Page</h2>
-      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit...</p>
-
-      <div className="grid grid-cols-3 gap-4 p-4">
-      {/* Top Row: 3 boxes in 3 columns */}
-      <div className="bg-blue-500 h-24">Box 1</div>
-      <div className="bg-blue-500 h-24">Box 2</div>
-      <div className="bg-blue-500 h-24">Box 3</div>
-      
-      {/* Bottom Row: 2 items, first occupying 2 columns, second occupying 1 column */}
-      <div className="bg-green-500 h-24 col-span-2">Item 1</div>
-      <div className="bg-green-500 h-24">Item 2</div>
-    </div>
-    </Layout>
+    <p>Hello</p>
   );
 };
 
