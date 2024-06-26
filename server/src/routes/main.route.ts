@@ -17,7 +17,10 @@ const mainRoute = app
     const take = c.req.query("n");
     try {
       const allTransactions = await prisma.transaction.findMany({
-        take: take ? JSON.parse(take || "") : 3,
+        take: take ? JSON.parse(take || "") : 10,
+        orderBy: {
+            createdAt: "desc"
+        }
       });
       return c.json({ allTransactions });
     } catch (error) {

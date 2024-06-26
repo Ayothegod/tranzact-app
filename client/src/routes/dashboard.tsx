@@ -95,7 +95,7 @@ export default function Dashboard() {
             </div>
 
             <div className="bg-white shadow rounded-lg p-4 col-span-2">
-              <RecentTransactions/>
+              {/* <RecentTransactions/> */}
             </div>
 
             <div className="bg-white shadow rounded-lg p-4">Item 2</div>
