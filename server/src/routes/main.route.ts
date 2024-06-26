@@ -92,7 +92,7 @@ const mainRoute = app
     try {
       const data = await c.req.json();
       const transactionData = transactionSchema.parse(data);
-        // log(transactionData); // TESTID: clxvt6am30000g559ej2pc7ph
+      // log(transactionData); // TESTID: clxvt6am30000g559ej2pc7ph
       const transaction = await prisma.transaction.create({
         data: {
           transactionType: transactionData.transactionType,
@@ -120,6 +120,32 @@ const mainRoute = app
       }
 
       return c.json({});
+    }
+  })
+  .delete("/delete-transaction/:id", async (c) => {
+    try {
+      const id = c.req.param("id");
+      const transaction = await prisma.transaction.findUnique({
+        where: { id },
+      });
+      if (!transaction) {
+        return c.text("transaction already deleted");
+      }
+
+      const deletedTransaction = await prisma.transaction.delete({
+        where: { id },
+      });
+      return c.json(
+        {
+          msg: "transaction deleted successfully",
+          type: deletedTransaction.transactionType,
+          id: deletedTransaction.id,
+        },
+        200
+      );
+    } catch (error) {
+      log(error);
+      return c.json({ msg: "try again later" });
     }
   });
 
