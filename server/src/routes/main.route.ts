@@ -13,6 +13,18 @@ const app = new Hono<{
 }>();
 
 const mainRoute = app
+  .get("/all-transactions", async (c) => {
+    const take = c.req.query("n");
+    try {
+      const allTransactions = await prisma.transaction.findMany({
+        take: take ? JSON.parse(take || "") : 3,
+      });
+      return c.json({ allTransactions });
+    } catch (error) {
+      log(error);
+      return c.json({ msg: "try again later" });
+    }
+  })
   .get("/total-balance", async (c) => {
     return c.json({});
   })
@@ -71,17 +83,18 @@ const mainRoute = app
         type: transaction.transactionType,
       });
     } catch (e) {
-      log(e);
+      //   log(e);
 
       if (e instanceof z.ZodError) {
         e.errors.map((error) => {
           log(error.message);
           //   TODO: how to catch errors from catch from the frontend
           //   throw new Error(error.message);
+          //   return c.json({ error: error });
         });
       }
 
-      return c.json({});
+      return c.json({ error: "try again later" });
     }
   })
   .delete("/delete-transaction/:id", async (c) => {
