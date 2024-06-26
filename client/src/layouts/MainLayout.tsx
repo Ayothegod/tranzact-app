@@ -11,14 +11,15 @@ export default function MainLayout() {
 
   return (
     <div className="bg-neutral-100 min-h-screen">
-      <div className=" max-w-7xl mx-auto">
+      {/* old layout */}
+      <div>
         {/* <section className="mx-auto flex debug">
         <div className="hidden md:flex md:w-[280px] flex-shrink-0">
-          <div className="w-full h-screen py-4 space-y-4 sticky top-0">
-            <div className="flex items-center gap-4 text-2xl font-bold">
-              <LinkIcon className="w-6 h-6" />
-              <span>Project Name + Logo</span>
-            </div>
+        <div className="w-full h-screen py-4 space-y-4 sticky top-0">
+        <div className="flex items-center gap-4 text-2xl font-bold">
+        <LinkIcon className="w-6 h-6" />
+        <span>Project Name + Logo</span>
+        </div>
 
             <ul className="flex flex-col gap-1">
               {sidebarData.map((data) => {
@@ -51,8 +52,9 @@ export default function MainLayout() {
                     
                     <div className="hidden md:">Sidebar</div>
                     </section> */}
-        <Header />
-
+      </div>
+      <Header />
+      <div className=" max-w-7xl mx-auto">
         <Outlet />
       </div>
     </div>
