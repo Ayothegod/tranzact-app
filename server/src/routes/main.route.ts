@@ -12,81 +12,43 @@ const app = new Hono<{
   };
 }>();
 
-// export async function loader() {
-//     const [incomeTransactions, expenseTransactions] = await Promise.all([
-//       prisma.transaction.findMany({
-//         where: {
-//           transactionType: "INCOME",
-//         },
-//       }),
-//       prisma.transaction.findMany({
-//         where: {
-//           transactionType: "EXPENSE",
-//         },
-//       }),
-//     ]);
-
-//     const [incomeSum, expenseSum] = await Promise.all([
-//       prisma.transaction.aggregate({
-//         _sum: {
-//           amount: true,
-//         },
-//         where: {
-//           transactionType: "INCOME",
-//         },
-//       }),
-//       prisma.transaction.aggregate({
-//         _sum: {
-//           amount: true,
-//         },
-//         where: {
-//           transactionType: "EXPENSE",
-//         },
-//       }),
-//     ]);
-
-//     const expenseCategories = await prisma.transaction.groupBy({
-//       by: ["category", "transactionType"],
-//       _count: true,
-//       where:{
-//         transactionType: "EXPENSE"
-//       },
-//       _sum:{
-//         amount: true
-//       }
-//     });
-//     console.log(expenseCategories);
-
-//     // Group by city, order by createdAt, get count
-//     // const result = await prisma.user.groupBy({
-//     //   by: ['city', 'createdAt'],
-//     //   orderBy: {
-//     //     createdAt: true
-//     //   },
-//     //   _count: {
-//     //     _all: true
-//     //   },
-//     // })
-
-//     return json({
-//       expenseCategories,
-//       incomeSum,
-//       expenseSum,
-//       incomeTransactions,
-//       expenseTransactions,
-//     });
-//   }
-
 const mainRoute = app
   .get("/total-balance", async (c) => {
     return c.json({});
   })
   .get("/total-income", async (c) => {
-    const income = await prisma.transaction.findMany({});
-    return c.json({});
+    try {
+      const totalIncome = await prisma.transaction.aggregate({
+        _sum: {
+          amount: true,
+        },
+        where: {
+          transactionType: "INCOME",
+        },
+      });
+
+      return c.json({ total: totalIncome._sum });
+    } catch (error) {
+      log(error);
+      return c.json({});
+    }
   })
   .get("/total-expense", async (c) => {
-    return c.json({});
+    try {
+      const totalIncome = await prisma.transaction.aggregate({
+        _sum: {
+          amount: true,
+        },
+        where: {
+          transactionType: "EXPENSE",
+        },
+      });
+
+      return c.json({ total: totalIncome._sum });
+    } catch (error) {
+      log(error);
+      return c.json({ msg: "try again later" });
+    }
   })
   .post("/create-transaction", async (c) => {
     try {
