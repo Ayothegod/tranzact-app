@@ -13,16 +13,16 @@ import { z } from "zod";
 import asset from "@/assets/asset.jpg";
 import { loginUserSchema } from "@/lib/schema";
 import { BASEURL, axiosInstance } from "@/lib/fetch";
+import { useAuthStore } from "@/lib/store/userStore";
 
 type LoginSchemaType = z.infer<typeof loginUserSchema>;
 
 export async function Loader() {
-  const session = Cookies.get("session");
+  // const session = Cookies.get("session");
   // console.log(session);
-  if (session) {
-    return redirect("/dashboard");
-  }
-
+  // if (session) {
+  //   return redirect("/dashboard");
+  // }
   return json(null);
 }
 
@@ -30,6 +30,7 @@ export default function Login() {
   const { toast } = useToast();
   const navigate = useNavigate();
   const { process, setProcess } = useProcessStore();
+  const { userData, setUserData } = useAuthStore();
   const {
     register,
     handleSubmit,
@@ -44,8 +45,6 @@ export default function Login() {
         password: data.password,
       });
 
-      console.log(response);
-      console.log(response.data);
       if (response.data.error) {
         toast({
           variant: "destructive",
@@ -53,12 +52,15 @@ export default function Login() {
         });
         return null;
       }
+      console.log(response.data);
+      const { id, username } = response.data;
+      setUserData({ id, username });
 
       toast({
         description: `Welcome back, ${response.data?.username}`,
       });
-      // return navigate("/dashboard");
-      return null;
+      return navigate("/dashboard");
+      // return null;
     } catch (error: any) {
       console.log(error);
 
@@ -94,6 +96,7 @@ export default function Login() {
           <div className="mx-auto flex max-w-[448px] flex-col justify-center px-2">
             <div className="mb-16">
               <p>Logo</p>
+              <div>{userData?.username}</div>
               {/* <Logo logo={logo} className="" /> */}
             </div>
 
