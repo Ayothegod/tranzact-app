@@ -28,7 +28,7 @@ export default function Dashboard() {
     isLoading: expenseLoading,
   } = useSWR(`${BASEURL}/total-expense`, fetcher);
 
-  // console.log(totalIncome, totalExpense);
+  console.log(totalIncome?.data, totalExpense?.data);
 
   return (
     <div className="">
@@ -47,7 +47,7 @@ export default function Dashboard() {
                 <MoreVertical className="cursor-pointer h-5 w-5" />
               </div>
               <p className="text-2xl font-bold">
-                ${totalIncome?.total.amount - totalExpense?.total.amount}
+                ${totalIncome?.data.total.amount - totalExpense?.data.total.amount}
               </p>
               <div className="flex justify-between items-center text-xs">
                 <p className="text-neutral-500">from last month</p>
@@ -57,11 +57,11 @@ export default function Dashboard() {
               </div>
             </div>
 
-            <div className="bg-white shadow rounded-lg p-4 space-y-2">
+                    {/* TODO: change all their icons */}
+            {/* <div className="bg-white shadow rounded-lg p-4 space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="p-1 bg-green-200 rounded-lg text-green-600">
-                    {/* TODO: change all their icons */}
                     <Library />
                   </div>
                   <p className="font-medium">Total Income</p>
@@ -80,13 +80,13 @@ export default function Dashboard() {
                   +50%
                 </div>
               </div>
-            </div>
+            </div> */}
 
-            <div className="bg-white shadow rounded-lg p-4 space-y-2">
+                    {/* TODO: change all their icons */}
+            {/* <div className="bg-white shadow rounded-lg p-4 space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="p-1 bg-red-200 rounded-lg text-red-600">
-                    {/* TODO: change all their icons */}
                     <Library />
                   </div>
                   <p className="font-medium">Total Expense</p>
@@ -102,7 +102,7 @@ export default function Dashboard() {
                   +50%
                 </div>
               </div>
-            </div>
+            </div> */}
 
             <div className="bg-white shadow rounded-lg p-4 col-span-2">
               {/* <RecentTransactions/> */}
