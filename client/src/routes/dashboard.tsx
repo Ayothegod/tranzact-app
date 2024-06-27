@@ -1,4 +1,5 @@
 import RecentTransactions from "@/components/build/RecentTransactions";
+import { Button } from "@/components/ui/button";
 import { BASEURL, fetcher } from "@/lib/fetch";
 import Cookies from "js-cookie";
 import { Library, MoreVertical } from "lucide-react";
@@ -28,7 +29,7 @@ export default function Dashboard() {
     isLoading: expenseLoading,
   } = useSWR(`${BASEURL}/total-expense`, fetcher);
 
-  console.log(totalIncome?.data, totalExpense?.data);
+  console.log(totalIncome, totalExpense);
 
   return (
     <div className="">
@@ -47,7 +48,7 @@ export default function Dashboard() {
                 <MoreVertical className="cursor-pointer h-5 w-5" />
               </div>
               <p className="text-2xl font-bold">
-                ${totalIncome?.data.total.amount - totalExpense?.data.total.amount}
+                ${totalIncome?.total.amount - totalExpense?.total.amount}
               </p>
               <div className="flex justify-between items-center text-xs">
                 <p className="text-neutral-500">from last month</p>
@@ -57,8 +58,8 @@ export default function Dashboard() {
               </div>
             </div>
 
-                    {/* TODO: change all their icons */}
-            {/* <div className="bg-white shadow rounded-lg p-4 space-y-2">
+            {/* TODO: change all their icons */}
+            <div className="bg-white shadow rounded-lg p-4 space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="p-1 bg-green-200 rounded-lg text-green-600">
@@ -80,10 +81,10 @@ export default function Dashboard() {
                   +50%
                 </div>
               </div>
-            </div> */}
+            </div>
 
-                    {/* TODO: change all their icons */}
-            {/* <div className="bg-white shadow rounded-lg p-4 space-y-2">
+            {/* TODO: change all their icons */}
+            <div className="bg-white shadow rounded-lg p-4 space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
                   <div className="p-1 bg-red-200 rounded-lg text-red-600">
@@ -102,7 +103,7 @@ export default function Dashboard() {
                   +50%
                 </div>
               </div>
-            </div> */}
+            </div>
 
             <div className="bg-white shadow rounded-lg p-4 col-span-2">
               {/* <RecentTransactions/> */}
@@ -111,9 +112,14 @@ export default function Dashboard() {
             <div className="bg-white shadow rounded-lg p-4">Item 2</div>
           </div>
         </div>
-        <div className=" flex-grow debug">
-          <p>Hello</p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis saepe dolorem nam eligendi adipisci ipsa, reprehenderit nostrum tempora. Aliquid soluta incidunt consequatur fugit facere? Qui porro commodi incidunt nesciunt rerum!
+        <div className=" flex-grow">
+          <div className="box p-2 ">
+            <h3 className="font-bold text-center">Quick Actions</h3>
+            <div className="w-full flex flex-col gap-2 mt-4">
+              <Button variant="green">Add Income</Button>
+              <Button variant="destructive">Add Expense</Button>
+            </div>
+          </div>
         </div>
       </div>
     </div>

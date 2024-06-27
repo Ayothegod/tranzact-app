@@ -29,16 +29,6 @@ export default function Account() {
   } = useSWR(`${BASEURL}/auth/get-user`, fetcher);
   console.log(userData);
 
-  // {
-  //   user: {
-  //     id: 'clxx46dim000011f4f7phzl99',
-  //     email: 'Aiiomide@gmail.com',
-  //     username: 'Aiiomide',
-  //     name: 'Adebisi Ayomide',
-  //     password: 'Aiiomide'
-  //   }
-  // }
-
   return (
     <div className="mx-auto mt-4 pb-16 min-h-screen">
       <h1 className="text-xl font-bold">My Account</h1>
