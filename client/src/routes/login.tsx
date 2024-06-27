@@ -18,11 +18,12 @@ import { useAuthStore } from "@/lib/store/userStore";
 type LoginSchemaType = z.infer<typeof loginUserSchema>;
 
 export async function Loader() {
-  // const session = Cookies.get("session");
-  // console.log(session);
-  // if (session) {
-  //   return redirect("/dashboard");
-  // }
+  const session = Cookies.get("session");
+  console.log(session);
+
+  if (session) {
+    return redirect("/dashboard");
+  }
   return json(null);
 }
 

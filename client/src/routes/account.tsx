@@ -1,6 +1,8 @@
 import { accountSidebar } from "@/lib/data";
+import { BASEURL, fetcher } from "@/lib/fetch";
 import Cookies from "js-cookie";
 import { Link, json, redirect, useLocation } from "react-router-dom";
+import useSWR, { useSWRConfig } from "swr";
 
 export async function Loader() {
   const session = Cookies.get("session");
@@ -13,7 +15,14 @@ export async function Loader() {
 export default function Account() {
   const loaction = useLocation();
   const path = location.pathname;
-  // console.log(path);
+
+  const { mutate } = useSWRConfig();
+  const {
+    data: userData,
+    error: userError,
+    isLoading: userLoading,
+  } = useSWR(`${BASEURL}/auth/get-user`, fetcher);
+  console.log(userData);
 
   return (
     <div className="max-w-5xl mx-auto mt-4 min-h-screen">
@@ -23,7 +32,7 @@ export default function Account() {
         <h3 className="ml-56">Account</h3>
         <div className=" flex gap-2">
           {/* SIDEBAR */}
-          <div className="w-52">
+          <div className="w-52 flex-shrink-0">
             <ul>
               {accountSidebar.map((data) => (
                 <Link to={data.url} key={data.id}>
@@ -38,8 +47,15 @@ export default function Account() {
           </div>
 
           {/* MAIN */}
-          <div>
-            <p>Hello</p>
+          <div className="flex-grow">
+            <div className="border py-2 px-4 w-full rounded-lg">
+              <div className="flex items-center gap-4">
+                <div className="h-20 w-20 bg-neutral-300 rounded-full"></div>
+                <div>
+                  <h4></h4>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>

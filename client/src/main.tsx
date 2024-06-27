@@ -15,7 +15,7 @@ import Transactions from "./routes/transactions.tsx";
 import Register from "./routes/register.tsx";
 import { Toaster } from "./components/ui/toaster.tsx";
 import Login, { Loader as loginLoader } from "./routes/login.tsx";
-import Account from "./routes/account.tsx";
+import Account, {Loader as accountLoader} from "./routes/account.tsx";
 // NOTE: make sure to add errorBoundary to all routes that throw error from loader and actions
 
 const router = createBrowserRouter([
@@ -63,6 +63,7 @@ const router = createBrowserRouter([
       {
         path: "/account",
         element: <Account />,
+        loader: accountLoader
       },
       // {
       //   path: "/messages",

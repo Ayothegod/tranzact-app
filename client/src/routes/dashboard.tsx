@@ -7,6 +7,7 @@ import useSWR, { useSWRConfig } from "swr";
 
 export async function Loader() {
   const session = Cookies.get("session");
+  console.log(session);
   if (!session) {
     return redirect("/login");
   }
@@ -33,7 +34,7 @@ export default function Dashboard() {
     <div className="">
       {/* <p>Dashboard</p> */}
       <div className="flex gap-4">
-        <div className="w-[80%]">
+        <div className="w-[80%] flex-shrink-0 ">
           <div className="grid grid-cols-3 gap-4">
             <div className="bg-white shadow rounded-lg p-4 space-y-2">
               <div className="flex items-center justify-between">
@@ -110,7 +111,10 @@ export default function Dashboard() {
             <div className="bg-white shadow rounded-lg p-4">Item 2</div>
           </div>
         </div>
-        {/* <div className=" flex-grow debug"></div> */}
+        <div className=" flex-grow debug">
+          <p>Hello</p>
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reiciendis saepe dolorem nam eligendi adipisci ipsa, reprehenderit nostrum tempora. Aliquid soluta incidunt consequatur fugit facere? Qui porro commodi incidunt nesciunt rerum!
+        </div>
       </div>
     </div>
   );
