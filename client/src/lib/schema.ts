@@ -33,6 +33,6 @@ export const transactionSchema = z.object({
   transactionType: transactionType,
   description: z.string().optional(),
   amount: z.coerce.number().min(1, "amount is too short"),
-  category: z.string().min(1, "category is too short"),
-  // userId: z.string().min(1, "userId is too short"),
+  category: z.string().min(1, "you must pick a category"),
+  date: z.date(),
 });
