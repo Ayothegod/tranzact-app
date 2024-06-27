@@ -5,6 +5,7 @@ import { useToast } from "@/components/ui/use-toast";
 import { useProcessStore } from "@/lib/store/stateStore";
 import { zodResolver } from "@hookform/resolvers/zod";
 import axios from "axios";
+import Cookies from "js-cookie";
 import { Loader2 } from "lucide-react";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { Link, json, redirect, useNavigate } from "react-router-dom";
@@ -15,15 +16,15 @@ import { BASEURL, axiosInstance } from "@/lib/fetch";
 
 type LoginSchemaType = z.infer<typeof loginUserSchema>;
 
-// export async function Loader() {
-//   const user = Cookies.get("user_access");
+export async function Loader() {
+  const session = Cookies.get("session");
+  // console.log(session);
+  if (session) {
+    return redirect("/dashboard");
+  }
 
-//   if (user) {
-//     return redirect("/dashboard");
-//   }
-
-//   return json(null);
-// }
+  return json(null);
+}
 
 export default function Login() {
   const { toast } = useToast();
@@ -38,13 +39,10 @@ export default function Login() {
   const onSubmit: SubmitHandler<LoginSchemaType> = async (data) => {
     setProcess();
     try {
-      const response = await axiosInstance.post(
-        `${BASEURL}/auth/login`,
-        {
-          email: data.email,
-          password: data.password,
-        }
-      );
+      const response = await axiosInstance.post(`${BASEURL}/auth/login`, {
+        email: data.email,
+        password: data.password,
+      });
 
       console.log(response);
       console.log(response.data);
@@ -55,14 +53,6 @@ export default function Login() {
         });
         return null;
       }
-      // Cookies.set("user_access", `${response.data?.access}`, {
-      //   expires: 1,
-      //   secure: false,
-      // });
-      // Cookies.set("user_id", `${response.data?.id}`, {
-      //   expires: 1,
-      //   secure: false,
-      // });
 
       toast({
         description: `Welcome back, ${response.data?.username}`,

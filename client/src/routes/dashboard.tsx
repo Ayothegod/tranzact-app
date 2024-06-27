@@ -1,7 +1,17 @@
 import RecentTransactions from "@/components/build/RecentTransactions";
 import { BASEURL, fetcher } from "@/lib/fetch";
+import Cookies from "js-cookie";
 import { Library, MoreVertical } from "lucide-react";
+import { json, redirect } from "react-router-dom";
 import useSWR, { useSWRConfig } from "swr";
+
+export async function Loader() {
+  const session = Cookies.get("session");
+  if (!session) {
+    return redirect("/login");
+  }
+  return json(null);
+}
 
 export default function Dashboard() {
   const { mutate } = useSWRConfig();
@@ -25,7 +35,6 @@ export default function Dashboard() {
       <div className="flex gap-4">
         <div className="w-[80%]">
           <div className="grid grid-cols-3 gap-4">
-
             <div className="bg-white shadow rounded-lg p-4 space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">

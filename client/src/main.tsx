@@ -6,15 +6,15 @@ import MainLayout from "./layouts/MainLayout.tsx";
 import RootLayout from "./layouts/RootLayout.tsx";
 import Root, { RootError, Loader as rootLoader } from "./routes/root.tsx";
 import LearnSwr, {
-	ErrorBoundary,
-	Loader as swrLoader,
+  ErrorBoundary,
+  Loader as swrLoader,
 } from "./routes/test-action.tsx";
 import Learn from "./routes/learn.tsx";
-import Dashboard from "./routes/dashboard.tsx";
+import Dashboard, { Loader as dashboardLoader } from "./routes/dashboard.tsx";
 import Transactions from "./routes/transactions.tsx";
 import Register from "./routes/register.tsx";
 import { Toaster } from "./components/ui/toaster.tsx";
-import Login from "./routes/login.tsx";
+import Login, { Loader as loginLoader } from "./routes/login.tsx";
 // NOTE: make sure to add errorBoundary to all routes that throw error from loader and actions
 
 const router = createBrowserRouter([
@@ -32,17 +32,18 @@ const router = createBrowserRouter([
   },
   {
     path: "/learn",
-    element: <Learn/>,
+    element: <Learn />,
     errorElement: <ErrorBoundary />,
   },
   {
     path: "/register",
-    element: <Register/>,
+    element: <Register />,
     errorElement: <ErrorBoundary />,
   },
   {
     path: "/login",
-    element: <Login/>,
+    element: <Login />,
+    loader: loginLoader,
     errorElement: <ErrorBoundary />,
   },
   // define other routes eg login/register
@@ -52,6 +53,7 @@ const router = createBrowserRouter([
       {
         path: "/dashboard",
         element: <Dashboard />,
+        loader: dashboardLoader,
       },
       {
         path: "/transactions",
