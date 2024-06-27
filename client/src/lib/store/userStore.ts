@@ -20,5 +20,3 @@ export const useAuthStore = create<StoreState>((set) => ({
   userData: { id: "1", username: "Test User" },
   setUserData: (data) => set((state) => ({ userData: data })),
 }));
-
-// im using zustand, i want to be able to persist and  delete pesisted data
