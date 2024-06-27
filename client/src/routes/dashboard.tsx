@@ -1,8 +1,10 @@
+import AddTransaction from "@/components/build/AddTransaction";
 import RecentTransactions from "@/components/build/RecentTransactions";
 import { Button } from "@/components/ui/button";
 import { BASEURL, fetcher } from "@/lib/fetch";
 import Cookies from "js-cookie";
 import { Library, MoreVertical } from "lucide-react";
+import { useState } from "react";
 import { json, redirect } from "react-router-dom";
 import useSWR, { useSWRConfig } from "swr";
 
@@ -29,7 +31,9 @@ export default function Dashboard() {
     isLoading: expenseLoading,
   } = useSWR(`${BASEURL}/total-expense`, fetcher);
 
-  console.log(totalIncome, totalExpense);
+  // console.log(totalIncome, totalExpense);
+  const [openModal, setOpenModal] = useState(false);
+  const [isIncome, setIsIncome] = useState(false);
 
   return (
     <div className="">
@@ -112,15 +116,40 @@ export default function Dashboard() {
             <div className="bg-white shadow rounded-lg p-4">Item 2</div>
           </div>
         </div>
+
         <div className=" flex-grow">
           <div className="box p-2 ">
             <h3 className="font-bold text-center">Quick Actions</h3>
             <div className="w-full flex flex-col gap-2 mt-4">
-              <Button variant="green">Add Income</Button>
-              <Button variant="destructive">Add Expense</Button>
+              <Button
+                variant="green"
+                onClick={() => {
+                  setIsIncome(!isIncome);
+                  setOpenModal(!openModal);
+                }}
+              >
+                Add Income
+              </Button>
+              <Button
+                variant="destructive"
+                onClick={() => setOpenModal(!openModal)}
+              >
+                Add Expense
+              </Button>
             </div>
           </div>
         </div>
+
+        {openModal && isIncome && (
+          <div>
+            <AddTransaction
+              isIncome={isIncome}
+              setIsIncome={setIsIncome}
+              setOpenModal={setOpenModal}
+              openModal={openModal}
+            />
+          </div>
+        )}
       </div>
     </div>
   );

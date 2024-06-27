@@ -31,8 +31,8 @@ const transactionType = z.enum(["INCOME", "EXPENSE"], {
 
 export const transactionSchema = z.object({
   transactionType: transactionType,
-  description: z.string().min(1, "description is too short").optional(),
-  amount: z.number().min(1, "amount is too short"),
+  description: z.string().optional(),
+  amount: z.coerce.number().min(1, "amount is too short"),
   category: z.string().min(1, "category is too short"),
-  userId: z.string().min(1, "userId is too short"),
+  // userId: z.string().min(1, "userId is too short"),
 });

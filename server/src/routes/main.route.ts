@@ -19,8 +19,8 @@ const mainRoute = app
       const allTransactions = await prisma.transaction.findMany({
         take: take ? JSON.parse(take || "") : 10,
         orderBy: {
-            createdAt: "desc"
-        }
+          createdAt: "desc",
+        },
       });
       return c.json({ allTransactions });
     } catch (error) {
@@ -46,6 +46,27 @@ const mainRoute = app
     } catch (error) {
       log(error);
       return c.json({});
+    }
+  })
+  .get("/all-category", async (c) => {
+    const take = c.req.query("n");
+    try {
+      // for now get all categories, but later it should be by type /transaction-category/:type
+      // by: ["category", "transactionType"],
+      // where:{
+      //   transactionType: "EXPENSE"
+      // },
+      const categories = await prisma.transaction.groupBy({
+        by: ["category"],
+        _count: true,
+        _sum: {
+          amount: true,
+        },
+      });
+      return c.json({ categories });
+    } catch (error) {
+      log(error);
+      return c.json({ msg: "try again later" });
     }
   })
   .get("/total-expense", async (c) => {
