@@ -35,7 +35,7 @@ app.get("/", (c) => {
 });
 
 app.route("/api", testRoute);
-app.route("/api", authRoute);
+app.route("/api/auth", authRoute);
 app.route("/api", mainRoute);
 
 const port = 3000;
