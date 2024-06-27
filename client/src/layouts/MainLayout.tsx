@@ -10,7 +10,7 @@ export default function MainLayout() {
   const path = location.pathname;
 
   return (
-    <div className="bg-neutral-100 min-h-screen">
+    <div className="bg-neutral-200 min-h-screen">
       {/* old layout */}
       <div>
         {/* <section className="mx-auto flex debug">
