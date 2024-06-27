@@ -37,7 +37,11 @@ const authRoute = app
       // log(session?.cache?._data);
 
       return c.json(
-        { msg: "User loggedin successfully", id: user.id },
+        {
+          msg: "User loggedin successfully",
+          id: user.id,
+          username: user.username,
+        },
         { status: 201 }
       );
     } catch (error) {

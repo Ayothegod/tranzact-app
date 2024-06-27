@@ -15,6 +15,16 @@ export const registerSchema = z.object({
     .min(6, { message: "Password must be up to 6 characters" }),
 });
 
+export const loginUserSchema = z.object({
+  email: z
+    .string()
+    .email({ message: "Invalid email address" })
+    .min(1, { message: "Name is required" }),
+  password: z
+    .string()
+    .min(6, { message: "Password must be up to 6 characters" }),
+});
+
 const transactionType = z.enum(["INCOME", "EXPENSE"], {
   message: "transaction type must be INCOME or EXPENSE",
 });

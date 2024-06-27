@@ -1,17 +1,16 @@
-import { z } from "zod";
-import { SubmitHandler, useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { Label } from "@/components/ui/label";
-import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { Link, json, redirect, useNavigate } from "react-router-dom";
-// import Cookies from "js-cookie";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { SubmitHandler, useForm } from "react-hook-form";
+import { Link, useNavigate } from "react-router-dom";
+import { z } from "zod";
+import { useToast } from "@/components/ui/use-toast";
+import { BASEURL } from "@/lib/fetch";
+import { registerSchema } from "@/lib/schema";
+import { useProcessStore } from "@/lib/store/stateStore";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
-import { registerSchema } from "@/lib/schema";
-import { BASEURL } from "@/lib/fetch";
-import { useToast } from "@/components/ui/use-toast";
-import { useProcessStore } from "@/lib/store/stateStore";
 
 type RegisterSchemaType = z.infer<typeof registerSchema>;
 
@@ -45,7 +44,6 @@ export default function Register() {
       });
 
       console.log(response.data);
-      console.log(response.data.error);
       if (response.data.error) {
         toast({
           variant: "destructive",

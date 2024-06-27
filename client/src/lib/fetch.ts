@@ -1,9 +1,10 @@
 import axios from "axios";
 import useSWR from "swr";
 
-// export const apiClient = axios.create({
-//   baseURL: "http://localhost:3000/api/",
-// });
+export const axiosInstance = axios.create({
+  withCredentials: true,
+});
+
 
 export const BASEURL = "http://localhost:3000/api";
 
