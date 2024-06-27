@@ -37,7 +37,7 @@ export default function Register() {
   const onSubmit: SubmitHandler<RegisterSchemaType> = async (data) => {
     setProcess();
     try {
-      const response = await axios.post(`${BASEURL}/accounts/register/`, {
+      const response = await axios.post(`${BASEURL}/auth/register`, {
         name: data.name,
         email: data.email,
         username: data.username,
@@ -45,22 +45,24 @@ export default function Register() {
       });
 
       console.log(response.data);
+      console.log(response.data.error);
+      if (response.data.error) {
+        toast({
+          variant: "destructive",
+          description: `User with this email already exists!`,
+        });
+        return null;
+      }
 
       toast({
-        title: `Welcome to automize, ${data.username}`,
-        description: `Login to continue to Automize`,
+        title: `Welcome to Tranzact, ${data.username}`,
+        description: `Login to continue to Tranzact`,
       });
       return navigate("/login");
     } catch (error: any) {
       console.log(error);
 
-      if (error.response.data.username) {
-        toast({
-          variant: "destructive",
-          description: `Username already exists, try again!`,
-        });
-        return null;
-      } else if (error.request) {
+      if (error.request) {
         toast({
           variant: "destructive",
           title: "Uh oh! Something went wrong.",
@@ -74,10 +76,9 @@ export default function Register() {
         });
         return null;
       }
+    } finally {
+      setProcess();
     }
-    // finally {
-    //   setProcess();
-    // }
   };
 
   return (

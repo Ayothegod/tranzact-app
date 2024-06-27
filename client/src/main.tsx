@@ -13,6 +13,8 @@ import Learn from "./routes/learn.tsx";
 import Dashboard from "./routes/dashboard.tsx";
 import Transactions from "./routes/transactions.tsx";
 import Register from "./routes/register.tsx";
+import { Toaster } from "./components/ui/toaster.tsx";
+import Login from "./routes/login.tsx";
 // NOTE: make sure to add errorBoundary to all routes that throw error from loader and actions
 
 const router = createBrowserRouter([
@@ -36,6 +38,11 @@ const router = createBrowserRouter([
   {
     path: "/register",
     element: <Register/>,
+    errorElement: <ErrorBoundary />,
+  },
+  {
+    path: "/login",
+    element: <Login/>,
     errorElement: <ErrorBoundary />,
   },
   // define other routes eg login/register
@@ -63,6 +70,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
   <HelmetProvider>
     <RootLayout>
       <RouterProvider router={router} />
+      <Toaster />
     </RootLayout>
   </HelmetProvider>
   //   </React.StrictMode>
