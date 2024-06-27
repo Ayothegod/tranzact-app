@@ -29,9 +29,10 @@ app.use(
     encryptionKey: "password_at_least_32_characters_long", // Required for CookieStore, recommended for others
     expireAfterSeconds: 900, // Expire session after 15 minutes of inactivity
     cookieOptions: {
-      sameSite: "Lax", // Recommended for basic CSRF protection in modern browsers
-      path: "/", // Required for this library to work properly
-      httpOnly: true, // Recommended to avoid XSS attacks
+      sameSite: "None",
+      path: "/",
+      httpOnly: false,
+      secure: true,
     },
   })
 );

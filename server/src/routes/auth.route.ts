@@ -100,16 +100,19 @@ const authRoute = app
       return c.json({ error: "try again later" });
     }
   })
-  .get("profile", authMiddleware, async (c) => {
+  .get("/get-user", authMiddleware, async (c) => {
     const session = c.get("session");
     const authCookie: any = session.get("auth-cookie");
-    // const trial = "cookie" + JSON.stringify(c.get("session"));
+    const trial = "cookie" + JSON.stringify(c.get("session"));
+    // log(trial);
+    // log(authCookie);
 
     // GET USER DETAILS
     const user = await prisma.user.findUnique({
       where: { id: authCookie },
     });
-    return c.json({ user: { email: user?.email, id: user?.id } });
+    return c.json({ user: user });
+    // return c.json({});
   })
   .delete("logout", async (c) => {
     const session = c.get("session");
