@@ -35,4 +35,5 @@ export const transactionSchema = z.object({
   amount: z.number().min(1, "amount is too short"),
   category: z.string().min(1, "category is too short"),
   userId: z.string().min(1, "userId is too short"),
+  date: z.coerce.date(),
 });

@@ -4,6 +4,7 @@ import { prisma } from "../lib/client";
 import { log } from "console";
 import { transactionSchema } from "../lib/schema";
 import { z } from "zod";
+import { authMiddleware } from "../lib/middleware";
 
 const app = new Hono<{
   Variables: {
@@ -86,18 +87,22 @@ const mainRoute = app
       return c.json({ msg: "try again later" });
     }
   })
-  .post("/create-transaction", async (c) => {
+  .post("/create-transaction", authMiddleware, async (c) => {
     try {
       const data = await c.req.json();
       const transactionData = transactionSchema.parse(data);
-      // log(transactionData); // TESTID: clxvt6am30000g559ej2pc7ph
+      const session = c.get("session");
+      const authCookie: any = session.get("auth-cookie");
+      log(authCookie);
+
       const transaction = await prisma.transaction.create({
         data: {
           transactionType: transactionData.transactionType,
           amount: transactionData.amount,
           category: transactionData.category,
           description: transactionData.description,
-          userId: transactionData.userId,
+          userId: authCookie,
+          createdAt: transactionData.date,
         },
       });
 
