@@ -17,6 +17,7 @@ model User {
   name         String
   password     String
   transactions Transaction[]
+  category     Category[]
 }
 
 model Transaction {
@@ -24,9 +25,19 @@ model Transaction {
   transactionType String
   description     String?
   amount          Decimal
-  category        String
   createdAt       DateTime @default(now())
   updatedAt       DateTime @updatedAt
   userId          String
-  user            User     @relation(fields: [userId], references: [id])
+  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  categoryId      String
+  category        Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+}
+
+model Category {
+  id          String        @id @default(cuid())
+  name        String
+  createdAt   DateTime      @default(now())
+  transaction Transaction[]
+  userId      String
+  user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
 }

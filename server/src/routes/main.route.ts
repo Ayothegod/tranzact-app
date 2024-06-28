@@ -2,7 +2,7 @@ import { Hono } from "hono";
 import { Session } from "hono-sessions";
 import { prisma } from "../lib/client";
 import { log } from "console";
-import { transactionSchema } from "../lib/schema";
+import { categorySchema, transactionSchema } from "../lib/schema";
 import { z } from "zod";
 import { authMiddleware } from "../lib/middleware";
 
@@ -97,21 +97,21 @@ const mainRoute = app
       const authCookie: any = session.get("auth-cookie");
       // log(authCookie);
 
-      const transaction = await prisma.transaction.create({
-        data: {
-          transactionType: transactionData.transactionType,
-          amount: transactionData.amount,
-          category: transactionData.category,
-          description: transactionData.description,
-          createdAt: transactionData.date,
-          userId: authCookie,
-        },
-      });
+      // const transaction = await prisma.transaction.create({
+      //   data: {
+      //     transactionType: transactionData.transactionType,
+      //     amount: transactionData.amount,
+      //     category: transactionData.category,
+      //     description: transactionData.description,
+      //     createdAt: transactionData.date,
+      //     userId: authCookie,
+      //   },
+      // });
 
       return c.json({
         msg: "success",
-        id: transaction.id,
-        type: transaction.transactionType,
+        // id: transaction.id,
+        // type: transaction.transactionType,
       });
     } catch (e) {
       const data = await c.req.json();
@@ -154,6 +154,34 @@ const mainRoute = app
       log(error);
       return c.json({ msg: "try again later" });
     }
+  })
+  .post("/create-category", authMiddleware, async (c) => {
+    try {
+      const data = await c.req.json();
+      const transactionData = categorySchema.safeParse(data);
+      if (transactionData.error) {
+        return c.json({ error: "category is not defined" });
+      }
+
+      const session = c.get("session");
+      const authCookie: any = session.get("auth-cookie");
+      log(authCookie);
+
+      const category = await prisma.category.create({
+        data: {
+          userId: authCookie,
+          name: transactionData.data.name,
+        },
+      });
+      return c.json({
+        total: "category created successfully",
+        category: category.name,
+      });
+    } catch (error) {
+      log(error);
+      return c.json({});
+    }
   });
 
 export default mainRoute;
+// category        String

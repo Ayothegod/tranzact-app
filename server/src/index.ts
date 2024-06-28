@@ -6,6 +6,7 @@ import authRoute from "./routes/auth.route";
 import mainRoute from "./routes/main.route";
 import { cors } from "hono/cors";
 import { sessionMiddleware, CookieStore, Session } from "hono-sessions";
+import { log } from "console";
 
 const app = new Hono<{
   Variables: {
@@ -32,13 +33,17 @@ app.use(
       sameSite: "None",
       path: "/",
       httpOnly: false,
-      secure: true,
-      maxAge: 60 * 60 * 24 * 7
+      // secure: true,
+      maxAge: 60 * 60 * 24 * 7,
     },
   })
 );
 
-app.get("/", (c) => {
+app.get("/", async (c) => {
+  await prisma.user.deleteMany({})
+  await prisma.transaction.deleteMany({});
+  log(await prisma.user.findMany({}));
+  log(await prisma.transaction.findMany({}));
   return c.text("Hello Hono!");
 });
 
