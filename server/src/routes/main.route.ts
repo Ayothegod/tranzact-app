@@ -14,7 +14,7 @@ const app = new Hono<{
 }>();
 
 const mainRoute = app
-  .get("/all-transactions", async (c) => {
+  .get("/all-transactions", authMiddleware, async (c) => {
     const take = c.req.query("n");
     try {
       const allTransactions = await prisma.transaction.findMany({
@@ -29,10 +29,10 @@ const mainRoute = app
       return c.json({ msg: "try again later" });
     }
   })
-  .get("/total-balance", async (c) => {
+  .get("/total-balance", authMiddleware, async (c) => {
     return c.json({});
   })
-  .get("/total-income", async (c) => {
+  .get("/total-income", authMiddleware, async (c) => {
     try {
       const totalIncome = await prisma.transaction.aggregate({
         _sum: {
@@ -49,7 +49,7 @@ const mainRoute = app
       return c.json({});
     }
   })
-  .get("/all-category", async (c) => {
+  .get("/all-category", authMiddleware, async (c) => {
     const take = c.req.query("n");
     try {
       // for now get all categories, but later it should be by type /transaction-category/:type
@@ -70,7 +70,7 @@ const mainRoute = app
       return c.json({ msg: "try again later" });
     }
   })
-  .get("/total-expense", async (c) => {
+  .get("/total-expense", authMiddleware, async (c) => {
     try {
       const totalIncome = await prisma.transaction.aggregate({
         _sum: {
@@ -87,12 +87,12 @@ const mainRoute = app
       return c.json({ msg: "try again later" });
     }
   })
-  .post("/create-transaction", authMiddleware, async (c) => {
+  .post("/create-transaction", authMiddleware, authMiddleware, async (c) => {
     try {
       const data = await c.req.json();
       const transactionData = transactionSchema.parse(data);
       // log(transactionData.date);
-      
+
       const session = c.get("session");
       const authCookie: any = session.get("auth-cookie");
       // log(authCookie);
@@ -116,7 +116,7 @@ const mainRoute = app
     } catch (e) {
       const data = await c.req.json();
       log(data);
-        log(e);
+      log(e);
 
       if (e instanceof z.ZodError) {
         e.errors.map((error) => {
@@ -129,7 +129,7 @@ const mainRoute = app
       return c.json({ error: "try again later" });
     }
   })
-  .delete("/delete-transaction/:id", async (c) => {
+  .delete("/delete-transaction/:id", authMiddleware, async (c) => {
     try {
       const id = c.req.param("id");
       const transaction = await prisma.transaction.findUnique({

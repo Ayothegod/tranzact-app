@@ -27,16 +27,17 @@ app.use(
   sessionMiddleware({
     store,
     encryptionKey: "password_at_least_32_characters_long", // Required for CookieStore, recommended for others
-    expireAfterSeconds: 900, // Expire session after 15 minutes of inactivity
+    // expireAfterSeconds: 900, // Expire session after 15 minutes of inactivity
     cookieOptions: {
       sameSite: "None",
       path: "/",
       httpOnly: false,
       secure: true,
+      maxAge: 30 * 1
     },
   })
 );
-
+// 60*15
 
 app.get("/", (c) => {
   return c.text("Hello Hono!");
