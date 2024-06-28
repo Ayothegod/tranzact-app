@@ -14,6 +14,8 @@ import asset from "@/assets/asset.jpg";
 import { loginUserSchema } from "@/lib/schema";
 import { BASEURL, axiosInstance } from "@/lib/fetch";
 import { useAuthStore } from "@/lib/store/userStore";
+import logo from "@/assets/tranzact.svg"
+import Logo from "@/components/build/Logo";
 
 type LoginSchemaType = z.infer<typeof loginUserSchema>;
 
@@ -93,9 +95,7 @@ export default function Login() {
         <div className="h-full w-full px-2 py-4 sm:w-1/2">
           <div className="mx-auto flex max-w-[448px] flex-col justify-center px-2">
             <div className="mb-16">
-              <p>Logo</p>
-              <div>{userData?.username}</div>
-              {/* <Logo logo={logo} className="" /> */}
+              <Logo logo={logo} className="" text={true} />
             </div>
 
             <h1 className="text-2xl font-medium">Welcome back!</h1>

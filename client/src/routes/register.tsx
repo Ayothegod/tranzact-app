@@ -11,6 +11,8 @@ import { registerSchema } from "@/lib/schema";
 import { useProcessStore } from "@/lib/store/stateStore";
 import axios from "axios";
 import { Loader2 } from "lucide-react";
+import logo from "@/assets/tranzact.svg"
+import Logo from "@/components/build/Logo";
 
 type RegisterSchemaType = z.infer<typeof registerSchema>;
 
@@ -85,7 +87,7 @@ export default function Register() {
         <div className="h-full w-full px-2 py-4 sm:w-1/2">
           <div className="mx-auto flex max-w-[448px] flex-col justify-center px-2">
             <div className="mb-8">
-              <h1 className="text-2xl font-bold">LOGO</h1>
+            <Logo logo={logo} className="" text={true} />
             </div>
 
             <h1 className="text-2xl font-medium">Hi, Welcome to Tranzact!</h1>
