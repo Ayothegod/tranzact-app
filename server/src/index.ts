@@ -33,11 +33,10 @@ app.use(
       path: "/",
       httpOnly: false,
       secure: true,
-      maxAge: 30 * 1
+      maxAge: 60 * 60 * 24 * 7
     },
   })
 );
-// 60*15
 
 app.get("/", (c) => {
   return c.text("Hello Hono!");

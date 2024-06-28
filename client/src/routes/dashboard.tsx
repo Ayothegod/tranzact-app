@@ -1,11 +1,10 @@
 import AddTransaction from "@/components/build/AddTransaction";
-import RecentTransactions from "@/components/build/RecentTransactions";
+// import RecentTransactions from "@/components/build/RecentTransactions";
 import { Button } from "@/components/ui/button";
 import { BASEURL, fetcher } from "@/lib/fetch";
-import { log } from "console";
 import Cookies from "js-cookie";
 import { Library, MoreVertical } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { json, redirect, useNavigate } from "react-router-dom";
 import useSWR, { useSWRConfig } from "swr";
 
@@ -18,6 +17,8 @@ export async function Loader() {
 }
 
 export default function Dashboard() {
+  console.log("DASHBOARD");
+  
   const { mutate } = useSWRConfig();
   const {
     data: totalIncome,
@@ -33,11 +34,12 @@ export default function Dashboard() {
   const [openModal, setOpenModal] = useState(false);
   const navigate = useNavigate();
 
-  if (incomeError) {
-    log("ON")
-    Cookies.remove("session");
-    navigate("/login");
-  }
+  useEffect(() => {
+    if (expenseError) {
+      Cookies.remove("session");
+      navigate("/login");
+    }
+  }, [expenseError, navigate]);
 
   return (
     <div className="">

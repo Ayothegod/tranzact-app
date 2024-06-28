@@ -47,7 +47,6 @@ const router = createBrowserRouter([
     loader: loginLoader,
     errorElement: <ErrorBoundary />,
   },
-  // define other routes eg login/register
   {
     element: <MainLayout />,
     children: [
@@ -65,10 +64,6 @@ const router = createBrowserRouter([
         element: <Account />,
         loader: accountLoader
       },
-      // {
-      //   path: "/messages",
-      //   element: <Messages />,
-      // },
     ],
   },
 ]);

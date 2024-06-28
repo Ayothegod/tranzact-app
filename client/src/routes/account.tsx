@@ -6,7 +6,8 @@ import { BASEURL, fetcher } from "@/lib/fetch";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { Pen } from "lucide-react";
-import { Link, json, redirect, useLocation } from "react-router-dom";
+import { useEffect } from "react";
+import { Link, json, redirect, useLocation, useNavigate } from "react-router-dom";
 import useSWR, { useSWRConfig } from "swr";
 
 export async function Loader() {
@@ -18,16 +19,26 @@ export async function Loader() {
 }
 
 export default function Account() {
-  const loaction = useLocation();
-  const path = location.pathname;
+  console.log("Account");
 
-  // const { mutate } = useSWRConfig();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const path = location.pathname;
+  const { mutate } = useSWRConfig();
+
   const {
     data: userData,
     error: userError,
     isLoading: userLoading,
   } = useSWR(`${BASEURL}/auth/get-user`, fetcher);
   console.log(userData);
+
+  useEffect(() => {
+    if (userError) {
+      Cookies.remove("session");
+      navigate("/login");
+    }
+  }, [userError, navigate]);
 
   return (
     <div className="mx-auto mt-4 pb-16 min-h-screen">
@@ -135,7 +146,9 @@ export default function Account() {
                 <p className="text-sm italic">
                   No address info yet, click the button to edit
                 </p>
-                <Button variant="blue" className="mt-2">Add Address</Button>
+                <Button variant="blue" className="mt-2">
+                  Add Address
+                </Button>
               </div>
             </div>
           </div>

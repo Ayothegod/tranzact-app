@@ -19,8 +19,6 @@ type LoginSchemaType = z.infer<typeof loginUserSchema>;
 
 export async function Loader() {
   const session = Cookies.get("session");
-  console.log(session);
-
   if (session) {
     return redirect("/dashboard");
   }
@@ -28,6 +26,8 @@ export async function Loader() {
 }
 
 export default function Login() {
+  console.log("LOGIN");
+
   const { toast } = useToast();
   const navigate = useNavigate();
   const { process, setProcess } = useProcessStore();
@@ -53,15 +53,12 @@ export default function Login() {
         });
         return null;
       }
-      console.log(response.data);
       const { id, username } = response.data;
       setUserData({ id, username });
-
       toast({
         description: `Welcome back, ${response.data?.username}`,
       });
       return navigate("/dashboard");
-      // return null;
     } catch (error: any) {
       console.log(error);
 

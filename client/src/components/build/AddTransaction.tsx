@@ -37,10 +37,13 @@ import { useNavigate } from "react-router-dom";
 import useSWR, { useSWRConfig } from "swr";
 import { z } from "zod";
 import { useToast } from "../ui/use-toast";
+import { useEffect } from "react";
 
 type TransactionSchemaType = z.infer<typeof transactionSchema>;
 
 export default function AddTransaction({ setOpenModal, openModal }: any) {
+  console.log("AddTransaction");
+
   const { mutate } = useSWRConfig();
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -56,7 +59,7 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
   });
 
   async function onSubmit(values: TransactionSchemaType) {
-    console.log(values);
+    // console.log(values);
     const dateString = values.date.toISOString();
     try {
       const response = await axiosInstance.post(
@@ -86,6 +89,7 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
 
         Cookies.remove("session");
         navigate("/login");
+        return null
       } else if (error.response) {
         toast({
           variant: "destructive",
@@ -117,6 +121,13 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
     error: categoryError,
     isLoading: loadingCategory,
   } = useSWR(`${BASEURL}/all-category`, fetcher);
+
+  useEffect(() => {
+    if (categoryError) {
+      Cookies.remove("session");
+      navigate("/login");
+    }
+  }, [categoryError, navigate]);
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-[rgba(0,0,0,0.4)] z-50 px-4">
