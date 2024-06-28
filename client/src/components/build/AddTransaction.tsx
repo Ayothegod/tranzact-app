@@ -38,13 +38,9 @@ import { useToast } from "../ui/use-toast";
 
 type TransactionSchemaType = z.infer<typeof transactionSchema>;
 
-export default function AddTransaction({
-  setOpenModal,
-  openModal,
-}: any) {
+export default function AddTransaction({ setOpenModal, openModal }: any) {
   const { mutate } = useSWRConfig();
 
-  console.log(openModal, setOpenModal);
   const form = useForm<TransactionSchemaType>({
     resolver: zodResolver(transactionSchema),
     defaultValues: {
@@ -57,13 +53,6 @@ export default function AddTransaction({
   });
   const { toast } = useToast();
 
-  //   {
-  //     transactionType: 'INCOME',
-  //     description: 'jhsdhsd',
-  //     amount: 78237,
-  //     category: 'food',
-  //     date: new Date('2024-06-16T23:00:00.000Z')
-  //   }
   async function onSubmit(values: TransactionSchemaType) {
     console.log(values);
     const dateString = values.date.toISOString();
@@ -76,7 +65,7 @@ export default function AddTransaction({
           amount: values.amount,
           category: values.category,
           description: values.description,
-          createdAt: dateString,
+          date: dateString,
         }
       );
 
@@ -84,6 +73,8 @@ export default function AddTransaction({
       toast({
         description: `new ${response.data?.type} added successfully`,
       });
+      console.log("TRY");
+
       return null;
     } catch (error: any) {
       console.log(error);
@@ -110,6 +101,11 @@ export default function AddTransaction({
       }
     } finally {
       // setProcess();
+
+      // TODO: remove the modal and update transaction counts
+      mutate(`${BASEURL}/total-income`);
+      mutate(`${BASEURL}/total-expense`);
+      setOpenModal(!openModal);
       console.log("DONE");
     }
   }
@@ -224,16 +220,15 @@ export default function AddTransaction({
                             Error fetching data
                           </SelectItem>
                         ) : (
-                          categoryData?.categories.map((category: any) => (
-                            <SelectItem
-                              value={category?.category}
-                              key={category._count}
-                            >
-                              {loadingCategory
-                                ? "loading.."
-                                : category?.category}
-                            </SelectItem>
-                          ))
+                          categoryData?.categories.map(
+                            (category: any, id: any) => (
+                              <SelectItem value={category?.category} key={id}>
+                                {loadingCategory
+                                  ? "loading.."
+                                  : category?.category}
+                              </SelectItem>
+                            )
+                          )
                         )}
                       </SelectContent>
                     </Select>
