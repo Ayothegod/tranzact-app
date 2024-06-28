@@ -1,7 +1,5 @@
-import { z } from "zod";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useForm } from "react-hook-form";
 import { Button } from "@/components/ui/button";
+import { Calendar } from "@/components/ui/calendar";
 import {
   Form,
   FormControl,
@@ -11,6 +9,12 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import {
   Select,
   SelectContent,
@@ -21,26 +25,25 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Calendar } from "@/components/ui/calendar";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/ui/popover";
-import { Input } from "@/components/ui/input";
-import { transactionSchema } from "@/lib/schema";
-import useSWR, { useSWRConfig } from "swr";
 import { BASEURL, axiosInstance, fetcher } from "@/lib/fetch";
-import { CirclePlus, CalendarIcon } from "lucide-react";
+import { transactionSchema } from "@/lib/schema";
 import { cn } from "@/lib/utils";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { format } from "date-fns";
+import Cookies from "js-cookie";
+import { CalendarIcon, CirclePlus, X } from "lucide-react";
+import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
+import useSWR, { useSWRConfig } from "swr";
+import { z } from "zod";
 import { useToast } from "../ui/use-toast";
 
 type TransactionSchemaType = z.infer<typeof transactionSchema>;
 
 export default function AddTransaction({ setOpenModal, openModal }: any) {
   const { mutate } = useSWRConfig();
-
+  const { toast } = useToast();
+  const navigate = useNavigate();
   const form = useForm<TransactionSchemaType>({
     resolver: zodResolver(transactionSchema),
     defaultValues: {
@@ -51,12 +54,10 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
       date: undefined,
     },
   });
-  const { toast } = useToast();
 
   async function onSubmit(values: TransactionSchemaType) {
     console.log(values);
     const dateString = values.date.toISOString();
-
     try {
       const response = await axiosInstance.post(
         `${BASEURL}/create-transaction`,
@@ -71,25 +72,31 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
 
       console.log(response.data);
       toast({
-        description: `new ${response.data?.type} added successfully`,
+        description: `new ${response.data?.type} transaction added successfully`,
       });
-      console.log("TRY");
-
       return null;
     } catch (error: any) {
       console.log(error);
 
-      if (error.response) {
+      if (error.response.data?.type === "NO-CCOKIE") {
         toast({
           variant: "destructive",
-          description: `try again!`,
+          description: `You are not logged in!`,
+        });
+
+        Cookies.remove("session");
+        navigate("/login");
+      } else if (error.response) {
+        toast({
+          variant: "destructive",
+          description: `There was an issue with your request!`,
         });
         return null;
       } else if (error.request) {
         toast({
           variant: "destructive",
           title: "Uh oh! Something went wrong.",
-          description: "There was a problem with your request.",
+          description: "Network error, try again later.",
         });
         return null;
       } else {
@@ -100,28 +107,29 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
         return null;
       }
     } finally {
-      // setProcess();
-
-      // TODO: remove the modal and update transaction counts
       mutate(`${BASEURL}/total-income`);
       mutate(`${BASEURL}/total-expense`);
       setOpenModal(!openModal);
-      console.log("DONE");
     }
   }
-
   const {
     data: categoryData,
     error: categoryError,
     isLoading: loadingCategory,
   } = useSWR(`${BASEURL}/all-category`, fetcher);
 
-  //   console.log(categoryData?.categories);
-
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-[rgba(0,0,0,0.4)] z-50 px-4">
       <div className="w-full sm:w-[450px] md:w-[500px] bg-white p-4 rounded-lg">
-        <h2 className="font-bold text-2xl">Add new transaction</h2>
+        <div className="flex items-center justify-between mb-4">
+          <h2 className="font-bold text-2xl">Add new transaction</h2>
+          <div
+            className="hover:bg-neutral-100 p-2 rounded-lg ring-1 ring-neutral-200"
+            onClick={() => setOpenModal(!openModal)}
+          >
+            <X />
+          </div>
+        </div>
 
         <Form {...form}>
           <form
@@ -284,7 +292,17 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
               />
             </div>
 
-            <Button type="submit">Submit</Button>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 pt-8">
+              <Button
+                variant="destructive"
+                onClick={() => setOpenModal(!openModal)}
+              >
+                Cancel
+              </Button>
+              <Button type="submit" variant="green">
+                Submit
+              </Button>
+            </div>
           </form>
         </Form>
       </div>

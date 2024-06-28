@@ -2,15 +2,15 @@ import AddTransaction from "@/components/build/AddTransaction";
 import RecentTransactions from "@/components/build/RecentTransactions";
 import { Button } from "@/components/ui/button";
 import { BASEURL, fetcher } from "@/lib/fetch";
+import { log } from "console";
 import Cookies from "js-cookie";
 import { Library, MoreVertical } from "lucide-react";
 import { useState } from "react";
-import { json, redirect } from "react-router-dom";
+import { json, redirect, useNavigate } from "react-router-dom";
 import useSWR, { useSWRConfig } from "swr";
 
 export async function Loader() {
   const session = Cookies.get("session");
-  console.log(session);
   if (!session) {
     return redirect("/login");
   }
@@ -30,9 +30,14 @@ export default function Dashboard() {
     error: expenseError,
     isLoading: expenseLoading,
   } = useSWR(`${BASEURL}/total-expense`, fetcher);
-
-  // console.log(totalIncome, totalExpense);
   const [openModal, setOpenModal] = useState(false);
+  const navigate = useNavigate();
+
+  if (incomeError) {
+    log("ON")
+    Cookies.remove("session");
+    navigate("/login");
+  }
 
   return (
     <div className="">
