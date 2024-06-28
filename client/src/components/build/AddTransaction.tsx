@@ -29,21 +29,22 @@ import {
 } from "@/components/ui/popover";
 import { Input } from "@/components/ui/input";
 import { transactionSchema } from "@/lib/schema";
-import useSWR from "swr";
-import { BASEURL, fetcher } from "@/lib/fetch";
+import useSWR, { useSWRConfig } from "swr";
+import { BASEURL, axiosInstance, fetcher } from "@/lib/fetch";
 import { CirclePlus, CalendarIcon } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { format } from "date-fns";
+import { useToast } from "../ui/use-toast";
 
 type TransactionSchemaType = z.infer<typeof transactionSchema>;
 
 export default function AddTransaction({
   setOpenModal,
   openModal,
-  isIncome,
-  setIsIncome,
 }: any) {
-  console.log(openModal, setOpenModal, isIncome, setIsIncome);
+  const { mutate } = useSWRConfig();
+
+  console.log(openModal, setOpenModal);
   const form = useForm<TransactionSchemaType>({
     resolver: zodResolver(transactionSchema),
     defaultValues: {
@@ -54,16 +55,63 @@ export default function AddTransaction({
       date: undefined,
     },
   });
+  const { toast } = useToast();
 
-//   {
-//     transactionType: 'INCOME',
-//     description: 'jhsdhsd',
-//     amount: 78237,
-//     category: 'food',
-//     date: new Date('2024-06-16T23:00:00.000Z')
-//   }
-  function onSubmit(values: TransactionSchemaType) {
+  //   {
+  //     transactionType: 'INCOME',
+  //     description: 'jhsdhsd',
+  //     amount: 78237,
+  //     category: 'food',
+  //     date: new Date('2024-06-16T23:00:00.000Z')
+  //   }
+  async function onSubmit(values: TransactionSchemaType) {
     console.log(values);
+    const dateString = values.date.toISOString();
+
+    try {
+      const response = await axiosInstance.post(
+        `${BASEURL}/create-transaction`,
+        {
+          transactionType: values.transactionType,
+          amount: values.amount,
+          category: values.category,
+          description: values.description,
+          createdAt: dateString,
+        }
+      );
+
+      console.log(response.data);
+      toast({
+        description: `new ${response.data?.type} added successfully`,
+      });
+      return null;
+    } catch (error: any) {
+      console.log(error);
+
+      if (error.response) {
+        toast({
+          variant: "destructive",
+          description: `try again!`,
+        });
+        return null;
+      } else if (error.request) {
+        toast({
+          variant: "destructive",
+          title: "Uh oh! Something went wrong.",
+          description: "There was a problem with your request.",
+        });
+        return null;
+      } else {
+        toast({
+          variant: "destructive",
+          description: "Something went wrong, try again later!",
+        });
+        return null;
+      }
+    } finally {
+      // setProcess();
+      console.log("DONE");
+    }
   }
 
   const {
@@ -71,7 +119,8 @@ export default function AddTransaction({
     error: categoryError,
     isLoading: loadingCategory,
   } = useSWR(`${BASEURL}/all-category`, fetcher);
-  console.log(categoryData?.categories);
+
+  //   console.log(categoryData?.categories);
 
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-[rgba(0,0,0,0.4)] z-50 px-4">
@@ -143,12 +192,12 @@ export default function AddTransaction({
               )}
             />
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 debug">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4">
               <FormField
                 control={form.control}
                 name="category"
                 render={({ field }) => (
-                  <FormItem className="debug">
+                  <FormItem className="">
                     <FormLabel>Transaction Category</FormLabel>
                     <Select
                       onValueChange={field.onChange}
@@ -188,9 +237,6 @@ export default function AddTransaction({
                         )}
                       </SelectContent>
                     </Select>
-                    {/* <FormDescription>
-                      The date of the transaction
-                    </FormDescription> */}
                     <FormMessage />
                   </FormItem>
                 )}
@@ -200,7 +246,7 @@ export default function AddTransaction({
                 control={form.control}
                 name="date"
                 render={({ field }) => (
-                  <FormItem className="flex flex-col">
+                  <FormItem className="flex flex-col mt-auto">
                     <FormLabel>Transaction date</FormLabel>
                     <Popover>
                       <PopoverTrigger asChild>
@@ -208,7 +254,7 @@ export default function AddTransaction({
                           <Button
                             variant={"outline"}
                             className={cn(
-                              "w-[240p pl- text-left font-normal",
+                              "text-left font-normal",
                               !field.value && "text-muted-foreground"
                             )}
                           >
@@ -221,6 +267,7 @@ export default function AddTransaction({
                           </Button>
                         </FormControl>
                       </PopoverTrigger>
+
                       <PopoverContent className="w-auto p-0" align="start">
                         <Calendar
                           mode="single"

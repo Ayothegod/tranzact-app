@@ -33,12 +33,11 @@ export default function Dashboard() {
 
   // console.log(totalIncome, totalExpense);
   const [openModal, setOpenModal] = useState(false);
-  const [isIncome, setIsIncome] = useState(false);
 
   return (
     <div className="">
       {/* <p>Dashboard</p> */}
-      <div className="flex gap-4">
+      <div className="flex gap-4 px-4">
         <div className="w-[80%] flex-shrink-0 ">
           <div className="grid grid-cols-3 gap-4">
             <div className="bg-white shadow rounded-lg p-4 space-y-2">
@@ -124,7 +123,6 @@ export default function Dashboard() {
               <Button
                 variant="green"
                 onClick={() => {
-                  setIsIncome(!isIncome);
                   setOpenModal(!openModal);
                 }}
               >
@@ -140,14 +138,9 @@ export default function Dashboard() {
           </div>
         </div>
 
-        {openModal && isIncome && (
+        {openModal && (
           <div>
-            <AddTransaction
-              isIncome={isIncome}
-              setIsIncome={setIsIncome}
-              setOpenModal={setOpenModal}
-              openModal={openModal}
-            />
+            <AddTransaction setOpenModal={setOpenModal} openModal={openModal} />
           </div>
         )}
       </div>

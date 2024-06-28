@@ -88,43 +88,58 @@ const mainRoute = app
     }
   })
   .post("/create-transaction", authMiddleware, async (c) => {
-    try {
-      const data = await c.req.json();
-      const transactionData = transactionSchema.parse(data);
-      const session = c.get("session");
-      const authCookie: any = session.get("auth-cookie");
-      log(authCookie);
+    const data = await c.req.json();
+    log(data);
+    const dateSchema = z.coerce.date();
 
-      const transaction = await prisma.transaction.create({
-        data: {
-          transactionType: transactionData.transactionType,
-          amount: transactionData.amount,
-          category: transactionData.category,
-          description: transactionData.description,
-          userId: authCookie,
-          createdAt: transactionData.date,
-        },
-      });
+    // Parse the date string
+    // const result = dateSchema.safeParse("2024-06-22T23:00:00.000Z");
 
-      return c.json({
-        msg: "success",
-        id: transaction.id,
-        type: transaction.transactionType,
-      });
-    } catch (e) {
-      //   log(e);
+    // if (result.success) {
+    //   console.log("Valid date:", result.data);
+    // } else {
+    //   console.log("Invalid date:", result.error);
+    // }
+    return c.json({});
+    // try {
+    //   const data = await c.req.json();
+    //   const transactionData = transactionSchema.parse(data);
+    //   const session = c.get("session");
+    //   const authCookie: any = session.get("auth-cookie");
+    //   log(authCookie);
+    //   log(transactionData.date);
 
-      if (e instanceof z.ZodError) {
-        e.errors.map((error) => {
-          log(error.message);
-          //   TODO: how to catch errors from catch from the frontend
-          //   throw new Error(error.message);
-          //   return c.json({ error: error });
-        });
-      }
+    //   // const transaction = await prisma.transaction.create({
+    //   //   data: {
+    //   //     transactionType: transactionData.transactionType,
+    //   //     amount: transactionData.amount,
+    //   //     category: transactionData.category,
+    //   //     description: transactionData.description,
+    //   //     createdAt: transactionData.date,
+    //   //     userId: authCookie,
+    //   //   },
+    //   // });
 
-      return c.json({ error: "try again later" });
-    }
+    //   return c.json({
+    //     msg: "success",
+    //     // id: transaction.id,
+    //     // type: transaction.transactionType,
+    //   });
+    // } catch (e) {
+    //   const data = await c.req.json();
+    //   log(data);
+    //     log(e);
+
+    //   if (e instanceof z.ZodError) {
+    //     e.errors.map((error) => {
+    //       log(error.message);
+    //       //   TODO: how to catch errors from catch from the frontend
+    //       //   throw new Error(error.message);
+    //     });
+    //     return c.json({ error: "wrong credentials" });
+    //   }
+    //   return c.json({ error: "try again later" });
+    // }
   })
   .delete("/delete-transaction/:id", async (c) => {
     try {

@@ -13,7 +13,7 @@ export function Header() {
 
   return (
     <div className=" sticky top-0 backdrop-blur-2xl">
-      <div className="flex items-center justify-between gap-8 py-2 max-w-7xl mx-auto">
+      <div className="flex items-center justify-between gap-8 py-2 max-w-7xl mx-auto px-4">
         <div className="bg-white h-12 flex items-center gap-1 py-2 px-4 rounded-full">
           <img src={logo} alt="logo" className="h-5 w-5" />
           <h1 className="font-bold ">Tranzact</h1>
