@@ -1,13 +1,21 @@
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
+import { useToast } from "@/components/ui/use-toast";
 import { accountSidebar } from "@/lib/data";
 import { BASEURL, fetcher } from "@/lib/fetch";
+import { useAuthStore } from "@/lib/store/userStore";
 import axios from "axios";
 import Cookies from "js-cookie";
 import { Pen } from "lucide-react";
 import { useEffect } from "react";
-import { Link, json, redirect, useLocation, useNavigate } from "react-router-dom";
+import {
+  Link,
+  json,
+  redirect,
+  useLocation,
+  useNavigate,
+} from "react-router-dom";
 import useSWR, { useSWRConfig } from "swr";
 
 export async function Loader() {
@@ -19,33 +27,33 @@ export async function Loader() {
 }
 
 export default function Account() {
+  const { userData, isUser }: any = useAuthStore();
   console.log("Account");
 
+  const { toast } = useToast();
   const navigate = useNavigate();
   const location = useLocation();
   const path = location.pathname;
-  const { mutate } = useSWRConfig();
-
-  const {
-    data: userData,
-    error: userError,
-    isLoading: userLoading,
-  } = useSWR(`${BASEURL}/auth/get-user`, fetcher);
-  console.log(userData);
 
   useEffect(() => {
-    if (userError) {
+    if (!isUser) {
       Cookies.remove("session");
       navigate("/login");
+      toast({
+        variant: "destructive",
+        description: `No user data, login again!`,
+      });
     }
-  }, [userError, navigate]);
+  }, [isUser]);
+
+  // TODO: once we update data, create a new user object and save using the updated data
 
   return (
     <div className="mx-auto mt-4 pb-16 min-h-screen">
       <h1 className="text-xl font-bold">My Account</h1>
 
       <div className="bg-white p-4 rounded-lg mt-2">
-        <h3 className="ml-64">Account</h3>
+        <h3 className="ml-64 cursor-pointer">Account</h3>
         <div className=" flex gap-2">
           {/* SIDEBAR */}
           <div className="w-64 flex-shrink-0">
@@ -62,28 +70,18 @@ export default function Account() {
             </ul>
           </div>
 
-          {/* MAIN */}
           <div className="flex-grow space-y-4">
             <div className="border py-2 px-4 w-full rounded-lg">
               <div className="flex items-center gap-4">
                 <div className="h-20 w-20 bg-neutral-300 rounded-full"></div>
 
                 <div>
-                  {userLoading ? (
-                    <Skeleton className="h-6 w-[200px]" />
-                  ) : userError ? (
-                    <p>User Error</p>
-                  ) : (
-                    <h4 className="text-black font-medium">
-                      {userData?.user?.name}
-                    </h4>
-                  )}
+                  <h4 className="text-black font-medium">{userData?.name}</h4>
                   <p className="text-xs italic">short bio goes here.</p>
                 </div>
               </div>
             </div>
 
-            {/* second row */}
             <div className="border py-2 px-4 w-full rounded-lg">
               <div className="flex items-center justify-between">
                 <h4 className="text-black font-medium">Personal Information</h4>
@@ -95,24 +93,24 @@ export default function Account() {
               </div>
 
               <div className="flex items-center gap-24">
-                {/* TODO: just use a giant tenary if data, all this else, error fetching data */}
+                <p>comment removed from here</p>
 
                 <div className="mt-2 space-y-2">
                   <div>
                     <Label className="text-xs text-neutral-500">Username</Label>
-                    <p>{userData?.user.username}</p>
+                    <p>{userData?.username}</p>
                   </div>
                   <div>
                     <Label className="text-xs text-neutral-500">
                       Full Name
                     </Label>
-                    <p>{userData?.user.name}</p>
+                    <p>{userData?.name}</p>
                   </div>
                   <div>
                     <Label className="text-xs text-neutral-500">
                       Email Address
                     </Label>
-                    <p>{userData?.user.email}</p>
+                    <p>{userData?.email}</p>
                   </div>
                 </div>
 
@@ -131,7 +129,6 @@ export default function Account() {
               </div>
             </div>
 
-            {/* Third row */}
             <div className="border py-2 px-4 w-full rounded-lg">
               <div className="flex items-center justify-between">
                 <h4 className="text-black font-medium">Address Information</h4>
@@ -156,4 +153,8 @@ export default function Account() {
       </div>
     </div>
   );
+}
+
+{
+  /* TODO: just use a giant tenary if data, all this else, error fetching data */
 }
