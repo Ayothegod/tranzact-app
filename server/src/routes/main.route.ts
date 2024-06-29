@@ -49,27 +49,25 @@ const mainRoute = app
       return c.json({});
     }
   })
-  // .get("/all-category", authMiddleware, async (c) => {
-  //   const take = c.req.query("n");
-  //   try {
-  //     // for now get all categories, but later it should be by type /transaction-category/:type
-  //     // by: ["category", "transactionType"],
-  //     // where:{
-  //     //   transactionType: "EXPENSE"
-  //     // },
-  //     const categories = await prisma.transaction.groupBy({
-  //       by: ["category"],
-  //       _count: true,
-  //       _sum: {
-  //         amount: true,
-  //       },
-  //     });
-  //     return c.json({ categories });
-  //   } catch (error) {
-  //     log(error);
-  //     return c.json({ msg: "try again later" });
-  //   }
-  // })
+  .get("/all-category", authMiddleware, async (c) => {
+    const take = c.req.query("n");
+    try {
+      // for now get all categories, but later it should be by type /transaction-category/:type
+      // by: ["category", "transactionType"],
+      // where:{
+      //   transactionType: "EXPENSE"
+      // },
+      const categories = await prisma.category.findMany({
+        include: {
+          _count: true,
+        }
+      })
+      return c.json({ categories });
+    } catch (error) {
+      log(error);
+      return c.json({ msg: "try again later" });
+    }
+  })
   .get("/total-expense", authMiddleware, async (c) => {
     try {
       const totalIncome = await prisma.transaction.aggregate({
@@ -219,4 +217,3 @@ const mainRoute = app
   });
 
 export default mainRoute;
-// category        String
