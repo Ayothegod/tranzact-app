@@ -22,6 +22,9 @@ const mainRoute = app
         orderBy: {
           createdAt: "desc",
         },
+        include: {
+          category: true
+        }
       });
       return c.json({ allTransactions });
     } catch (error) {
