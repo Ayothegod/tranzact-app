@@ -163,7 +163,7 @@ const columns: ColumnDef<Transaction>[] = [
                   });
                   return null;
                 } finally {
-                  //   mutate(`${BASEURL}/all-transactions?n=20`);
+                  mutate(`${BASEURL}/all-transactions?n=20`);
                 }
               }}
             >
@@ -248,7 +248,7 @@ function TableResult<TData, TValue>({
     <div className="rounded-md border">
       <div className="flex items-center p-4">
         <Input
-          placeholder="Filter emails..."
+          placeholder="Filter transaction type..."
           value={
             (table.getColumn("transactionType")?.getFilterValue() as string) ??
             ""
