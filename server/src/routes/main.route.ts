@@ -172,7 +172,7 @@ const mainRoute = app
         where: { id },
       });
       if (!transaction) {
-        return c.text("transaction already deleted");
+        return c.json({ error: "transaction already deleted" });
       }
 
       const deletedTransaction = await prisma.transaction.delete({

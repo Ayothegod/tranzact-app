@@ -11,7 +11,7 @@ import {
   useReactTable,
 } from "@tanstack/react-table";
 import { BASEURL, axiosInstance, fetcher } from "@/lib/fetch";
-import useSWR from "swr";
+import useSWR, { useSWRConfig } from "swr";
 import { Transaction, Transactions } from "@/lib/data";
 import {
   Table,
@@ -117,6 +117,7 @@ const columns: ColumnDef<Transaction>[] = [
     id: "actions",
     cell: ({ row }) => {
       const { toast } = useToast();
+      const { mutate } = useSWRConfig();
       const transaction = row.original;
       console.log(transaction);
 
@@ -136,12 +137,23 @@ const columns: ColumnDef<Transaction>[] = [
               Copy payment ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            {/* <DropdownMenuItem
+            <DropdownMenuItem
               onClick={async () => {
                 try {
                   const deleteResponse = await axiosInstance
-                    .get(`${BASEURL}//delete-transaction/${transaction.id}`)
+                    .delete(`${BASEURL}/delete-transaction/${transaction.id}`)
                     .then((res) => res.data);
+
+                  if (deleteResponse.error) {
+                    toast({
+                      variant: "destructive",
+                      description: `Transaction already deleted or does not exist!`,
+                    });
+                    return null;
+                  }
+                  toast({
+                    description: `transaction deleted successfully`,
+                  });
                   return null;
                 } catch (error) {
                   console.log(error);
@@ -151,12 +163,12 @@ const columns: ColumnDef<Transaction>[] = [
                   });
                   return null;
                 } finally {
-                    mutate(`${BASEURL}/all-category`);
+                  //   mutate(`${BASEURL}/all-transactions?n=20`);
                 }
               }}
             >
               Delete Transaction
-            </DropdownMenuItem> */}
+            </DropdownMenuItem>
             <DropdownMenuItem>
               <Link to={`/transactions/${transaction.id}`}>
                 View Transaction details
@@ -177,7 +189,7 @@ export default function DataTable() {
     error: transactionsError,
     isLoading: transactionsLoading,
   } = useSWR(`${BASEURL}/all-transactions?n=20`, fetcher);
-//   console.log(allTransactions);
+  //   console.log(allTransactions);
 
   if (transactionsLoading) {
     return <div>Loading...</div>;
