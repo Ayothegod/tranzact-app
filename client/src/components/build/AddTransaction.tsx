@@ -135,7 +135,7 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
   const createCategoryAction = () => {
     console.log("HUM");
     setCreateCategory()
-    setOpenModal(!openModal)
+    // setOpenModal(!openModal)
   };
 
   return (
@@ -157,7 +157,6 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
             onSubmit={form.handleSubmit(onSubmit)}
             className="space-y-4 grid "
           >
-            {/* trasnaction type */}
             <FormField
               control={form.control}
               name="amount"
@@ -305,9 +304,6 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
                         />
                       </PopoverContent>
                     </Popover>
-                    {/* <FormDescription>
-                      The date of the transaction
-                    </FormDescription> */}
                     <FormMessage />
                   </FormItem>
                 )}
@@ -328,6 +324,8 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
           </form>
         </Form>
       </div>
+
+      {createCategory && <CreateCategory setOpenModal={setOpenModal} openModal={openModal} />}
     </div>
   );
 }

@@ -19,7 +19,7 @@ export const useProcessStore = create<LoadingState>((set) => ({
   isCreatingDebt: false,
   setIsCreatingDebt: () =>
     set((state) => ({ isCreatingDebt: !state.isCreatingDebt })),
-  createCategory: false,
+  createCategory: true,
   setCreateCategory: () =>
     set((state) => ({ createCategory: !state.createCategory })),
 }));

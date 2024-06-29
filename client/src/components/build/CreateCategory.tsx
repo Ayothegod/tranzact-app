@@ -1,11 +1,11 @@
 import { Button } from "@/components/ui/button";
 import {
-    Form,
-    FormControl,
-    FormField,
-    FormItem,
-    FormLabel,
-    FormMessage
+  Form,
+  FormControl,
+  FormField,
+  FormItem,
+  FormLabel,
+  FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { BASEURL, axiosInstance } from "@/lib/fetch";
@@ -18,12 +18,14 @@ import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { useToast } from "../ui/use-toast";
+import { useSWRConfig } from "swr";
 
 type CategorySchemaType = z.infer<typeof categorySchema>;
 
-export default function CreateCategory({ setOpenModal, openModal }: any) {
-  const {  setCreateCategory } = useProcessStore();
-  console.log("AddTransaction", openModal, setOpenModal);
+export default function CreateCategory() {
+  const { setCreateCategory } = useProcessStore();
+  console.log("AddTransaction");
+  const { mutate } = useSWRConfig();
 
   const { toast } = useToast();
   const navigate = useNavigate();
@@ -86,19 +88,18 @@ export default function CreateCategory({ setOpenModal, openModal }: any) {
         return null;
       }
     } finally {
-      setOpenModal(!openModal);
+      mutate(`${BASEURL}/all-category`);
       setCreateCategory();
     }
   }
 
   const cancelCreate = () => {
     setCreateCategory();
-    setOpenModal(!openModal);
   };
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center bg-[rgba(0,0,0,0.4)] z-50 px-4">
-      <div className="w-full sm:w-[450px] md:w-[500px] bg-white p-4 rounded-lg">
+    <div className="fixed inset-0 flex items-center justify-center bg-[rgba(0,0,0,0.8)] z-50 px-4">
+      <div className="w-full sm:w-[500px] md:w-[560px] bg-white p-4 rounded-lg">
         <div className="flex items-center justify-between mb-4">
           <h2 className="font-bold text-2xl">Create new category</h2>
           <div

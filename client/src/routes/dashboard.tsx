@@ -46,7 +46,6 @@ export default function Dashboard() {
 
   return (
     <div className="">
-      {/* {createCategory && <p className="text-3xl font-extrabold">Dashboard</p>} */}
       <div className="flex gap-4 px-4">
         <div className="w-[80%] flex-shrink-0 ">
           <div className="grid grid-cols-3 gap-4">
@@ -154,7 +153,7 @@ export default function Dashboard() {
           </div>
         )}
 
-        {createCategory && <CreateCategory setOpenModal={setOpenModal} openModal={openModal} />}
+        {/* {createCategory && <CreateCategory setOpenModal={setOpenModal} openModal={openModal} />} */}
       </div>
     </div>
   );
