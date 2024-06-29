@@ -9,7 +9,6 @@
 
 - find way to make sessions worthwhile and understandable, how to logout user once the session is expired
 
-- start transactions table
 - if user, then make the go back home on error page redirect ton dashboard instead of /index
 - make description required
 - check if no user/transaction data and redirect from transactions page

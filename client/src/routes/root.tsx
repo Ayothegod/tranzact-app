@@ -2,6 +2,7 @@ import { Button } from "@/components/ui/button";
 import { useState } from "react";
 import { Link, useRouteError } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
+import { useAuthStore } from "@/lib/store/userStore";
 
 export default function Root() {
   const [count, setCount] = useState(0);
@@ -37,6 +38,7 @@ export async function Loader() {
 }
 
 export function RootError() {
+  const { isUser }: any = useAuthStore();
   let error = useRouteError();
   console.error(error);
   return (
@@ -50,8 +52,8 @@ export function RootError() {
 
         <p className="mt-4 text-gray-500">We can't find this page.</p>
 
-        <Link to="/">
-          <Button className="mt-6">Go Back Home</Button>
+        <Link to={isUser ? "/dashboard" : "/"}>
+          <Button className="mt-6">{isUser ? "Return to dashboard" : "Go Back Home"}</Button>
         </Link>
       </div>
     </div>

@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import MainLayout from "./layouts/MainLayout.tsx";
+import MainLayout, { MainLayoutError } from "./layouts/MainLayout.tsx";
 import RootLayout from "./layouts/RootLayout.tsx";
 import Root, { RootError, Loader as rootLoader } from "./routes/root.tsx";
 import LearnSwr, {
@@ -11,11 +11,13 @@ import LearnSwr, {
 } from "./routes/test-action.tsx";
 import Learn from "./routes/learn.tsx";
 import Dashboard, { Loader as dashboardLoader } from "./routes/dashboard.tsx";
-import Transactions, {Loader as transactionLoader} from "./routes/transactions.tsx";
+import Transactions, {
+  Loader as transactionLoader,
+} from "./routes/transactions.tsx";
 import Register from "./routes/register.tsx";
 import { Toaster } from "./components/ui/toaster.tsx";
 import Login, { Loader as loginLoader } from "./routes/login.tsx";
-import Account, {Loader as accountLoader} from "./routes/account.tsx";
+import Account, { Loader as accountLoader } from "./routes/account.tsx";
 // NOTE: make sure to add errorBoundary to all routes that throw error from loader and actions
 
 const router = createBrowserRouter([
@@ -49,6 +51,7 @@ const router = createBrowserRouter([
   },
   {
     element: <MainLayout />,
+    errorElement: <MainLayoutError />,
     children: [
       {
         path: "/dashboard",
@@ -58,12 +61,12 @@ const router = createBrowserRouter([
       {
         path: "/transactions",
         element: <Transactions />,
-        loader: transactionLoader
+        loader: transactionLoader,
       },
       {
         path: "/account",
         element: <Account />,
-        loader: accountLoader
+        loader: accountLoader,
       },
     ],
   },
