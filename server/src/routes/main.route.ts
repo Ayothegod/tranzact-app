@@ -60,8 +60,8 @@ const mainRoute = app
       const categories = await prisma.category.findMany({
         include: {
           _count: true,
-        }
-      })
+        },
+      });
       return c.json({ categories });
     } catch (error) {
       log(error);
@@ -199,6 +199,17 @@ const mainRoute = app
       const session = c.get("session");
       const authCookie: any = session.get("auth-cookie");
       // log(authCookie);
+
+      const checkCategory = await prisma.category.findUnique({
+        where: {
+          name: transactionData.data.name,
+        },
+      });
+      if (checkCategory) {
+        return c.json({
+          error: "category already exists, proceed to create transaction",
+        });
+      }
 
       const category = await prisma.category.create({
         data: {
