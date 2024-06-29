@@ -132,7 +132,7 @@ function DataTable<TData, TValue>({
           ) : (
             <TableRow>
               <TableCell colSpan={columns.length} className="h-24 text-center">
-                No results.
+              No transactions yet, click on add income to get started.
               </TableCell>
             </TableRow>
           )}

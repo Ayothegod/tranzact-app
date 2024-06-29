@@ -44,7 +44,7 @@ export default function Dashboard() {
 
   return (
     <div className="">
-      <div className="flex gap-4 px-4">
+      <div className="flex gap-4 px-4 pb-10">
         <div className="w-[80%] flex-shrink-0 ">
           <div className="grid grid-cols-3 gap-4">
 
