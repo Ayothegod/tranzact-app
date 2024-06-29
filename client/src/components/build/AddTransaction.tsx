@@ -44,7 +44,7 @@ import { useProcessStore } from "@/lib/store/stateStore";
 type TransactionSchemaType = z.infer<typeof transactionSchema>;
 
 export default function AddTransaction({ setOpenModal, openModal }: any) {
-  const {createCategory, setCreateCategory} = useProcessStore()
+  const { createCategory, setCreateCategory } = useProcessStore();
   console.log("AddTransaction");
 
   const { mutate } = useSWRConfig();
@@ -116,6 +116,7 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
     } finally {
       mutate(`${BASEURL}/total-income`);
       mutate(`${BASEURL}/total-expense`);
+      mutate(`${BASEURL}/all-transactions?n=5`);
       setOpenModal(!openModal);
     }
   }
@@ -134,7 +135,7 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
 
   const createCategoryAction = () => {
     console.log("HUM");
-    setCreateCategory()
+    setCreateCategory();
   };
 
   return (
@@ -324,7 +325,7 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
         </Form>
       </div>
 
-      {createCategory && <CreateCategory/>}
+      {createCategory && <CreateCategory />}
     </div>
   );
 }

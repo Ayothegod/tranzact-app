@@ -47,6 +47,7 @@ export default function Dashboard() {
       <div className="flex gap-4 px-4">
         <div className="w-[80%] flex-shrink-0 ">
           <div className="grid grid-cols-3 gap-4">
+
             <div className="bg-white shadow rounded-lg p-4 space-y-2">
               <div className="flex items-center justify-between">
                 <div className="flex items-center gap-2">
@@ -115,11 +116,11 @@ export default function Dashboard() {
               </div>
             </div>
 
-            <div className="bg-white shadow rounded-lg p-4 col-span-2">
+            <div className="bg-white shadow rounded-lg p-4 col-span-3">
               <RecentTransactions/>
             </div>
 
-            <div className="bg-white shadow rounded-lg p-4">Item 2</div>
+            {/* <div className"bg-white shadow rounded-lg p-4">Item 2</div> */}
           </div>
         </div>
 

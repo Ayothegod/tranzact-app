@@ -20,13 +20,13 @@ const mainRoute = app
       const allTransactions = await prisma.transaction.findMany({
         take: take ? JSON.parse(take || "") : 10,
         orderBy: {
-          createdAt: "desc",
+          updatedAt: "desc",
         },
         include: {
-          category: true
-        }
+          category: true,
+        },
       });
-      return c.json({ allTransactions });
+      return c.json(allTransactions);
     } catch (error) {
       log(error);
       return c.json({ msg: "try again later" });

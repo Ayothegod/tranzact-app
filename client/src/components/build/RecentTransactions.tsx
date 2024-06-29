@@ -15,19 +15,22 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { format } from "date-fns";
 
 const columns: ColumnDef<Transaction>[] = [
   {
-    accessorKey: "sn",
-    header: "SN",
+    header: "S/N",
+    accessorKey: "index",
+    cell: ({ row }) => row.index + 1,
+    id: "id",
   },
   {
-    accessorKey: "id",
-    header: "ID",
-  },
-  {
-    accessorKey: "category",
+    accessorKey: "category.name",
     header: "Category",
+  },
+  {
+    accessorKey: "transactionType",
+    header: "Type",
   },
   {
     accessorKey: "amount",
@@ -40,24 +43,36 @@ const columns: ColumnDef<Transaction>[] = [
   {
     accessorKey: "createdAt",
     header: "Created At",
+    cell: ({ cell }) => {
+      const value: any = cell.getValue();
+      return format(new Date(value), "dd MMM , yyyy");
+    },
   },
-
 ];
 
 export default function RecentTransactions() {
-  // const {
-  //   data: allTransactions,
-  //   error: transactionsError,
-  //   isLoading: transactionsLoading,
-  // } = useSWR(`${BASEURL}/all-transactions?n=5`, fetcher);
+  const {
+    data: allTransactions,
+    error: transactionsError,
+    isLoading: transactionsLoading,
+  } = useSWR(`${BASEURL}/all-transactions?n=5`, fetcher);
+  console.log(allTransactions);
 
-  // console.log(allTransactions);
+  if (transactionsLoading) {
+    return <div>Loading...</div>;
+  }
+
+  if (transactionsError) {
+    return <div>Error loading transactions</div>;
+  }
+
+  const data = allTransactions || [];
+
   return (
     <div>
       <h1 className="font-medium text-xl">Recent Transactions</h1>
-
-      <div className="container mx-auto py-10">
-        <DataTable columns={columns} data={Transactions} />
+      <div className="py-4">
+        <DataTable columns={columns} data={data} />
       </div>
     </div>
   );
@@ -94,13 +109,13 @@ function DataTable<TData, TValue>({
                           header.getContext()
                         )}
                   </TableHead>
-                )
+                );
               })}
             </TableRow>
           ))}
         </TableHeader>
-        
-        {/* <TableBody>
+
+        <TableBody>
           {table.getRowModel().rows?.length ? (
             table.getRowModel().rows.map((row) => (
               <TableRow
@@ -121,7 +136,7 @@ function DataTable<TData, TValue>({
               </TableCell>
             </TableRow>
           )}
-        </TableBody> */}
+        </TableBody>
       </Table>
     </div>
   );
