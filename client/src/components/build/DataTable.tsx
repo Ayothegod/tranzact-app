@@ -10,7 +10,7 @@ import {
   getSortedRowModel,
   useReactTable,
 } from "@tanstack/react-table";
-import { BASEURL, fetcher } from "@/lib/fetch";
+import { BASEURL, axiosInstance, fetcher } from "@/lib/fetch";
 import useSWR from "swr";
 import { Transaction, Transactions } from "@/lib/data";
 import {
@@ -34,8 +34,9 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { format } from "date-fns";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Input } from "../ui/input";
+import { Link, useNavigate } from "react-router-dom";
 
 const columns: ColumnDef<Transaction>[] = [
   {
@@ -69,6 +70,14 @@ const columns: ColumnDef<Transaction>[] = [
   {
     accessorKey: "id",
     header: "ID",
+    cell: ({ cell }) => {
+      const value: any = cell.getValue();
+      return (
+        <Link to={`/transactions/${value}`}>
+          <div>{value}</div>
+        </Link>
+      );
+    },
   },
   {
     accessorKey: "category.name",
@@ -107,8 +116,9 @@ const columns: ColumnDef<Transaction>[] = [
   {
     id: "actions",
     cell: ({ row }) => {
-      const payment = row.original;
-      console.log(payment);
+      const { toast } = useToast();
+      const transaction = row.original;
+      console.log(transaction);
 
       return (
         <DropdownMenu>
@@ -121,14 +131,37 @@ const columns: ColumnDef<Transaction>[] = [
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
             <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(payment.id)}
+              onClick={() => navigator.clipboard.writeText(transaction.id)}
             >
               Copy payment ID
             </DropdownMenuItem>
             <DropdownMenuSeparator />
-            <DropdownMenuItem>Delete Transaction</DropdownMenuItem>
-            <DropdownMenuItem>View customer</DropdownMenuItem>
-            <DropdownMenuItem>View Transaction details</DropdownMenuItem>
+            {/* <DropdownMenuItem
+              onClick={async () => {
+                try {
+                  const deleteResponse = await axiosInstance
+                    .get(`${BASEURL}//delete-transaction/${transaction.id}`)
+                    .then((res) => res.data);
+                  return null;
+                } catch (error) {
+                  console.log(error);
+                  toast({
+                    variant: "destructive",
+                    description: `Try again later!`,
+                  });
+                  return null;
+                } finally {
+                    mutate(`${BASEURL}/all-category`);
+                }
+              }}
+            >
+              Delete Transaction
+            </DropdownMenuItem> */}
+            <DropdownMenuItem>
+              <Link to={`/transactions/${transaction.id}`}>
+                View Transaction details
+              </Link>
+            </DropdownMenuItem>
           </DropdownMenuContent>
         </DropdownMenu>
       );
@@ -137,22 +170,24 @@ const columns: ColumnDef<Transaction>[] = [
 ];
 
 export default function DataTable() {
-  //   const {
-  //     data: allTransactions,
-  //     error: transactionsError,
-  //     isLoading: transactionsLoading,
-  //   } = useSWR(`${BASEURL}/all-transactions?n=5`, fetcher);
-  //   console.log(allTransactions);
+  const navigate = useNavigate();
 
-  //   if (transactionsLoading) {
-  //     return <div>Loading...</div>;
-  //   }
+  const {
+    data: allTransactions,
+    error: transactionsError,
+    isLoading: transactionsLoading,
+  } = useSWR(`${BASEURL}/all-transactions?n=20`, fetcher);
+//   console.log(allTransactions);
 
-  //   if (transactionsError) {
-  //     return <div>Error loading transactions</div>;
-  //   }
+  if (transactionsLoading) {
+    return <div>Loading...</div>;
+  }
 
-  const data = Transactions || [];
+  if (transactionsError) {
+    return <div>Error loading transactions</div>;
+  }
+
+  const data = allTransactions || [];
 
   return (
     <div>
@@ -168,6 +203,7 @@ interface DataTableProps<TData, TValue> {
   data: TData[];
 }
 import { Checkbox } from "@/components/ui/checkbox";
+import { useToast } from "../ui/use-toast";
 
 function TableResult<TData, TValue>({
   columns,
@@ -213,7 +249,6 @@ function TableResult<TData, TValue>({
           className="max-w-sm"
         />
 
-        {/* TODO: somthing like this for the category */}
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
@@ -288,28 +323,30 @@ function TableResult<TData, TValue>({
         </TableBody>
       </Table>
 
-      <div className="flex items-center justify-end space-x-2 py-4">
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.previousPage()}
-          disabled={!table.getCanPreviousPage()}
-        >
-          Previous
-        </Button>
-        <Button
-          variant="outline"
-          size="sm"
-          onClick={() => table.nextPage()}
-          disabled={!table.getCanNextPage()}
-        >
-          Next
-        </Button>
-      </div>
+      <div className="flex flex-row-reverse items-center p-4">
+        <div className="flex items-center justify-end gap-4">
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.previousPage()}
+            disabled={!table.getCanPreviousPage()}
+          >
+            Previous
+          </Button>
+          <Button
+            variant="outline"
+            size="sm"
+            onClick={() => table.nextPage()}
+            disabled={!table.getCanNextPage()}
+          >
+            Next
+          </Button>
+        </div>
 
-      <div className="flex-1 text-sm text-muted-foreground">
-        {table.getFilteredSelectedRowModel().rows.length} of{" "}
-        {table.getFilteredRowModel().rows.length} row(s) selected.
+        <div className="flex-1 text-sm text-muted-foreground">
+          {table.getFilteredSelectedRowModel().rows.length} of{" "}
+          {table.getFilteredRowModel().rows.length} row(s) selected.
+        </div>
       </div>
     </div>
   );

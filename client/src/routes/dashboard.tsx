@@ -3,6 +3,7 @@ import Logout from "@/components/build/Logout";
 import RecentTransactions from "@/components/build/RecentTransactions";
 import { Button } from "@/components/ui/button";
 import { BASEURL, fetcher } from "@/lib/fetch";
+import { useAuthStore } from "@/lib/store/userStore";
 import Cookies from "js-cookie";
 import { Library, MoreVertical } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -18,7 +19,13 @@ export async function Loader() {
 }
 
 export default function Dashboard() {
+  const { userData, setUserData, setIsUser }: any = useAuthStore();
   console.log("DASHBOARD");
+
+  const trial = () => {
+    console.log("USER");
+    setIsUser()
+  }
 
   const { mutate } = useSWRConfig();
   const {
@@ -141,6 +148,11 @@ export default function Dashboard() {
                 onClick={() => setOpenModal(!openModal)}
               >
                 Add Expense
+              </Button>
+              <Button
+                onClick={trial}
+              >
+                trial
               </Button>
 
               <Logout/>

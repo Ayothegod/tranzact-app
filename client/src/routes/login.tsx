@@ -60,12 +60,17 @@ export default function Login() {
       const getProfile = await axiosInstance
         .get(`${BASEURL}/auth/get-user`)
         .then((res) => res.data);
-      setUserData(getProfile.user);
-      setIsUser();
-      toast({
-        description: `Welcome back, ${response.data?.username}`,
-      });
-      return navigate("/dashboard");
+      console.log(getProfile);
+
+      if (getProfile) {
+        setUserData(getProfile.user);
+        setIsUser();
+        toast({
+          description: `Welcome back, ${response.data?.username}`,
+        });
+        return navigate("/dashboard");
+      }
+      return null
     } catch (error: any) {
       console.log(error);
 

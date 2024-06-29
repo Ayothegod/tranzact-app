@@ -11,7 +11,7 @@ import LearnSwr, {
 } from "./routes/test-action.tsx";
 import Learn from "./routes/learn.tsx";
 import Dashboard, { Loader as dashboardLoader } from "./routes/dashboard.tsx";
-import Transactions from "./routes/transactions.tsx";
+import Transactions, {Loader as transactionLoader} from "./routes/transactions.tsx";
 import Register from "./routes/register.tsx";
 import { Toaster } from "./components/ui/toaster.tsx";
 import Login, { Loader as loginLoader } from "./routes/login.tsx";
@@ -58,6 +58,7 @@ const router = createBrowserRouter([
       {
         path: "/transactions",
         element: <Transactions />,
+        loader: transactionLoader
       },
       {
         path: "/account",
