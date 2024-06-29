@@ -49,27 +49,27 @@ const mainRoute = app
       return c.json({});
     }
   })
-  .get("/all-category", authMiddleware, async (c) => {
-    const take = c.req.query("n");
-    try {
-      // for now get all categories, but later it should be by type /transaction-category/:type
-      // by: ["category", "transactionType"],
-      // where:{
-      //   transactionType: "EXPENSE"
-      // },
-      const categories = await prisma.transaction.groupBy({
-        by: ["category"],
-        _count: true,
-        _sum: {
-          amount: true,
-        },
-      });
-      return c.json({ categories });
-    } catch (error) {
-      log(error);
-      return c.json({ msg: "try again later" });
-    }
-  })
+  // .get("/all-category", authMiddleware, async (c) => {
+  //   const take = c.req.query("n");
+  //   try {
+  //     // for now get all categories, but later it should be by type /transaction-category/:type
+  //     // by: ["category", "transactionType"],
+  //     // where:{
+  //     //   transactionType: "EXPENSE"
+  //     // },
+  //     const categories = await prisma.transaction.groupBy({
+  //       by: ["category"],
+  //       _count: true,
+  //       _sum: {
+  //         amount: true,
+  //       },
+  //     });
+  //     return c.json({ categories });
+  //   } catch (error) {
+  //     log(error);
+  //     return c.json({ msg: "try again later" });
+  //   }
+  // })
   .get("/total-expense", authMiddleware, async (c) => {
     try {
       const totalIncome = await prisma.transaction.aggregate({
@@ -91,27 +91,62 @@ const mainRoute = app
     try {
       const data = await c.req.json();
       const transactionData = transactionSchema.parse(data);
-      // log(transactionData.date);
+      log(transactionData);
 
       const session = c.get("session");
       const authCookie: any = session.get("auth-cookie");
       // log(authCookie);
 
-      // const transaction = await prisma.transaction.create({
-      //   data: {
-      //     transactionType: transactionData.transactionType,
-      //     amount: transactionData.amount,
-      //     category: transactionData.category,
-      //     description: transactionData.description,
-      //     createdAt: transactionData.date,
-      //     userId: authCookie,
-      //   },
-      // });
+      // TODO: check if category already exists
+      const checkCategory = await prisma.category.findUnique({
+        where: {
+          name: transactionData.category,
+        },
+      });
+      if (checkCategory) {
+        const transaction = await prisma.transaction.create({
+          data: {
+            transactionType: transactionData.transactionType,
+            amount: transactionData.amount,
+            categoryId: checkCategory.id,
+            description: transactionData.description,
+            createdAt: transactionData.date,
+            userId: authCookie,
+          },
+        });
+
+        return c.json({
+          msg: "success - available",
+          id: transaction.id,
+          type: transaction.transactionType,
+          category: checkCategory.name,
+        });
+      }
+
+      // TODO: else, create category
+      const category = await prisma.category.create({
+        data: {
+          userId: authCookie,
+          name: transactionData.category,
+        },
+      });
+
+      const transaction = await prisma.transaction.create({
+        data: {
+          transactionType: transactionData.transactionType,
+          amount: transactionData.amount,
+          categoryId: category.id,
+          description: transactionData.description,
+          createdAt: transactionData.date,
+          userId: authCookie,
+        },
+      });
 
       return c.json({
-        msg: "success",
-        // id: transaction.id,
-        // type: transaction.transactionType,
+        msg: "success - no",
+        id: transaction.id,
+        type: transaction.transactionType,
+        category: category.name,
       });
     } catch (e) {
       const data = await c.req.json();
@@ -165,7 +200,7 @@ const mainRoute = app
 
       const session = c.get("session");
       const authCookie: any = session.get("auth-cookie");
-      log(authCookie);
+      // log(authCookie);
 
       const category = await prisma.category.create({
         data: {
