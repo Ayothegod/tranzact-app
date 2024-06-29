@@ -14,7 +14,7 @@ import asset from "@/assets/asset.jpg";
 import { loginUserSchema } from "@/lib/schema";
 import { BASEURL, axiosInstance } from "@/lib/fetch";
 import { useAuthStore } from "@/lib/store/userStore";
-import logo from "@/assets/tranzact.svg"
+import logo from "@/assets/tranzact.svg";
 import Logo from "@/components/build/Logo";
 
 type LoginSchemaType = z.infer<typeof loginUserSchema>;
@@ -33,7 +33,7 @@ export default function Login() {
   const { toast } = useToast();
   const navigate = useNavigate();
   const { process, setProcess } = useProcessStore();
-  const { userData, setUserData } = useAuthStore();
+  const { userData, setUserData, setIsUser }: any = useAuthStore();
   const {
     register,
     handleSubmit,
@@ -55,8 +55,13 @@ export default function Login() {
         });
         return null;
       }
-      const { id, username } = response.data;
-      setUserData({ id, username });
+
+      // TODO: replace with real profile data
+      const getProfile = await axiosInstance
+        .get(`${BASEURL}/auth/get-user`)
+        .then((res) => res.data);
+      setUserData(getProfile.user);
+      setIsUser();
       toast({
         description: `Welcome back, ${response.data?.username}`,
       });

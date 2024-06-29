@@ -1,9 +1,8 @@
 import AddTransaction from "@/components/build/AddTransaction";
-import CreateCategory from "@/components/build/CreateCategory";
-// import RecentTransactions from "@/components/build/RecentTransactions";
+import Logout from "@/components/build/Logout";
+import RecentTransactions from "@/components/build/RecentTransactions";
 import { Button } from "@/components/ui/button";
 import { BASEURL, fetcher } from "@/lib/fetch";
-import { useProcessStore } from "@/lib/store/stateStore";
 import Cookies from "js-cookie";
 import { Library, MoreVertical } from "lucide-react";
 import { useEffect, useState } from "react";
@@ -19,7 +18,6 @@ export async function Loader() {
 }
 
 export default function Dashboard() {
-  const { createCategory, setCreateCategory } = useProcessStore();
   console.log("DASHBOARD");
 
   const { mutate } = useSWRConfig();
@@ -143,6 +141,8 @@ export default function Dashboard() {
               >
                 Add Expense
               </Button>
+
+              <Logout/>
             </div>
           </div>
         </div>
@@ -153,7 +153,6 @@ export default function Dashboard() {
           </div>
         )}
 
-        {/* {createCategory && <CreateCategory setOpenModal={setOpenModal} openModal={openModal} />} */}
       </div>
     </div>
   );

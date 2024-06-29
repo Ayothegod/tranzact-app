@@ -37,7 +37,7 @@ import { useNavigate } from "react-router-dom";
 import useSWR, { useSWRConfig } from "swr";
 import { z } from "zod";
 import { useToast } from "../ui/use-toast";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import CreateCategory from "./CreateCategory";
 import { useProcessStore } from "@/lib/store/stateStore";
 
@@ -135,7 +135,6 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
   const createCategoryAction = () => {
     console.log("HUM");
     setCreateCategory()
-    // setOpenModal(!openModal)
   };
 
   return (
@@ -325,7 +324,7 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
         </Form>
       </div>
 
-      {createCategory && <CreateCategory setOpenModal={setOpenModal} openModal={openModal} />}
+      {createCategory && <CreateCategory/>}
     </div>
   );
 }

@@ -1,6 +1,5 @@
 import { create } from "zustand";
-import { persist } from 'zustand/middleware';
-
+import { persist } from "zustand/middleware";
 
 type Userdata = {
   id?: string;
@@ -8,17 +7,22 @@ type Userdata = {
 };
 
 interface StoreState {
-  count: number;
-  increase: () => void;
   isUser: boolean;
+  setIsUser: () => void;
   userData: Userdata;
   setUserData: (data: any) => void;
 }
 
-export const useAuthStore = create<StoreState>((set) => ({
-  count: 0,
-  increase: () => set((state) => ({ count: state.count + 1 })),
-  isUser: false,
-  userData: { id: "1", username: "Test User" },
-  setUserData: (data) => set((state) => ({ userData: data })),
-}));
+export const useAuthStore = create(
+  persist(
+    (set) => ({
+      isUser: false,
+      userData: {},
+      setIsUser: () => set((state: any) => ({ isUser: !state.isUser })),
+      setUserData: (data: any) => set((state: any) => ({ userData: data })),
+    }),
+    {
+      name: "user-profile",
+    }
+  )
+);

@@ -7,7 +7,7 @@ import { Bell } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "../ui/avatar";
 
 export function Header() {
-  const { isUser } = useAuthStore();
+  const { isUser }: any = useAuthStore();
   const location = useLocation();
   const path = location.pathname;
 
@@ -20,7 +20,7 @@ export function Header() {
         </div>
 
         <div>
-          {!isUser ? (
+          {isUser ? (
             <ul className="bg-white px-2 rounded-full flex h-12 gap-1 items-center">
               {userNav.map((data) => {
                 return (
