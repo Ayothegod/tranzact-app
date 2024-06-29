@@ -36,3 +36,7 @@ export const transactionSchema = z.object({
   category: z.string().min(1, "you must pick a category"),
   date: z.coerce.date(),
 });
+
+export const categorySchema = z.object({
+  name: z.string().min(1, "category is too short"),
+})

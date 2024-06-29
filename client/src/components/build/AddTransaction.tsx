@@ -37,11 +37,14 @@ import { useNavigate } from "react-router-dom";
 import useSWR, { useSWRConfig } from "swr";
 import { z } from "zod";
 import { useToast } from "../ui/use-toast";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
+import CreateCategory from "./CreateCategory";
+import { useProcessStore } from "@/lib/store/stateStore";
 
 type TransactionSchemaType = z.infer<typeof transactionSchema>;
 
 export default function AddTransaction({ setOpenModal, openModal }: any) {
+  const {createCategory, setCreateCategory} = useProcessStore()
   console.log("AddTransaction");
 
   const { mutate } = useSWRConfig();
@@ -89,7 +92,7 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
 
         Cookies.remove("session");
         navigate("/login");
-        return null
+        return null;
       } else if (error.response) {
         toast({
           variant: "destructive",
@@ -129,8 +132,15 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
     }
   }, [categoryError, navigate]);
 
+  const createCategoryAction = () => {
+    console.log("HUM");
+    setCreateCategory()
+    setOpenModal(!openModal)
+  };
+
   return (
     <div className="fixed inset-0 flex items-center justify-center bg-[rgba(0,0,0,0.4)] z-50 px-4">
+      {/* {createCategory && <CreateCategory />} */}
       <div className="w-full sm:w-[450px] md:w-[500px] bg-white p-4 rounded-lg">
         <div className="flex items-center justify-between mb-4">
           <h2 className="font-bold text-2xl">Add new transaction</h2>
@@ -226,7 +236,10 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
                       <SelectContent>
                         <SelectGroup>
                           <SelectLabel className="px-2 font-medium">
-                            <button className="flex flex-row items-center gap-2 w-full bg-transparent border-none outline-none hover:bg-neutral-100 p-1 mx-0 px-2 rounded-md">
+                            <button
+                              className="flex flex-row items-center gap-2 w-full bg-transparent border-none outline-none hover:bg-neutral-100 p-1 mx-0 px-2 rounded-md"
+                              onClick={createCategoryAction}
+                            >
                               <CirclePlus className="w-4 h-4" />
                               <p>Create new category</p>
                             </button>
@@ -242,9 +255,7 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
                           categoryData?.categories.map(
                             (category: any, id: any) => (
                               <SelectItem value={category?.name} key={id}>
-                                {loadingCategory
-                                  ? "loading.."
-                                  : category?.name}
+                                {loadingCategory ? "loading.." : category?.name}
                               </SelectItem>
                             )
                           )
