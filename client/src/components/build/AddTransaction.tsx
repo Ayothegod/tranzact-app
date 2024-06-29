@@ -241,10 +241,10 @@ export default function AddTransaction({ setOpenModal, openModal }: any) {
                         ) : (
                           categoryData?.categories.map(
                             (category: any, id: any) => (
-                              <SelectItem value={category?.category} key={id}>
+                              <SelectItem value={category?.name} key={id}>
                                 {loadingCategory
                                   ? "loading.."
-                                  : category?.category}
+                                  : category?.name}
                               </SelectItem>
                             )
                           )

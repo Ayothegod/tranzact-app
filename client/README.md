@@ -10,3 +10,7 @@
 
 
 - find way to make sessions worthwhile and understandable, how to logout user once the session is expired
+
+- save user details to local storage
+- create transaction
+- start transactions table
