@@ -47,7 +47,6 @@ export default function Account() {
   }, [isUser]);
 
   // TODO: once we update data, create a new user object and save using the updated data
-
   return (
     <div className="mx-auto mt-4 pb-16 min-h-screen">
       <h1 className="text-xl font-bold">My Account</h1>

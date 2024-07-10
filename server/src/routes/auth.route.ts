@@ -114,6 +114,80 @@ const authRoute = app
     return c.json({ user: user });
     // return c.json({});
   })
+  .post("/create-profile", async (c) => {
+    try {
+      const data = await c.req.json();
+      const parsedData = userSchema.parse(data);
+
+      const newUser = await prisma.user.create({
+        data: {
+          email: parsedData.email,
+          username: parsedData.username,
+          name: parsedData.name,
+          password: parsedData.password,
+        },
+      });
+
+      return c.json(
+        { msg: "User created successfully", id: newUser.id },
+        { status: 201 }
+      );
+    } catch (error) {
+      log(error);
+
+      if (error instanceof z.ZodError) {
+        error.errors.map((error) => {
+          log(error.message);
+          //   TODO: how to catch errors from catch from the frontend
+          //   throw new Error(error.message);
+        });
+        return c.json({ error: "invalid credentials" });
+      }
+      return c.json({ error: "try again later" });
+    }
+  })
+  .post("/update-user", async (c) => {
+    try {
+      const data = await c.req.json();
+      const parsedData = userSchema.parse(data);
+
+      // check if email already exists
+      const checkEmail = await prisma.user.findUnique({
+        where: { email: parsedData.email },
+      });
+      if (checkEmail) {
+        return c.json({ error: "Email already exists" });
+      }
+
+      // Hash password
+
+      const newUser = await prisma.user.create({
+        data: {
+          email: parsedData.email,
+          username: parsedData.username,
+          name: parsedData.name,
+          password: parsedData.password,
+        },
+      });
+
+      return c.json(
+        { msg: "User created successfully", id: newUser.id },
+        { status: 201 }
+      );
+    } catch (error) {
+      log(error);
+
+      if (error instanceof z.ZodError) {
+        error.errors.map((error) => {
+          log(error.message);
+          //   TODO: how to catch errors from catch from the frontend
+          //   throw new Error(error.message);
+        });
+        return c.json({ error: "invalid credentials" });
+      }
+      return c.json({ error: "try again later" });
+    }
+  })
   .delete("logout", async (c) => {
     const session = c.get("session");
     session.deleteSession();

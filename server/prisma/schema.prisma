@@ -18,6 +18,13 @@ model User {
   password     String
   transactions Transaction[]
   category     Category[]
+  Profile      Profile?
+}
+
+model Profile {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
 model Transaction {

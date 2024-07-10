@@ -30,5 +30,4 @@ origin  https://new.url/repo.git (push)
 - SETTINGS
 
 - history(chart on spend data)
-- recent transaction(table for all resent transactions) can filter the table
 - summary {weekly, monthly}

@@ -18,6 +18,7 @@ import Register from "./routes/register.tsx";
 import { Toaster } from "./components/ui/toaster.tsx";
 import Login, { Loader as loginLoader } from "./routes/login.tsx";
 import Account, { Loader as accountLoader } from "./routes/account.tsx";
+import Wallet from "./routes/wallet.tsx";
 // NOTE: make sure to add errorBoundary to all routes that throw error from loader and actions
 
 const router = createBrowserRouter([
@@ -67,6 +68,10 @@ const router = createBrowserRouter([
         path: "/account",
         element: <Account />,
         loader: accountLoader,
+      },
+      {
+        path: "/wallet",
+        element: <Wallet />,
       },
     ],
   },

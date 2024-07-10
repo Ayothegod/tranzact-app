@@ -39,4 +39,45 @@ export const transactionSchema = z.object({
 
 export const categorySchema = z.object({
   name: z.string().min(1, "category is too short"),
-})
+});
+
+// bio
+// phone number
+// home address
+
+
+// Financial Information
+// Income Details
+// Monthly Income
+// Income Sources
+
+// Expenditure Details
+// Monthly Rent/Mortgage
+// Utility Bills
+// Other Recurring Expenses
+
+
+// Employment Details
+// Occupation
+// Company Name
+// Job Title
+// Years of Experience
+
+
+// Security and Preferences
+// Username
+// Password
+// Two-Factor Authentication (2FA) Setup
+// Security Questions
+// Notification Preferences
+// Email Notifications
+// SMS Notifications
+// Push Notifications
+
+
+// Goals and Preferences
+// Financial Goals
+// Short-term Goals
+// Long-term Goals
+// Risk Tolerance
+// Preferred Investment Types
