@@ -31,3 +31,5 @@ origin  https://new.url/repo.git (push)
 
 - history(chart on spend data)
 - summary {weekly, monthly}
+
+/// check server schemma for user info data need
