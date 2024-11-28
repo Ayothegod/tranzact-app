@@ -20,7 +20,7 @@ export function Header() {
         </div>
 
         <div>
-          {isUser ? (
+          {!isUser ? (
             <ul className="bg-white px-2 rounded-full flex h-12 gap-1 items-center">
               {userNav.map((data) => {
                 return (

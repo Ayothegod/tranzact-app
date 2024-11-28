@@ -6,23 +6,30 @@ type Userdata = {
   username?: string;
 };
 
-interface StoreState {
+interface UserState {
   isUser: boolean;
   setIsUser: () => void;
-  userData: Userdata;
-  setUserData: (data: any) => void;
+  userData: Userdata | null;
+  setUserData: (data?: Userdata) => void;
 }
 
-export const useAuthStore = create(
+export const useAuthStore = create<UserState>()(
   persist(
     (set) => ({
       isUser: false,
-      userData: {},
-      setIsUser: () => set((state: any) => ({ isUser: !state.isUser })),
-      setUserData: (data: any) => set((state: any) => ({ userData: data })),
+      userData: null,
+      setIsUser: () => set((state) => ({ isUser: !state.isUser })),
+      setUserData: (data) => set(() => ({ userData: data })),
     }),
     {
-      name: "user-profile",
+      name: "user",
     }
   )
 );
+
+// export const useAuthStore = create<StoreState>((set) => ({
+//   isUser: false,
+//   userData: null,
+//   setIsUser: () => set((state) => ({ isUser: !state.isUser })),
+//   setUserData: (data) => set(() => ({ userData: data })),
+// }));

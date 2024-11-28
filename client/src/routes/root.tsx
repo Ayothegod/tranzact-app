@@ -1,11 +1,10 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
 import { Link, useRouteError } from "react-router-dom";
 import { Helmet } from "react-helmet-async";
 import { useAuthStore } from "@/lib/store/userStore";
 
 export default function Root() {
-  const [count, setCount] = useState(0);
 
   return (
     <>
@@ -13,21 +12,9 @@ export default function Root() {
         <title>Tranzact - Homepage</title>
         <meta name="description" content="This is the home page description" />
       </Helmet>
-      <div>
-        <main className="flex items-center justify-center my-20 flex-col gap-4">
-          <h1 className="text-4xl font-bold">
-            Welcome to React.js and Hono.dev Starter!
-          </h1>
-          <p className="">
-            Get started by editing <code className="">Routes/Root.js</code>
-          </p>
-          <Button onClick={() => setCount(count + 1)}>Count: {count}</Button>
 
-          <p>To get started on data fetching and mutation, head to: </p>
-          <Link to="/learnswr" className="underline">
-            Data Mutation
-          </Link>
-        </main>
+      <div>
+
       </div>
     </>
   );
@@ -39,7 +26,7 @@ export async function Loader() {
 
 export function RootError() {
   const { isUser }: any = useAuthStore();
-  let error = useRouteError();
+  const error = useRouteError();
   console.error(error);
   return (
     <div className="grid h-screen place-content-center bg-white px-4">

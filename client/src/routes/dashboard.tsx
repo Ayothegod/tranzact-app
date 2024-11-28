@@ -11,10 +11,10 @@ import { json, redirect, useNavigate } from "react-router-dom";
 import useSWR, { useSWRConfig } from "swr";
 
 export async function Loader() {
-  const session = Cookies.get("session");
-  if (!session) {
-    return redirect("/login");
-  }
+  // const session = Cookies.get("session");
+  // if (!session) {
+  //   return redirect("/login");
+  // }
   return json(null);
 }
 
@@ -45,7 +45,9 @@ export default function Dashboard() {
   useEffect(() => {
     if (expenseError) {
       Cookies.remove("session");
-      navigate("/login");
+      console.log("ExpenseError");
+      
+      // navigate("/login");
     }
   }, [expenseError, navigate]);
 
@@ -155,7 +157,7 @@ export default function Dashboard() {
                 trial
               </Button>
 
-              <Logout/>
+              {/* <Logout/> */}
             </div>
           </div>
         </div>

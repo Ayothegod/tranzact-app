@@ -3,8 +3,8 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm } from "react-hook-form";
-import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
+import { Link, useNavigate, useRouteError } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
 import { BASEURL } from "@/lib/fetch";
 import { registerSchema } from "@/lib/schema";
@@ -171,5 +171,31 @@ export default function Register() {
         </div>
       </div>
     </main>
+  );
+}
+
+export function ErrorBoundary() {
+  const error: any = useRouteError();
+  return (
+    <div className="grid h-screen place-content-center bg-white px-4">
+      <div className="text-center">
+        <h1 className="text-9xl font-black text-gray-200">{error.status}</h1>
+
+        <p className="text-2xl font-bold tracking-tight text-gray-900 sm:text-4xl">
+          Uh-oh!
+        </p>
+
+        <p className="mt-4 text-gray-500">{error.data}</p>
+
+        <div className="flex gap-8">
+          <Button className="mt-6" variant="outline">
+            Go Home
+          </Button>
+          <Button className="mt-6" onClick={() => window.location.reload()}>
+            Refresh
+          </Button>
+        </div>
+      </div>
+    </div>
   );
 }
