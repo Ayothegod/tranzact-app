@@ -2,7 +2,7 @@ import ReactDOM from "react-dom/client";
 import { HelmetProvider } from "react-helmet-async";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
-import MainLayout, { MainLayoutError } from "./layouts/MainLayout.tsx";
+import MainLayout from "./layouts/MainLayout.tsx";
 import RootLayout from "./layouts/RootLayout.tsx";
 import Root, { RootError, Loader as rootLoader } from "./routes/root.tsx";
 import Dashboard, { Loader as dashboardLoader } from "./routes/dashboard.tsx";
@@ -36,7 +36,7 @@ const router = createBrowserRouter([
   },
   {
     element: <MainLayout />,
-    errorElement: <MainLayoutError />,
+    errorElement: <ErrorBoundary />,
     children: [
       {
         path: "/dashboard",

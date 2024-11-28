@@ -14,7 +14,7 @@ export default function Root() {
       </Helmet>
 
       <div>
-
+whatsapp
       </div>
     </>
   );
