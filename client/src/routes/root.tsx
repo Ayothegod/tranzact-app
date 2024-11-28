@@ -7,6 +7,7 @@ import RootHeader from "@/components/utils/RootHeader";
 import Hero from "@/components/utils/Hero";
 import Features from "@/components/utils/Features";
 import HowItWorks from "@/components/utils/HowItWorks";
+import Footer from "@/components/utils/Footer";
 
 export default function Root() {
   return (
@@ -23,6 +24,8 @@ export default function Root() {
 
       <Features/>
       <HowItWorks/>
+
+      <Footer/>
     </>
   );
 }

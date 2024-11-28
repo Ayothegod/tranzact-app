@@ -1,9 +1,22 @@
 export const rootHeaderNav = [
-  {title:"Home", url:"/home"},
-  {title:"Features", url:"/home"},
-  {title:"About", url:"/home"},
-  {title:"Screenshots", url:"/home"},
-]
+  { title: "Home", url: "/home" },
+  { title: "Features", url: "/home" },
+  { title: "About", url: "/home" },
+  { title: "Screenshots", url: "/home" },
+];
+
+export const footerLinks = [
+  { title: "Home", url: "/home" },
+  { title: "About Tranzact", url: "/home" },
+  { title: "How it works", url: "/home" },
+  { title: "Features", url: "/home" },
+  { title: "Screenshots", url: "/home" },
+];
+
+export const footerLegal = [
+  { title: "Privacy Policy", url: "/home" },
+  { title: "Terms of Conditions", url: "/home" },
+];
 
 export const sidebarData = [
   { id: 1, title: "Dashboard", url: "/dashboard", iconType: "LayoutDashboard" },
