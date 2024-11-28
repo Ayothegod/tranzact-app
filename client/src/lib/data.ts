@@ -1,3 +1,10 @@
+export const rootHeaderNav = [
+  {title:"Home", url:"/home"},
+  {title:"Features", url:"/home"},
+  {title:"About", url:"/home"},
+  {title:"Screenshots", url:"/home"},
+]
+
 export const sidebarData = [
   { id: 1, title: "Dashboard", url: "/dashboard", iconType: "LayoutDashboard" },
   { id: 4, title: "Analytics", url: "/Analytics", iconType: "BarChartBig" },

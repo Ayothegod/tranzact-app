@@ -6,3 +6,5 @@ export const axiosInstance = axios.create({
 
 export const BASEURL = import.meta.env.BASE_URL
 
+export const fetcher = (url: string) =>
+  axiosInstance.get(url).then((res) => res.data);

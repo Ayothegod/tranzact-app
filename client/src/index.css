@@ -83,4 +83,8 @@
   .box {
     @apply bg-white rounded-lg;
   }
+
+  .body {
+    @apply max-w-7xl mx-auto px-4 lg:px-0
+  }
 }
