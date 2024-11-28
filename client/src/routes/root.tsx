@@ -5,6 +5,8 @@ import { useAuthStore } from "@/lib/store/userStore";
 import Head from "@/components/utils/Head";
 import RootHeader from "@/components/utils/RootHeader";
 import Hero from "@/components/utils/Hero";
+import Features from "@/components/utils/Features";
+import HowItWorks from "@/components/utils/HowItWorks";
 
 export default function Root() {
   return (
@@ -18,6 +20,9 @@ export default function Root() {
         <RootHeader />
         <Hero/>
       </div>
+
+      <Features/>
+      <HowItWorks/>
     </>
   );
 }
