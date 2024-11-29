@@ -8,6 +8,7 @@ import Hero from "@/components/utils/Hero";
 import Features from "@/components/utils/Features";
 import HowItWorks from "@/components/utils/HowItWorks";
 import Footer from "@/components/utils/Footer";
+import CallToAction from "@/components/utils/CallToAction";
 
 export default function Root() {
   return (
@@ -19,13 +20,14 @@ export default function Root() {
 
       <div className="bg-blue-500">
         <RootHeader />
-        <Hero/>
+        <Hero />
       </div>
 
-      <Features/>
-      <HowItWorks/>
+      <Features />
+      <HowItWorks />
 
-      <Footer/>
+      <CallToAction />
+      <Footer />
     </>
   );
 }
