@@ -16,6 +16,14 @@ model User {
   transactions Transaction[]
   category     Category[]
   Profile      Profile?
+  Session      Session[]
+}
+
+model Session {
+  id        String   @id
+  userId    String
+  expiresAt DateTime
+  user      User     @relation(references: [id], fields: [userId], onDelete: Cascade)
 }
 
 model Profile {
