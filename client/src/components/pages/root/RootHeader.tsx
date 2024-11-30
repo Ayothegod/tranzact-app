@@ -1,7 +1,7 @@
 import { rootHeaderNav } from "@/lib/data";
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 
 export default function RootHeader() {
   return (
@@ -11,7 +11,11 @@ export default function RootHeader() {
 
         <ul className="h-full flex gap-8 items-center">
           {rootHeaderNav.map((link) => (
-            <Link to={link.url} key={link.title} className={`h-full flex items-center text-white hover:border-b`}>
+            <Link
+              to={link.url}
+              key={link.title}
+              className={`h-full flex items-center text-white hover:border-b`}
+            >
               <li>{link.title}</li>
             </Link>
           ))}

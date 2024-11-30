@@ -1,7 +1,7 @@
 import { footerLegal, footerLinks } from "@/lib/data";
 import Logo from "./Logo";
 import { Link } from "react-router-dom";
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import { Copyright } from "lucide-react";
 
 export default function Footer() {
@@ -62,7 +62,7 @@ export default function Footer() {
       </div>
 
       <div className="max-w-5xl mx-auto border-t  border-t-white/30 flex items-center justify-center py-4 text-sm text-neutral-300 gap-1">
-        <Copyright className="h-4 w-4" /> <span>Tranzact LLC {"" +  year}.</span>
+        <Copyright className="h-4 w-4" /> <span>Tranzact LLC {"" + year}.</span>
         <p>All right reserved.</p>
       </div>
     </div>

@@ -2,15 +2,15 @@
 import { Button } from "@/components/ui/button";
 import { Link, useRouteError } from "react-router-dom";
 import { useAuthStore } from "@/lib/store/userStore";
-import Head from "@/components/utils/Head";
-import RootHeader from "@/components/utils/RootHeader";
-import Hero from "@/components/utils/Hero";
-import Features from "@/components/utils/Features";
-import HowItWorks from "@/components/utils/HowItWorks";
-import Footer from "@/components/utils/Footer";
-import CallToAction from "@/components/utils/CallToAction";
-import Reviews from "@/components/utils/Reviews";
-import Carousel from "@/components/utils/Carousel";
+import Head from "@/components/pages/root/Head";
+import RootHeader from "@/components/pages/root/RootHeader";
+import Hero from "@/components/pages/root/Hero";
+import Features from "@/components/pages/root/Features";
+import HowItWorks from "@/components/pages/root/HowItWorks";
+import Footer from "@/components/pages/root/Footer";
+import CallToAction from "@/components/pages/root/CallToAction";
+import Reviews from "@/components/pages/root/Reviews";
+import Carousel from "@/components/pages/root/Carousel";
 
 export default function Root() {
   return (

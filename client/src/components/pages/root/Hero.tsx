@@ -1,4 +1,4 @@
-import { Button } from "../ui/button";
+import { Button } from "../../ui/button";
 import ScrollHero from "./ScrollHero";
 
 export default function Hero() {
@@ -12,7 +12,7 @@ export default function Hero() {
         </h1>
       </div>
 
-      <ScrollHero/>
+      <ScrollHero />
 
       <div className="hidden lg:flex flex-col justify-center h-full w-1/3 debug gap-4">
         <div className="grid grid-cols-2 ">
