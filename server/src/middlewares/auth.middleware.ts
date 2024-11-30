@@ -5,7 +5,7 @@ import { validateSessionToken } from "../utils/authSession.js";
 
 export const verifyCookie = asyncHandler(
   async (req: Request, res: Response, next: NextFunction) => {
-    const token = req.cookies?.authSession || "";
+    const token = req.cookies?.authSession as string
 
     if (!token) {
       throw new ApiError(401, "Unauthorized request");
@@ -21,7 +21,7 @@ export const verifyCookie = asyncHandler(
       req.user = validateToken.user;
       next();
     } catch (error) {
-      throw new ApiError(401, "Invalid access token");
+      throw new ApiError(401, "This is not a valid access token");
     }
   }
 );

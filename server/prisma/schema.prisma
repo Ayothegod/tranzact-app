@@ -10,8 +10,7 @@ datasource db {
 model User {
   id           String        @id @default(cuid())
   email        String        @unique
-  username     String
-  name         String
+  fullname     String
   password     String
   transactions Transaction[]
   category     Category[]

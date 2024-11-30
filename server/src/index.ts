@@ -1,8 +1,8 @@
 import cors from "cors";
 import express from "express";
-import { rateLimit } from "express-rate-limit";
 import cookieParser from "cookie-parser";
-import requestIp from "request-ip";
+// import { rateLimit } from "express-rate-limit";
+// import requestIp from "request-ip";
 
 import dotenv from "dotenv";
 import logger from "./utils/logger/winston.logger";
@@ -26,28 +26,28 @@ app.use(
   })
 );
 
-// pnpm add requestIp
-app.use(requestIp.mw());
+// // pnpm add requestIp
+// app.use(requestIp.mw());
 
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, 
-  max: 5000, // Limit each IP to 500 requests per `window` (here, per 15 minutes)
-  standardHeaders: true, 
-  legacyHeaders: false, 
-  keyGenerator: (req, res) => {
-    return req.clientIp; // IP address from requestIp.mw(), as opposed to req.ip
-  },
-  handler: (_, __, ___, options) => {
-    throw new ApiError(
-      options.statusCode || 500,
-      `There are too many requests. You are only allowed ${
-        options.limit
-      } requests per ${options.windowMs / 60000} minutes`
-    );
-  },
-});
+// const limiter = rateLimit({
+//   windowMs: 15 * 60 * 1000, 
+//   max: 5000, // Limit each IP to 500 requests per `window` (here, per 15 minutes)
+//   standardHeaders: true, 
+//   legacyHeaders: false, 
+//   keyGenerator: (req, res) => {
+//     return req.clientIp; // IP address from requestIp.mw(), as opposed to req.ip
+//   },
+//   handler: (_, __, ___, options) => {
+//     throw new ApiError(
+//       options.statusCode || 500,
+//       `There are too many requests. You are only allowed ${
+//         options.limit
+//       } requests per ${options.windowMs / 60000} minutes`
+//     );
+//   },
+// });
 
-app.use(limiter);
+// app.use(limiter);
 app.use(morganMiddleware);
 
 // Routes imports
@@ -55,7 +55,6 @@ import { errorHandler } from "./middlewares/error.middleware";
 
 import defaultRoute from "./routes/default.route.js";
 import authRoute from "./routes/auth.route.js";
-import { ApiError } from "./utils/ApiError";
 
 // ROUTES
 

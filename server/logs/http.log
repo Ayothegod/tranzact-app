@@ -2,3 +2,14 @@
 [30 Nov, 2024 - 20:29:25:2925] [35mhttp[39m: [35m::ffff:127.0.0.1 GET / 404 - 11.384 ms[39m
 [30 Nov, 2024 - 20:29:32:2932] [35mhttp[39m: [35m::ffff:127.0.0.1 GET /defa 404 - 5.314 ms[39m
 [30 Nov, 2024 - 20:29:36:2936] [35mhttp[39m: [35m::ffff:127.0.0.1 GET /default 200 - 9.894 ms[39m
+[30 Nov, 2024 - 22:02:17:217] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 22:02:57:257] [35mhttp[39m: [35m::ffff:127.0.0.1 POST /api/v1/auth/register 200 - 547.394 ms[39m
+[30 Nov, 2024 - 22:04:10:410] [35mhttp[39m: [35m::ffff:127.0.0.1 POST /api/v1/auth/register 400 - 8.079 ms[39m
+[30 Nov, 2024 - 22:04:26:426] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 22:04:37:437] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 22:05:06:56] [35mhttp[39m: [35m::ffff:127.0.0.1 POST /api/v1/auth/login 200 - 382.263 ms[39m
+[30 Nov, 2024 - 22:05:24:524] [35mhttp[39m: [35m::ffff:127.0.0.1 POST /api/v1/auth/login 400 - 155.390 ms[39m
+[30 Nov, 2024 - 22:05:29:529] [35mhttp[39m: [35m::ffff:127.0.0.1 POST /api/v1/auth/login 400 - 6.132 ms[39m
+[30 Nov, 2024 - 22:07:10:710] [35mhttp[39m: [35m::ffff:127.0.0.1 DELETE /api/v1/auth/logout 200 - 124.162 ms[39m
+[30 Nov, 2024 - 22:07:39:739] [35mhttp[39m: [35m::ffff:127.0.0.1 POST /api/v1/auth/login 400 - 5.119 ms[39m
+[30 Nov, 2024 - 22:07:46:746] [35mhttp[39m: [35m::ffff:127.0.0.1 POST /api/v1/auth/login 200 - 255.210 ms[39m
