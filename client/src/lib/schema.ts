@@ -1,11 +1,7 @@
 import { z } from "zod";
 
 export const registerSchema = z.object({
-  name: z.string().min(1, { message: "Full Name is required" }),
-  username: z
-    .string()
-    .min(1, { message: "Username is required" })
-    .max(24, { message: "Username is too long" }),
+  fullname: z.string().min(1, { message: "Full Name is required" }),
   email: z
     .string()
     .email({ message: "Invalid email address" })

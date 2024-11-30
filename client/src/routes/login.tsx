@@ -1,90 +1,66 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { useProcessStore } from "@/lib/store/stateStore";
 import { useToast } from "@/components/ui/use-toast";
-import axios from "axios";
-import Cookies from "js-cookie";
-import { Link, json, redirect, useNavigate } from "react-router-dom";
-import { BASEURL, axiosInstance } from "@/lib/fetch";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { Link, json, useNavigate } from "react-router-dom";
+import { NewAxiosResponse, axiosInstance } from "@/lib/fetch";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { loginUserSchema } from "@/lib/schema";
 import { Loader2 } from "lucide-react";
-import asset from "@/assets/asset.jpg";
 import { useAuthStore } from "@/lib/store/userStore";
 import logo from "@/assets/tranzact.svg";
 import Logo from "@/components/build/Logo";
+import { useState } from "react";
 
 type LoginSchemaType = z.infer<typeof loginUserSchema>;
 
 export async function Loader() {
-  const session = Cookies.get("session");
-  if (session) {
-    return redirect("/dashboard");
-  }
   return json(null);
 }
 
 export default function Login() {
-  console.log("LOGIN");
+  const { setUser } = useAuthStore();
+  const [loading, setLoading] = useState(false);
 
   const { toast } = useToast();
   const navigate = useNavigate();
-  const { process, setProcess } = useProcessStore();
-  const { userData, setUserData, setIsUser }: any = useAuthStore();
+
   const {
     register,
     handleSubmit,
     formState: { errors },
   } = useForm<LoginSchemaType>({ resolver: zodResolver(loginUserSchema) });
 
-  const onSubmit: SubmitHandler<LoginSchemaType> = async (data) => {
-    setProcess();
+  const onSubmit = async (data: LoginSchemaType) => {
+    setLoading(!loading);
+
     try {
-      const response = await axiosInstance.post(`${BASEURL}/auth/login`, {
-        email: data.email,
-        password: data.password,
+      const response: NewAxiosResponse = await axiosInstance.post(
+        `/auth/login`,
+        {
+          email: data.email,
+          password: data.password,
+        }
+      );
+      setUser(response.data.data);
+
+      toast({
+        title: `${response.data ? response.data.message : "Success"}`,
+        description: `welcome back, ${data.email}`,
       });
 
-      if (response.data.error) {
-        toast({
-          variant: "destructive",
-          description: `Wrong user credentials!`,
-        });
-        return null;
-      }
-
-      // TODO: replace with real profile data
-      const getProfile = await axiosInstance
-        .get(`${BASEURL}/auth/get-user`)
-        .then((res) => res.data);
-      console.log(getProfile);
-
-      if (getProfile) {
-        setUserData(getProfile.user);
-        setIsUser();
-        toast({
-          description: `Welcome back, ${response.data?.username}`,
-        });
-        return navigate("/dashboard");
-      }
-      return null
+      return navigate("/onboard");
     } catch (error: any) {
       console.log(error);
 
-      if (error.response) {
+      if (error.request) {
         toast({
           variant: "destructive",
-          description: `Invalid credentials, try again!`,
-        });
-        return null;
-      } else if (error.request) {
-        toast({
-          variant: "destructive",
-          title: "Uh oh! Something went wrong.",
-          description: "There was a problem with your request.",
+          title: "Error!",
+          description: `${error.response.data.message}`,
         });
         return null;
       } else {
@@ -95,7 +71,7 @@ export default function Login() {
         return null;
       }
     } finally {
-      setProcess();
+      setLoading(false);
     }
   };
 
@@ -153,7 +129,7 @@ export default function Login() {
                 name="intent"
                 value="login"
               >
-                {process ? <Loader2 className="animate-spin" /> : "Login"}
+                {loading ? <Loader2 className="animate-spin" /> : "Login"}
               </Button>
 
               <p className="flex items-center gap-2 text-center text-sm font-medium text-neutral-500">

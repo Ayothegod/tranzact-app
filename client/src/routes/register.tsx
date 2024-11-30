@@ -3,31 +3,27 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { SubmitHandler, useForm } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { z } from "zod";
-import { Link, useNavigate, useRouteError } from "react-router-dom";
+import { json, Link, useNavigate, useRouteError } from "react-router-dom";
 import { useToast } from "@/components/ui/use-toast";
-import { BASEURL } from "@/lib/fetch";
+import { axiosInstance } from "@/lib/fetch";
 import { registerSchema } from "@/lib/schema";
-import { useProcessStore } from "@/lib/store/stateStore";
-import axios from "axios";
 import { Loader2 } from "lucide-react";
-import logo from "@/assets/tranzact.svg"
+import logo from "@/assets/tranzact.svg";
 import Logo from "@/components/build/Logo";
+import { useAuthStore } from "@/lib/store/userStore";
+import { useState } from "react";
 
 type RegisterSchemaType = z.infer<typeof registerSchema>;
 
-// export async function Loader() {
-//   const user = Cookies.get("user_access");
-//   if (user) {
-//     return redirect("/dashboard");
-//   }
-
-//   return json(null);
-// }
+export async function Loader() {
+  return json(null);
+}
 
 export default function Register() {
-  const { process, setProcess } = useProcessStore();
+  const { setUser } = useAuthStore();
+  const [loading, setLoading] = useState(false);
   const { toast } = useToast();
   const navigate = useNavigate();
   const {
@@ -36,38 +32,31 @@ export default function Register() {
     formState: { errors },
   } = useForm<RegisterSchemaType>({ resolver: zodResolver(registerSchema) });
 
-  const onSubmit: SubmitHandler<RegisterSchemaType> = async (data) => {
-    setProcess();
-    try {
-      const response = await axios.post(`${BASEURL}/auth/register`, {
-        name: data.name,
-        email: data.email,
-        username: data.username,
-        password: data.password,
-      });
+  const onSubmit = async (data: RegisterSchemaType) => {
+    setLoading(!loading);
 
-      console.log(response.data);
-      if (response.data.error) {
-        toast({
-          variant: "destructive",
-          description: `User with this email already exists!`,
-        });
-        return null;
-      }
+    try {
+      const response = await axiosInstance.post(`/auth/register`, {
+        email: data.email,
+        password: data.password,
+        fullname: data.fullname,
+      });
+      setUser(response.data.data);
 
       toast({
-        title: `Welcome to Tranzact, ${data.username}`,
-        description: `Login to continue to Tranzact`,
+        title: `${response.data ? response.data.message : "Success"}`,
+        description: `welcome to bondspace, ${data.fullname}`,
       });
-      return navigate("/login");
+
+      return navigate("/onboard");
     } catch (error: any) {
-      console.log(error);
+      // console.log(error.response.data);
 
       if (error.request) {
         toast({
           variant: "destructive",
-          title: "Uh oh! Something went wrong.",
-          description: "There was a problem with your request.",
+          title: "Error!",
+          description: `${error.response.data.message}`,
         });
         return null;
       } else {
@@ -78,7 +67,7 @@ export default function Register() {
         return null;
       }
     } finally {
-      setProcess();
+      setLoading(false);
     }
   };
 
@@ -88,7 +77,7 @@ export default function Register() {
         <div className="h-full w-full px-2 py-4 sm:w-1/2">
           <div className="mx-auto flex max-w-[448px] flex-col justify-center px-2">
             <div className="mb-8">
-            <Logo logo={logo} className="" text={true} />
+              <Logo logo={logo} className="" text={true} />
             </div>
 
             <h1 className="text-2xl font-medium">Hi, Welcome to Tranzact!</h1>
@@ -103,12 +92,12 @@ export default function Register() {
                 <Label className="text-xs">Full Name</Label>
                 <Input
                   type="text"
-                  {...register("name")}
+                  {...register("fullname")}
                   placeholder="Enter your last name"
                 />
-                {errors.name && (
+                {errors.fullname && (
                   <Label className="text-xs text-red-500">
-                    {errors.name?.message}
+                    {errors.fullname?.message}
                   </Label>
                 )}
               </div>
@@ -122,19 +111,6 @@ export default function Register() {
                 {errors.email && (
                   <Label className="text-xs text-red-500">
                     {errors.email?.message}
-                  </Label>
-                )}
-              </div>
-              <div>
-                <Label className="text-xs">Username</Label>
-                <Input
-                  type="text"
-                  {...register("username")}
-                  placeholder="unique username"
-                />
-                {errors.username && (
-                  <Label className="text-xs text-red-500">
-                    {errors.username?.message}
                   </Label>
                 )}
               </div>
@@ -158,7 +134,7 @@ export default function Register() {
                 name="intent"
                 value="register"
               >
-                {process ? <Loader2 className="animate-spin" /> : "Login"}
+                {loading ? <Loader2 className="animate-spin" /> : "Login"}
               </Button>
 
               <p className="flex items-center gap-2 text-center text-sm font-medium text-neutral-500">
