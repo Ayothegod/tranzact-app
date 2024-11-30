@@ -9,6 +9,8 @@ import Features from "@/components/utils/Features";
 import HowItWorks from "@/components/utils/HowItWorks";
 import Footer from "@/components/utils/Footer";
 import CallToAction from "@/components/utils/CallToAction";
+import Reviews from "@/components/utils/Reviews";
+import Carousel from "@/components/utils/Carousel";
 
 export default function Root() {
   return (
@@ -26,6 +28,8 @@ export default function Root() {
       <Features />
       <HowItWorks />
 
+      <Carousel />
+      <Reviews />
       <CallToAction />
       <Footer />
     </>

@@ -10,7 +10,7 @@ export default function CallToAction() {
             made <span className="text-green-600">simple.</span>
           </h1>
 
-          <p className="text-neutral-200">
+          <p className="text-neutral-200 text-justify">
             Lorem ipsum dolor sit amet consectetur, adipisicing elit. Voluptatem
             molestias ut quasi delectus esse dicta aspernatur magnam nemo,
             consequatur, facere fuga quidem ullam sed! Accusamus!
