@@ -231,3 +231,66 @@
 [01 Dec, 2024 - 18:43:15:4315] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
 [01 Dec, 2024 - 18:43:20:4320] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
 [01 Dec, 2024 - 18:43:25:4325] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:21:37:2137] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:22:37:2237] [31merror[39m: [31m[39m
+[31mInvalid `prisma.goal.create()` invocation in[39m
+[31m/home/ayomide/code/build/tranzact-app/server/src/controllers/goal.control.ts:11:34[39m
+
+[31m   8 const createGoal = asyncHandler(async (req: Request, res: Response) => {[39m
+[31m   9   const { name, targetAmount, deadline, description, currentAmount } = req.body;[39m
+[31m  10 [39m
+[31m→ 11   const goal = await prisma.goal.create({[39m
+[31m         data: {[39m
+[31m           userId: "cm44nsr2900009f6upoxma1t7",[39m
+[31m           name: "Vacation Fund",[39m
+[31m           targetAmount: 5000,[39m
+[31m           description: "Savings for a vacation to Hawaii",[39m
+[31m           deadline: "2025-12-31",[39m
+[31m                     ~~~~~~~~~~~~[39m
+[31m           currentAmount: 1000[39m
+[31m         }[39m
+[31m       })[39m
+
+[31mInvalid value for argument `deadline`: premature end of input. Expected ISO-8601 DateTime.[39m
+[01 Dec, 2024 - 21:23:40:2340] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:23:44:2344] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:23:46:2346] [31merror[39m: [31m[39m
+[31mInvalid `prisma.goal.create()` invocation in[39m
+[31m/home/ayomide/code/build/tranzact-app/server/src/controllers/goal.control.ts:13:34[39m
+
+[31m  10 [39m
+[31m  11 console.log(new Date());[39m
+[31m  12 [39m
+[31m→ 13 const goal = await prisma.goal.create({[39m
+[31m       data: {[39m
+[31m         userId: "cm44nsr2900009f6upoxma1t7",[39m
+[31m         name: "Vacation Fund",[39m
+[31m         targetAmount: 5000,[39m
+[31m         description: "Savings for a vacation to Hawaii",[39m
+[31m         deadline: "2025-12-31",[39m
+[31m                   ~~~~~~~~~~~~[39m
+[31m         currentAmount: 1000[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mInvalid value for argument `deadline`: premature end of input. Expected ISO-8601 DateTime.[39m
+[01 Dec, 2024 - 21:24:55:2455] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:25:00:250] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:25:08:258] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:25:11:2511] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:25:16:2516] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:26:13:2613] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:26:17:2617] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:26:21:2621] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:29:26:2926] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:29:33:2933] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:29:49:2949] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:30:34:3034] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:32:52:3252] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:32:56:3256] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:33:56:3356] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:34:05:345] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:34:21:3421] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:34:24:3424] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:34:26:3426] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 21:34:28:3428] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m

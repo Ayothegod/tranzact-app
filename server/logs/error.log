@@ -65,3 +65,43 @@
 [31m     })[39m
 
 [31mArgument `where` of type CategoryWhereUniqueInput needs at least one of `id` or `name` arguments. Available options are marked with ?.[39m
+[01 Dec, 2024 - 21:22:37:2237] [31merror[39m: [31m[39m
+[31mInvalid `prisma.goal.create()` invocation in[39m
+[31m/home/ayomide/code/build/tranzact-app/server/src/controllers/goal.control.ts:11:34[39m
+
+[31m   8 const createGoal = asyncHandler(async (req: Request, res: Response) => {[39m
+[31m   9   const { name, targetAmount, deadline, description, currentAmount } = req.body;[39m
+[31m  10 [39m
+[31m→ 11   const goal = await prisma.goal.create({[39m
+[31m         data: {[39m
+[31m           userId: "cm44nsr2900009f6upoxma1t7",[39m
+[31m           name: "Vacation Fund",[39m
+[31m           targetAmount: 5000,[39m
+[31m           description: "Savings for a vacation to Hawaii",[39m
+[31m           deadline: "2025-12-31",[39m
+[31m                     ~~~~~~~~~~~~[39m
+[31m           currentAmount: 1000[39m
+[31m         }[39m
+[31m       })[39m
+
+[31mInvalid value for argument `deadline`: premature end of input. Expected ISO-8601 DateTime.[39m
+[01 Dec, 2024 - 21:23:46:2346] [31merror[39m: [31m[39m
+[31mInvalid `prisma.goal.create()` invocation in[39m
+[31m/home/ayomide/code/build/tranzact-app/server/src/controllers/goal.control.ts:13:34[39m
+
+[31m  10 [39m
+[31m  11 console.log(new Date());[39m
+[31m  12 [39m
+[31m→ 13 const goal = await prisma.goal.create({[39m
+[31m       data: {[39m
+[31m         userId: "cm44nsr2900009f6upoxma1t7",[39m
+[31m         name: "Vacation Fund",[39m
+[31m         targetAmount: 5000,[39m
+[31m         description: "Savings for a vacation to Hawaii",[39m
+[31m         deadline: "2025-12-31",[39m
+[31m                   ~~~~~~~~~~~~[39m
+[31m         currentAmount: 1000[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mInvalid value for argument `deadline`: premature end of input. Expected ISO-8601 DateTime.[39m

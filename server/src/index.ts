@@ -64,8 +64,8 @@ import investmentRoute from "./routes/investment.route.js";
 app.use("/default", defaultRoute);
 app.use("/api/v1/auth", authRoute);
 app.use("/api/v1/transactions", transactionRoute);
-app.use("/api/v1/goal", goalRoute);
-app.use("/api/v1/investment", investmentRoute);
+app.use("/api/v1/goals", goalRoute);
+app.use("/api/v1/investments", investmentRoute);
 
 const startServer = () => {
   app.listen(process.env.PORT || 8090, () => {
