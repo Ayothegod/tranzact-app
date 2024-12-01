@@ -13,3 +13,118 @@
 [30 Nov, 2024 - 22:07:10:710] [35mhttp[39m: [35m::ffff:127.0.0.1 DELETE /api/v1/auth/logout 200 - 124.162 ms[39m
 [30 Nov, 2024 - 22:07:39:739] [35mhttp[39m: [35m::ffff:127.0.0.1 POST /api/v1/auth/login 400 - 5.119 ms[39m
 [30 Nov, 2024 - 22:07:46:746] [35mhttp[39m: [35m::ffff:127.0.0.1 POST /api/v1/auth/login 200 - 255.210 ms[39m
+[30 Nov, 2024 - 22:43:27:4327] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 22:43:33:4333] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 22:43:44:4344] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 22:43:48:4348] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 22:43:55:4355] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 22:43:58:4358] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 22:44:06:446] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 22:56:34:5634] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 22:56:36:5636] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 22:56:48:5648] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 22:56:51:5651] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 22:56:57:5657] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 23:04:09:49] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 23:04:15:415] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 23:04:21:421] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 23:04:27:427] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 23:04:31:431] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 23:04:34:434] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 23:04:39:439] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 23:04:45:445] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 23:04:51:451] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 23:04:54:454] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 23:04:56:456] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[30 Nov, 2024 - 23:05:01:51] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 17:04:58:458] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 17:05:40:540] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 17:05:43:543] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 17:05:45:545] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 17:05:48:548] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 17:05:50:550] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 17:05:54:554] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 17:06:16:616] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 17:06:24:624] [35mhttp[39m: [35m::1 GET /api/v1/default 404 - 4.574 ms[39m
+[01 Dec, 2024 - 17:06:37:637] [35mhttp[39m: [35m::1 GET /default 200 - 14.025 ms[39m
+[01 Dec, 2024 - 17:07:51:751] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 17:07:57:757] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 17:08:03:83] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 17:08:31:831] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 17:08:34:834] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 17:08:47:847] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[01 Dec, 2024 - 17:09:03:93] [31merror[39m: [31mUnauthorized request[39m
+[01 Dec, 2024 - 17:09:03:93] [35mhttp[39m: [35m::1 GET /api/v1/transaction 401 - 10.829 ms[39m
+[01 Dec, 2024 - 17:10:14:1014] [35mhttp[39m: [35m::1 POST /api/v1/auth/login 200 - 390.390 ms[39m
+[01 Dec, 2024 - 17:10:52:1052] [31merror[39m: [31m[39m
+[31mInvalid `prisma.category.findUnique()` invocation in[39m
+[31m/home/ayomide/code/build/tranzact-app/server/src/controllers/transaction.control.ts:69:47[39m
+
+[31m  66 [39m
+[31m  67 let setCategoryId: string | null | undefined;[39m
+[31m  68 [39m
+[31m→ 69 const checkCategory = await prisma.category.findUnique({[39m
+[31m       where: {[39m
+[31m         name: undefined,[39m
+[31m         userId: "cm44nsr2900009f6upoxma1t7",[39m
+[31m     ?   id?: String,[39m
+[31m     ?   AND?: CategoryWhereInput | CategoryWhereInput[],[39m
+[31m     ?   OR?: CategoryWhereInput[],[39m
+[31m     ?   NOT?: CategoryWhereInput | CategoryWhereInput[],[39m
+[31m     ?   createdAt?: DateTimeFilter | DateTime,[39m
+[31m     ?   transaction?: TransactionListRelationFilter,[39m
+[31m     ?   user?: UserRelationFilter | UserWhereInput[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mArgument `where` of type CategoryWhereUniqueInput needs at least one of `id` or `name` arguments. Available options are marked with ?.[39m
+[01 Dec, 2024 - 17:10:52:1052] [35mhttp[39m: [35m::1 POST /api/v1/transaction 500 - 33.594 ms[39m
+[01 Dec, 2024 - 17:11:27:1127] [35mhttp[39m: [35m::1 GET /api/v1/transaction 200 - 10.710 ms[39m
+[01 Dec, 2024 - 17:11:47:1147] [31merror[39m: [31m[39m
+[31mInvalid `prisma.category.findUnique()` invocation in[39m
+[31m/home/ayomide/code/build/tranzact-app/server/src/controllers/transaction.control.ts:69:47[39m
+
+[31m  66 [39m
+[31m  67 let setCategoryId: string | null | undefined;[39m
+[31m  68 [39m
+[31m→ 69 const checkCategory = await prisma.category.findUnique({[39m
+[31m       where: {[39m
+[31m         name: undefined,[39m
+[31m         userId: "cm44nsr2900009f6upoxma1t7",[39m
+[31m     ?   id?: String,[39m
+[31m     ?   AND?: CategoryWhereInput | CategoryWhereInput[],[39m
+[31m     ?   OR?: CategoryWhereInput[],[39m
+[31m     ?   NOT?: CategoryWhereInput | CategoryWhereInput[],[39m
+[31m     ?   createdAt?: DateTimeFilter | DateTime,[39m
+[31m     ?   transaction?: TransactionListRelationFilter,[39m
+[31m     ?   user?: UserRelationFilter | UserWhereInput[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mArgument `where` of type CategoryWhereUniqueInput needs at least one of `id` or `name` arguments. Available options are marked with ?.[39m
+[01 Dec, 2024 - 17:11:47:1147] [35mhttp[39m: [35m::1 POST /api/v1/transaction 500 - 28.070 ms[39m
+[01 Dec, 2024 - 17:11:54:1154] [31merror[39m: [31m[39m
+[31mInvalid `prisma.category.findUnique()` invocation in[39m
+[31m/home/ayomide/code/build/tranzact-app/server/src/controllers/transaction.control.ts:69:47[39m
+
+[31m  66 [39m
+[31m  67 let setCategoryId: string | null | undefined;[39m
+[31m  68 [39m
+[31m→ 69 const checkCategory = await prisma.category.findUnique({[39m
+[31m       where: {[39m
+[31m         name: undefined,[39m
+[31m         userId: "cm44nsr2900009f6upoxma1t7",[39m
+[31m     ?   id?: String,[39m
+[31m     ?   AND?: CategoryWhereInput | CategoryWhereInput[],[39m
+[31m     ?   OR?: CategoryWhereInput[],[39m
+[31m     ?   NOT?: CategoryWhereInput | CategoryWhereInput[],[39m
+[31m     ?   createdAt?: DateTimeFilter | DateTime,[39m
+[31m     ?   transaction?: TransactionListRelationFilter,[39m
+[31m     ?   user?: UserRelationFilter | UserWhereInput[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mArgument `where` of type CategoryWhereUniqueInput needs at least one of `id` or `name` arguments. Available options are marked with ?.[39m
+[01 Dec, 2024 - 17:11:54:1154] [35mhttp[39m: [35m::1 POST /api/v1/transaction 500 - 17.578 ms[39m
+[01 Dec, 2024 - 17:12:42:1242] [35mhttp[39m: [35m::1 GET /api/v1/transaction 200 - 12.419 ms[39m
+[01 Dec, 2024 - 17:14:24:1424] [35mhttp[39m: [35m::1 GET /api/v1/transaction 200 - 11.690 ms[39m

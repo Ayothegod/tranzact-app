@@ -32,16 +32,17 @@ model Profile {
 }
 
 model Transaction {
-  id              String   @id @default(cuid())
-  transactionType String
-  description     String?
-  amount          Decimal
-  createdAt       DateTime @default(now())
-  updatedAt       DateTime @updatedAt
-  userId          String
-  user            User     @relation(fields: [userId], references: [id], onDelete: Cascade)
-  categoryId      String
-  category        Category @relation(fields: [categoryId], references: [id], onDelete: Cascade)
+  id          String   @id @default(cuid())
+  type        String   @default("expense")
+  description String?
+  amount      Decimal
+  status      String // "ongoing", "complete"
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  categoryId  String
+  category    Category @relation(fields: [categoryId], references: [id])
 }
 
 model Category {
@@ -51,4 +52,15 @@ model Category {
   transaction Transaction[]
   userId      String
   user        User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model Notification {
+  id        String   @id @default(uuid())
+  content   String
+  type      String // e.g., "friend_request", "game_invite"
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  // recipientId String
+  // recipient   User     @relation(fields: [recipientId], references: [id], onDelete: Cascade)
+  read      Boolean  @default(false)
 }

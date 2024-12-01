@@ -1,0 +1,67 @@
+[01 Dec, 2024 - 17:09:03:93] [31merror[39m: [31mUnauthorized request[39m
+[01 Dec, 2024 - 17:10:52:1052] [31merror[39m: [31m[39m
+[31mInvalid `prisma.category.findUnique()` invocation in[39m
+[31m/home/ayomide/code/build/tranzact-app/server/src/controllers/transaction.control.ts:69:47[39m
+
+[31m  66 [39m
+[31m  67 let setCategoryId: string | null | undefined;[39m
+[31m  68 [39m
+[31m→ 69 const checkCategory = await prisma.category.findUnique({[39m
+[31m       where: {[39m
+[31m         name: undefined,[39m
+[31m         userId: "cm44nsr2900009f6upoxma1t7",[39m
+[31m     ?   id?: String,[39m
+[31m     ?   AND?: CategoryWhereInput | CategoryWhereInput[],[39m
+[31m     ?   OR?: CategoryWhereInput[],[39m
+[31m     ?   NOT?: CategoryWhereInput | CategoryWhereInput[],[39m
+[31m     ?   createdAt?: DateTimeFilter | DateTime,[39m
+[31m     ?   transaction?: TransactionListRelationFilter,[39m
+[31m     ?   user?: UserRelationFilter | UserWhereInput[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mArgument `where` of type CategoryWhereUniqueInput needs at least one of `id` or `name` arguments. Available options are marked with ?.[39m
+[01 Dec, 2024 - 17:11:47:1147] [31merror[39m: [31m[39m
+[31mInvalid `prisma.category.findUnique()` invocation in[39m
+[31m/home/ayomide/code/build/tranzact-app/server/src/controllers/transaction.control.ts:69:47[39m
+
+[31m  66 [39m
+[31m  67 let setCategoryId: string | null | undefined;[39m
+[31m  68 [39m
+[31m→ 69 const checkCategory = await prisma.category.findUnique({[39m
+[31m       where: {[39m
+[31m         name: undefined,[39m
+[31m         userId: "cm44nsr2900009f6upoxma1t7",[39m
+[31m     ?   id?: String,[39m
+[31m     ?   AND?: CategoryWhereInput | CategoryWhereInput[],[39m
+[31m     ?   OR?: CategoryWhereInput[],[39m
+[31m     ?   NOT?: CategoryWhereInput | CategoryWhereInput[],[39m
+[31m     ?   createdAt?: DateTimeFilter | DateTime,[39m
+[31m     ?   transaction?: TransactionListRelationFilter,[39m
+[31m     ?   user?: UserRelationFilter | UserWhereInput[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mArgument `where` of type CategoryWhereUniqueInput needs at least one of `id` or `name` arguments. Available options are marked with ?.[39m
+[01 Dec, 2024 - 17:11:54:1154] [31merror[39m: [31m[39m
+[31mInvalid `prisma.category.findUnique()` invocation in[39m
+[31m/home/ayomide/code/build/tranzact-app/server/src/controllers/transaction.control.ts:69:47[39m
+
+[31m  66 [39m
+[31m  67 let setCategoryId: string | null | undefined;[39m
+[31m  68 [39m
+[31m→ 69 const checkCategory = await prisma.category.findUnique({[39m
+[31m       where: {[39m
+[31m         name: undefined,[39m
+[31m         userId: "cm44nsr2900009f6upoxma1t7",[39m
+[31m     ?   id?: String,[39m
+[31m     ?   AND?: CategoryWhereInput | CategoryWhereInput[],[39m
+[31m     ?   OR?: CategoryWhereInput[],[39m
+[31m     ?   NOT?: CategoryWhereInput | CategoryWhereInput[],[39m
+[31m     ?   createdAt?: DateTimeFilter | DateTime,[39m
+[31m     ?   transaction?: TransactionListRelationFilter,[39m
+[31m     ?   user?: UserRelationFilter | UserWhereInput[39m
+[31m       }[39m
+[31m     })[39m
+
+[31mArgument `where` of type CategoryWhereUniqueInput needs at least one of `id` or `name` arguments. Available options are marked with ?.[39m

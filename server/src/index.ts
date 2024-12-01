@@ -55,11 +55,14 @@ import { errorHandler } from "./middlewares/error.middleware";
 
 import defaultRoute from "./routes/default.route.js";
 import authRoute from "./routes/auth.route.js";
+import transactionRoute from "./routes/transaction.route.js"
 
 // ROUTES
 
 app.use("/default", defaultRoute);
 app.use("/api/v1/auth", authRoute);
+app.use("/api/v1/transaction", transactionRoute);
+
 
 const startServer = () => {
   app.listen(process.env.PORT || 8090, () => {
