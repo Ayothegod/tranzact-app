@@ -198,6 +198,7 @@ const updateTransaction = asyncHandler(async (req: Request, res: Response) => {
   const { id } = req.params;
 
   const { amount, description, status } = req.body;
+  console.log(req.body);
 
   const transaction = await prisma.transaction.findUnique({
     where: { id, userId: req.user?.id },
@@ -371,12 +372,38 @@ const totalBalance = asyncHandler(async (req: Request, res: Response) => {
     },
   });
 
+  const highest = await prisma.transaction.aggregate({
+    where: {
+      type: "income",
+      userId: req.user?.id,
+    },
+    _max: {
+      amount: true,
+    },
+  });
+
+  // const get = await prisma.transaction.findFirst({
+  //   where: {
+  //     type: "income",
+  //     userId: req.user?.id,
+  //   },
+  //   // _sum: {
+  //   //   amount: true,
+  //   // },
+  // });
+
   const check = await prisma.transaction.count({
     where: {
       type: "income",
       userId: req.user?.id,
     },
   });
+
+  // const group = await prisma.transaction.groupBy({
+  //   where: {
+  //     userId: req.user?.id,
+  //   },
+  // });
 
   // if (!allIncome) {
   //   return res
@@ -393,7 +420,11 @@ const totalBalance = asyncHandler(async (req: Request, res: Response) => {
   return res
     .status(200)
     .json(
-      new ApiResponse(200, { balance, check }, "Balance fetched successfully!")
+      new ApiResponse(
+        200,
+        { balance, check, highest },
+        "Balance fetched successfully!"
+      )
     );
 });
 
@@ -407,5 +438,5 @@ export {
   getTransaction,
   totalExpense,
   totalIncome,
-  totalBalance
+  totalBalance,
 };

@@ -30,10 +30,10 @@ app.use(
 // app.use(requestIp.mw());
 
 // const limiter = rateLimit({
-//   windowMs: 15 * 60 * 1000, 
+//   windowMs: 15 * 60 * 1000,
 //   max: 5000, // Limit each IP to 500 requests per `window` (here, per 15 minutes)
-//   standardHeaders: true, 
-//   legacyHeaders: false, 
+//   standardHeaders: true,
+//   legacyHeaders: false,
 //   keyGenerator: (req, res) => {
 //     return req.clientIp; // IP address from requestIp.mw(), as opposed to req.ip
 //   },
@@ -55,14 +55,17 @@ import { errorHandler } from "./middlewares/error.middleware";
 
 import defaultRoute from "./routes/default.route.js";
 import authRoute from "./routes/auth.route.js";
-import transactionRoute from "./routes/transaction.route.js"
+import transactionRoute from "./routes/transaction.route.js";
+import goalRoute from "./routes/goal.route.js";
+import investmentRoute from "./routes/investment.route.js";
 
 // ROUTES
 
 app.use("/default", defaultRoute);
 app.use("/api/v1/auth", authRoute);
-app.use("/api/v1/transaction", transactionRoute);
-
+app.use("/api/v1/transactions", transactionRoute);
+app.use("/api/v1/goal", goalRoute);
+app.use("/api/v1/investment", investmentRoute);
 
 const startServer = () => {
   app.listen(process.env.PORT || 8090, () => {
