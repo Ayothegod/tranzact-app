@@ -141,7 +141,7 @@ const allTransactions = asyncHandler(async (req: Request, res: Response) => {
     include: {
       category: true,
     },
-    take: take ? Number(take) : 10,
+    take: take ? Number(take) : 25,
   });
 
   if (!transactions) {

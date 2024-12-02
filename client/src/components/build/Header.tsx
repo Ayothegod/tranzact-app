@@ -12,7 +12,7 @@ export function Header() {
   const path = location.pathname;
 
   return (
-    <div className=" sticky top-0 backdrop-blur-2xl">
+    <div className=" sticky top-0 backdrop-blur-3xl bg-[rgba(0,0,0,.1)] z-50">
       <div className="flex items-center justify-between gap-8 body h-14 ">
         <div className="bg-white h-10 w-10 debug flex items-center justify-center gap-1 rounded-full">
           <Logo size="base" />
@@ -20,7 +20,7 @@ export function Header() {
 
         <div>
           {user ? (
-            <ul className="bg-white p-1 rounded-full flex h-10 gap-2 items-center">
+            <ul className="bg-white p-1 rounded-full flex h-10 gap-2 items-center shadow">
               {userNav.map((data) => {
                 return (
                   <Link

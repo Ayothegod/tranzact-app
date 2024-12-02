@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { Skeleton } from "@/components/ui/skeleton";
@@ -19,34 +20,38 @@ import {
 import useSWR, { useSWRConfig } from "swr";
 
 export async function Loader() {
-  const session = Cookies.get("session");
-  if (!session) {
-    return redirect("/login");
-  }
+  // const session = Cookies.get("session");
+  // if (!session) {
+  //   return redirect("/login");
+  // }
   return json(null);
 }
 
 export default function Account() {
-  const { userData, isUser }: any = useAuthStore();
-  console.log("Account");
+  const { user, setUser } = useAuthStore();
 
   const { toast } = useToast();
   const navigate = useNavigate();
   const location = useLocation();
   const path = location.pathname;
 
-  useEffect(() => {
-    if (!isUser) {
-      Cookies.remove("session");
-      navigate("/login");
-      toast({
-        variant: "destructive",
-        description: `No user data, login again!`,
-      });
-    }
-  }, [isUser]);
+  // useEffect(() => {
+  //   if (!isUser) {
+  //     Cookies.remove("session");
+  //     navigate("/login");
+  //     toast({
+  //       variant: "destructive",
+  //       description: `No user data, login again!`,
+  //     });
+  //   }
+  // }, [isUser]);
 
   // TODO: once we update data, create a new user object and save using the updated data
+  
+
+  {
+    /* TODO: just use a giant tenary if data, all this else, error fetching data */
+  }
   return (
     <div className="mx-auto mt-4 pb-16 min-h-screen">
       <h1 className="text-xl font-bold">My Account</h1>
@@ -75,7 +80,7 @@ export default function Account() {
                 <div className="h-20 w-20 bg-neutral-300 rounded-full"></div>
 
                 <div>
-                  <h4 className="text-black font-medium">{userData?.name}</h4>
+                  {/* <h4 className="text-black font-medium">{userData?.name}</h4> */}
                   <p className="text-xs italic">short bio goes here.</p>
                 </div>
               </div>
@@ -97,19 +102,19 @@ export default function Account() {
                 <div className="mt-2 space-y-2">
                   <div>
                     <Label className="text-xs text-neutral-500">Username</Label>
-                    <p>{userData?.username}</p>
+                    {/* <p>{userData?.username}</p> */}
                   </div>
                   <div>
                     <Label className="text-xs text-neutral-500">
                       Full Name
                     </Label>
-                    <p>{userData?.name}</p>
+                    {/* <p>{userData?.name}</p> */}
                   </div>
                   <div>
                     <Label className="text-xs text-neutral-500">
                       Email Address
                     </Label>
-                    <p>{userData?.email}</p>
+                    {/* <p>{userData?.email}</p> */}
                   </div>
                 </div>
 
@@ -154,6 +159,3 @@ export default function Account() {
   );
 }
 
-{
-  /* TODO: just use a giant tenary if data, all this else, error fetching data */
-}

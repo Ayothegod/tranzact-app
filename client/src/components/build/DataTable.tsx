@@ -1,3 +1,5 @@
+/* eslint-disable react-hooks/rules-of-hooks */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import {
   ColumnDef,
   ColumnFiltersState,
@@ -12,7 +14,6 @@ import {
 } from "@tanstack/react-table";
 import { BASEURL, axiosInstance, fetcher } from "@/lib/fetch";
 import useSWR, { useSWRConfig } from "swr";
-import { Transaction, Transactions } from "@/lib/data";
 import {
   Table,
   TableBody,
@@ -34,9 +35,19 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { format } from "date-fns";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Input } from "../ui/input";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
+
+interface DataTableProps<TData, TValue> {
+  columns: ColumnDef<TData, TValue>[];
+  data: TData[];
+}
+import { Checkbox } from "@/components/ui/checkbox";
+import { useToast } from "../ui/use-toast";
+import { Transaction } from "@/lib/types/api";
+import { Skeleton } from "../ui/skeleton";
+import clsx from "clsx";
 
 const columns: ColumnDef<Transaction>[] = [
   {
@@ -68,13 +79,15 @@ const columns: ColumnDef<Transaction>[] = [
     id: "sn",
   },
   {
-    accessorKey: "id",
-    header: "ID",
-    cell: ({ cell }) => {
+    accessorKey: "description",
+    header: "Description",
+    cell: ({ cell, row }) => {
       const value: any = cell.getValue();
+      const data = row.original;
+
       return (
-        <Link to={`/transactions/${value}`}>
-          <div>{value}</div>
+        <Link to={`/transactions/${data.id}`}>
+          <div className="w-28 truncate">{value}</div>
         </Link>
       );
     },
@@ -84,16 +97,35 @@ const columns: ColumnDef<Transaction>[] = [
     header: "Category",
   },
   {
-    accessorKey: "transactionType",
+    accessorKey: "type",
     header: "Type",
+    cell: ({ row }) => {
+      const data = row.original;
+      return (
+        <div
+          className={clsx(
+            "text-center p-2 rounded-full font-semibold ",
+            data.type === "income" && "bg-green-200 text-green-600",
+            data.type === "expense" && "bg-red-200 text-red-600"
+          )}
+        >
+          {data.type}
+        </div>
+      );
+    },
   },
   {
     accessorKey: "amount",
     header: "Amount",
-  },
-  {
-    accessorKey: "description",
-    header: "Description",
+    cell: ({ row }) => {
+      const amount = parseFloat(row.getValue("amount"));
+      const formatted = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "NGN",
+      }).format(amount);
+
+      return <div className="font-medium">{formatted}</div>;
+    },
   },
   {
     accessorKey: "createdAt",
@@ -114,108 +146,92 @@ const columns: ColumnDef<Transaction>[] = [
     },
   },
   {
+    header: "Action",
     id: "actions",
     cell: ({ row }) => {
       const { toast } = useToast();
       const { mutate } = useSWRConfig();
       const transaction = row.original;
-      console.log(transaction);
 
       return (
-        <DropdownMenu>
-          <DropdownMenuTrigger asChild>
-            <Button variant="ghost" className="h-8 w-8 p-0">
-              <span className="sr-only">Open menu</span>
-              <MoreHorizontal className="h-4 w-4" />
-            </Button>
-          </DropdownMenuTrigger>
-          <DropdownMenuContent align="end">
-            <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <DropdownMenuItem
-              onClick={() => navigator.clipboard.writeText(transaction.id)}
-            >
-              Copy payment ID
-            </DropdownMenuItem>
-            <DropdownMenuSeparator />
-            <DropdownMenuItem
-              onClick={async () => {
-                try {
-                  const deleteResponse = await axiosInstance
-                    .delete(`${BASEURL}/delete-transaction/${transaction.id}`)
-                    .then((res) => res.data);
+        <>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
+              <Button variant="ghost" className="h-8 w-8 p-0">
+                <MoreHorizontal className="h-4 w-4" />
+              </Button>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end">
+              <DropdownMenuLabel>Actions</DropdownMenuLabel>
+              <DropdownMenuItem>
+                <Link to={`/transactions/${transaction.id}`}>
+                  View Transaction details
+                </Link>
+              </DropdownMenuItem>
+              <DropdownMenuSeparator />
+              <DropdownMenuItem
+                onClick={async () => {
+                  try {
+                    const deleteResponse = await axiosInstance
+                      .delete(`${BASEURL}/delete-transaction/${transaction.id}`)
+                      .then((res) => res.data);
 
-                  if (deleteResponse.error) {
+                    if (deleteResponse.error) {
+                      toast({
+                        variant: "destructive",
+                        description: `Transaction already deleted or does not exist!`,
+                      });
+                      return null;
+                    }
                     toast({
-                      variant: "destructive",
-                      description: `Transaction already deleted or does not exist!`,
+                      description: `transaction deleted successfully`,
                     });
                     return null;
+                  } catch (error) {
+                    console.log(error);
+                    toast({
+                      variant: "destructive",
+                      description: `Try again later!`,
+                    });
+                    return null;
+                  } finally {
+                    mutate(`${BASEURL}/all-transactions?n=20`);
                   }
-                  toast({
-                    description: `transaction deleted successfully`,
-                  });
-                  return null;
-                } catch (error) {
-                  console.log(error);
-                  toast({
-                    variant: "destructive",
-                    description: `Try again later!`,
-                  });
-                  return null;
-                } finally {
-                  mutate(`${BASEURL}/all-transactions?n=20`);
-                }
-              }}
-            >
-              Delete Transaction
-            </DropdownMenuItem>
-            <DropdownMenuItem>
-              <Link to={`/transactions/${transaction.id}`}>
-                View Transaction details
-              </Link>
-            </DropdownMenuItem>
-          </DropdownMenuContent>
-        </DropdownMenu>
+                }}
+              >
+                Delete Transaction
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
+        </>
       );
     },
   },
 ];
 
 export default function DataTable() {
-  const navigate = useNavigate();
+  const { data, error, isLoading } = useSWR(
+    `${import.meta.env.VITE_SERVER_BASEURI}/transactions/transaction`,
+    fetcher,
+    { errorRetryCount: 1 }
+  );
 
-  const {
-    data: allTransactions,
-    error: transactionsError,
-    isLoading: transactionsLoading,
-  } = useSWR(`${BASEURL}/all-transactions?n=20`, fetcher);
-  //   console.log(allTransactions);
-
-  if (transactionsLoading) {
-    return <div>Loading...</div>;
-  }
-
-  if (transactionsError) {
+  if (error) {
     return <div>Error loading transactions</div>;
   }
 
-  const data = allTransactions || [];
-
   return (
-    <div>
-      <div className="py-4">
-        <TableResult columns={columns} data={data} />
-      </div>
+    <div className="">
+      {isLoading ? (
+        <div className="w-full border rounded-md h-96">
+          <Skeleton className="w-full h-full rounded-md" />
+        </div>
+      ) : (
+        <TableResult columns={columns} data={data?.data || []} />
+      )}
     </div>
   );
 }
-
-interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[];
-  data: TData[];
-}
-import { Checkbox } from "@/components/ui/checkbox";
-import { useToast } from "../ui/use-toast";
 
 function TableResult<TData, TValue>({
   columns,
@@ -248,15 +264,12 @@ function TableResult<TData, TValue>({
     <div className="rounded-md border">
       <div className="flex items-center p-4">
         <Input
-          placeholder="Filter transaction type..."
+          placeholder="Search for descriptions..."
           value={
-            (table.getColumn("transactionType")?.getFilterValue() as string) ??
-            ""
+            (table.getColumn("description")?.getFilterValue() as string) ?? ""
           }
           onChange={(event: any) =>
-            table
-              .getColumn("transactionType")
-              ?.setFilterValue(event.target.value)
+            table.getColumn("description")?.setFilterValue(event.target.value)
           }
           className="max-w-sm"
         />
@@ -328,7 +341,8 @@ function TableResult<TData, TValue>({
           ) : (
             <TableRow>
               <TableCell colSpan={columns.length} className="h-24 text-center">
-                No transactions yet, click on add income to get started.
+                You don't have transactions yet, add a transaction to get
+                started.
               </TableCell>
             </TableRow>
           )}
