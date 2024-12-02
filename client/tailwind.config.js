@@ -21,6 +21,7 @@ module.exports = {
         hero: "calc(100vh - 56px)"
       },
       colors: {
+        "light-bg":"#f2f2f2",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

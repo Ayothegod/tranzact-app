@@ -5,7 +5,7 @@ import { Link, Outlet } from "react-router-dom";
 export default function MainLayout() {
 
   return (
-    <div className="bg-neutral-100 min-h-screen">
+    <div className="bg-light-bg min-h-screen">
       <Header />
       <div className="">
         <Outlet />
@@ -13,6 +13,17 @@ export default function MainLayout() {
     </div>
   );
 }
+
+// #f2f2f2
+// #ebebeb
+// #e4e4e4
+// #dcdcdc
+// #d5d5d5
+// #cecece
+// #c7c7c7
+// #c0c0c0
+// #b9b9b9
+// #b2b2b2
 
 export function MainLayoutError() {
   // const error = useRouteError();

@@ -18,6 +18,18 @@ export interface APIStatusResponseInterface {
   success?: boolean;
 }
 
+// type: "income",
+// amount: "200",
+// description: "type 2",
+// categoryName: "null",
+
+export interface TransactionRequest {
+  type: "income" | "expense";
+  amount: number;
+  description?: string;
+  categoryName?: string;
+}
+
 // export interface SpaceInterface {
 //   id: string;
 //   status: string;

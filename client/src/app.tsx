@@ -8,7 +8,7 @@ import Transactions, {
 import Register, { ErrorBoundary } from "./routes/register.tsx";
 import Login, { Loader as loginLoader } from "./routes/login.tsx";
 import Account, { Loader as accountLoader } from "./routes/account.tsx";
-import Wallet from "./routes/wallet.tsx";
+import Test from "./routes/test.tsx";
 
 const router = createBrowserRouter([
   {
@@ -38,6 +38,10 @@ const router = createBrowserRouter([
         loader: dashboardLoader,
       },
       {
+        path: "/test",
+        element: <Test />,
+      },
+      {
         path: "/transactions",
         element: <Transactions />,
         loader: transactionLoader,
@@ -46,10 +50,6 @@ const router = createBrowserRouter([
         path: "/account",
         element: <Account />,
         loader: accountLoader,
-      },
-      {
-        path: "/wallet",
-        element: <Wallet />,
       },
     ],
   },
