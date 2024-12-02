@@ -819,3 +819,418 @@
 [02 Dec, 2024 - 06:06:45:645] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 9.767 ms[39m
 [02 Dec, 2024 - 06:07:23:723] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 7.445 ms[39m
 [02 Dec, 2024 - 06:07:55:755] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 9.543 ms[39m
+[02 Dec, 2024 - 06:09:18:918] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 6.808 ms[39m
+[02 Dec, 2024 - 06:09:21:921] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 6.165 ms[39m
+[02 Dec, 2024 - 06:09:23:923] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 7.713 ms[39m
+[02 Dec, 2024 - 06:09:25:925] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 6.734 ms[39m
+[02 Dec, 2024 - 06:10:58:1058] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 6.369 ms[39m
+[02 Dec, 2024 - 06:35:29:3529] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 06:40:07:407] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 200 - 39.918 ms[39m
+[02 Dec, 2024 - 06:43:00:430] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 15.910 ms[39m
+[02 Dec, 2024 - 06:43:05:435] [35mhttp[39m: [35m::1 GET /api/v1/transactions 404 - 8.493 ms[39m
+[02 Dec, 2024 - 06:43:05:435] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 10.233 ms[39m
+[02 Dec, 2024 - 06:43:10:4310] [35mhttp[39m: [35m::1 GET /api/v1/transactions 404 - 7.222 ms[39m
+[02 Dec, 2024 - 06:43:10:4310] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 8.763 ms[39m
+[02 Dec, 2024 - 06:43:15:4315] [35mhttp[39m: [35m::1 GET /api/v1/transactions 404 - 5.207 ms[39m
+[02 Dec, 2024 - 06:43:20:4320] [35mhttp[39m: [35m::1 GET /api/v1/transactions 404 - 5.369 ms[39m
+[02 Dec, 2024 - 06:43:20:4320] [35mhttp[39m: [35m::1 GET /api/v1/transactions 404 - 10.259 ms[39m
+[02 Dec, 2024 - 06:43:20:4320] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 9.556 ms[39m
+[02 Dec, 2024 - 06:43:25:4325] [35mhttp[39m: [35m::1 GET /api/v1/transactions 404 - 6.549 ms[39m
+[02 Dec, 2024 - 06:43:27:4327] [35mhttp[39m: [35m::1 GET /api/v1/transactions 404 - 5.132 ms[39m
+[02 Dec, 2024 - 06:43:27:4327] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 9.822 ms[39m
+[02 Dec, 2024 - 06:44:04:444] [35mhttp[39m: [35m::1 GET /api/v1/transactions 404 - 8.578 ms[39m
+[02 Dec, 2024 - 06:44:04:444] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 13.627 ms[39m
+[02 Dec, 2024 - 06:44:14:4414] [35mhttp[39m: [35m::1 GET /api/v1/transactions 404 - 4.445 ms[39m
+[02 Dec, 2024 - 06:44:28:4428] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 7.855 ms[39m
+[02 Dec, 2024 - 06:44:39:4439] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 12.795 ms[39m
+[02 Dec, 2024 - 06:44:39:4439] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 20.910 ms[39m
+[02 Dec, 2024 - 06:44:44:4444] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 7.405 ms[39m
+[02 Dec, 2024 - 06:45:58:4558] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 8.219 ms[39m
+[02 Dec, 2024 - 06:45:58:4558] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 10.702 ms[39m
+[02 Dec, 2024 - 06:46:01:461] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 11.209 ms[39m
+[02 Dec, 2024 - 06:46:01:461] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 8.845 ms[39m
+[02 Dec, 2024 - 06:46:05:465] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 5.332 ms[39m
+[02 Dec, 2024 - 06:46:05:465] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 10.477 ms[39m
+[02 Dec, 2024 - 06:46:38:4638] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 12.225 ms[39m
+[02 Dec, 2024 - 06:46:38:4638] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 13.653 ms[39m
+[02 Dec, 2024 - 06:46:55:4655] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 9.800 ms[39m
+[02 Dec, 2024 - 06:46:59:4659] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 10.092 ms[39m
+[02 Dec, 2024 - 06:47:03:473] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 8.536 ms[39m
+[02 Dec, 2024 - 06:47:17:4717] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 9.398 ms[39m
+[02 Dec, 2024 - 06:47:31:4731] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 3.197 ms[39m
+[02 Dec, 2024 - 06:47:31:4731] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 7.344 ms[39m
+[02 Dec, 2024 - 06:47:39:4739] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 8.634 ms[39m
+[02 Dec, 2024 - 06:47:48:4748] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 13.440 ms[39m
+[02 Dec, 2024 - 06:47:48:4748] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 9.617 ms[39m
+[02 Dec, 2024 - 06:48:11:4811] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 7.732 ms[39m
+[02 Dec, 2024 - 06:48:11:4811] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 7.352 ms[39m
+[02 Dec, 2024 - 06:49:21:4921] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 11.987 ms[39m
+[02 Dec, 2024 - 06:49:21:4921] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 9.854 ms[39m
+[02 Dec, 2024 - 06:49:42:4942] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 06:49:43:4943] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 30.348 ms[39m
+[02 Dec, 2024 - 06:49:43:4943] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 200 - 65.600 ms[39m
+[02 Dec, 2024 - 06:49:53:4953] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 10.727 ms[39m
+[02 Dec, 2024 - 06:49:55:4955] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 7.968 ms[39m
+[02 Dec, 2024 - 06:49:56:4956] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 8.024 ms[39m
+[02 Dec, 2024 - 06:50:17:5017] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 8.069 ms[39m
+[02 Dec, 2024 - 06:50:18:5018] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 8.963 ms[39m
+[02 Dec, 2024 - 06:51:09:519] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 12.801 ms[39m
+[02 Dec, 2024 - 06:51:09:519] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 8.374 ms[39m
+[02 Dec, 2024 - 06:53:32:5332] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 7.530 ms[39m
+[02 Dec, 2024 - 06:53:32:5332] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 5.538 ms[39m
+[02 Dec, 2024 - 06:53:40:5340] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 8.144 ms[39m
+[02 Dec, 2024 - 06:53:41:5341] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 8.458 ms[39m
+[02 Dec, 2024 - 06:53:59:5359] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 16.118 ms[39m
+[02 Dec, 2024 - 06:54:02:542] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 6.334 ms[39m
+[02 Dec, 2024 - 06:54:10:5410] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 9.467 ms[39m
+[02 Dec, 2024 - 06:54:20:5420] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 6.311 ms[39m
+[02 Dec, 2024 - 06:54:22:5422] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 10.977 ms[39m
+[02 Dec, 2024 - 06:54:22:5422] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 13.638 ms[39m
+[02 Dec, 2024 - 06:54:28:5428] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 5.343 ms[39m
+[02 Dec, 2024 - 06:54:37:5437] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 6.321 ms[39m
+[02 Dec, 2024 - 06:54:37:5437] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 11.396 ms[39m
+[02 Dec, 2024 - 06:54:52:5452] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 17.253 ms[39m
+[02 Dec, 2024 - 06:54:52:5452] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 11.782 ms[39m
+[02 Dec, 2024 - 06:56:10:5610] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 5.983 ms[39m
+[02 Dec, 2024 - 06:56:10:5610] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 12.179 ms[39m
+[02 Dec, 2024 - 06:56:20:5620] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 7.402 ms[39m
+[02 Dec, 2024 - 06:56:21:5621] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 6.247 ms[39m
+[02 Dec, 2024 - 06:56:36:5636] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 10.965 ms[39m
+[02 Dec, 2024 - 06:56:36:5636] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 7.190 ms[39m
+[02 Dec, 2024 - 06:56:39:5639] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 6.296 ms[39m
+[02 Dec, 2024 - 06:56:41:5641] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 10.529 ms[39m
+[02 Dec, 2024 - 06:56:41:5641] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 6.992 ms[39m
+[02 Dec, 2024 - 06:56:52:5652] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 9.551 ms[39m
+[02 Dec, 2024 - 06:56:52:5652] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 15.998 ms[39m
+[02 Dec, 2024 - 06:57:40:5740] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 7.197 ms[39m
+[02 Dec, 2024 - 06:57:40:5740] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 7.839 ms[39m
+[02 Dec, 2024 - 06:58:05:585] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 6.067 ms[39m
+[02 Dec, 2024 - 06:58:05:585] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 6.288 ms[39m
+[02 Dec, 2024 - 06:58:37:5837] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 5.729 ms[39m
+[02 Dec, 2024 - 06:58:39:5839] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 13.475 ms[39m
+[02 Dec, 2024 - 06:58:39:5839] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 12.616 ms[39m
+[02 Dec, 2024 - 06:58:58:5858] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 18.386 ms[39m
+[02 Dec, 2024 - 06:58:58:5858] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 15.114 ms[39m
+[02 Dec, 2024 - 06:59:05:595] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 10.044 ms[39m
+[02 Dec, 2024 - 06:59:11:5911] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 5.509 ms[39m
+[02 Dec, 2024 - 06:59:15:5915] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 11.044 ms[39m
+[02 Dec, 2024 - 06:59:15:5915] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 11.123 ms[39m
+[02 Dec, 2024 - 06:59:32:5932] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 6.273 ms[39m
+[02 Dec, 2024 - 06:59:32:5932] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 7.870 ms[39m
+[02 Dec, 2024 - 06:59:34:5934] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 4.741 ms[39m
+[02 Dec, 2024 - 06:59:43:5943] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 5.607 ms[39m
+[02 Dec, 2024 - 06:59:47:5947] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 5.668 ms[39m
+[02 Dec, 2024 - 06:59:49:5949] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 7.505 ms[39m
+[02 Dec, 2024 - 06:59:51:5951] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 5.303 ms[39m
+[02 Dec, 2024 - 06:59:51:5951] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 14.963 ms[39m
+[02 Dec, 2024 - 06:59:59:5959] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 18.508 ms[39m
+[02 Dec, 2024 - 06:59:59:5959] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 15.100 ms[39m
+[02 Dec, 2024 - 07:00:17:017] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 5.832 ms[39m
+[02 Dec, 2024 - 07:00:24:024] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 11.321 ms[39m
+[02 Dec, 2024 - 07:00:31:031] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 5.615 ms[39m
+[02 Dec, 2024 - 07:00:35:035] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 5.860 ms[39m
+[02 Dec, 2024 - 07:00:36:036] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 8.256 ms[39m
+[02 Dec, 2024 - 07:00:42:042] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 10.713 ms[39m
+[02 Dec, 2024 - 07:00:48:048] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 4.444 ms[39m
+[02 Dec, 2024 - 07:00:55:055] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 6.075 ms[39m
+[02 Dec, 2024 - 07:01:00:10] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 4.872 ms[39m
+[02 Dec, 2024 - 07:01:03:13] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 18.143 ms[39m
+[02 Dec, 2024 - 07:01:03:13] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 16.020 ms[39m
+[02 Dec, 2024 - 07:01:08:18] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 9.119 ms[39m
+[02 Dec, 2024 - 07:01:08:18] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 6.065 ms[39m
+[02 Dec, 2024 - 07:01:17:117] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 12.837 ms[39m
+[02 Dec, 2024 - 07:01:17:117] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 13.100 ms[39m
+[02 Dec, 2024 - 07:01:23:123] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 10.134 ms[39m
+[02 Dec, 2024 - 07:01:23:123] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 14.137 ms[39m
+[02 Dec, 2024 - 07:01:29:129] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 5.813 ms[39m
+[02 Dec, 2024 - 07:01:33:133] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 6.076 ms[39m
+[02 Dec, 2024 - 07:01:37:137] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 10.216 ms[39m
+[02 Dec, 2024 - 07:01:37:137] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 9.404 ms[39m
+[02 Dec, 2024 - 07:01:46:146] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 11.598 ms[39m
+[02 Dec, 2024 - 07:01:46:146] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 8.482 ms[39m
+[02 Dec, 2024 - 07:02:02:22] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 16.507 ms[39m
+[02 Dec, 2024 - 07:02:02:22] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 17.905 ms[39m
+[02 Dec, 2024 - 07:02:10:210] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 7.459 ms[39m
+[02 Dec, 2024 - 07:02:10:210] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 14.442 ms[39m
+[02 Dec, 2024 - 07:02:19:219] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 12.513 ms[39m
+[02 Dec, 2024 - 07:02:19:219] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 10.470 ms[39m
+[02 Dec, 2024 - 07:02:26:226] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 8.488 ms[39m
+[02 Dec, 2024 - 07:02:26:226] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 6.828 ms[39m
+[02 Dec, 2024 - 07:02:33:233] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 4.958 ms[39m
+[02 Dec, 2024 - 07:02:59:259] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 5.682 ms[39m
+[02 Dec, 2024 - 07:03:02:32] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 7.202 ms[39m
+[02 Dec, 2024 - 07:03:05:35] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 13.271 ms[39m
+[02 Dec, 2024 - 07:03:11:311] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 5.648 ms[39m
+[02 Dec, 2024 - 07:03:20:320] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 16.353 ms[39m
+[02 Dec, 2024 - 07:03:20:320] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 11.555 ms[39m
+[02 Dec, 2024 - 07:03:30:330] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 4.674 ms[39m
+[02 Dec, 2024 - 07:03:33:333] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 10.145 ms[39m
+[02 Dec, 2024 - 07:03:37:337] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 6.237 ms[39m
+[02 Dec, 2024 - 07:03:50:350] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 7.045 ms[39m
+[02 Dec, 2024 - 07:03:55:355] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 7.749 ms[39m
+[02 Dec, 2024 - 07:04:00:40] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 4.968 ms[39m
+[02 Dec, 2024 - 07:04:04:44] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 10.043 ms[39m
+[02 Dec, 2024 - 07:04:06:46] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 5.431 ms[39m
+[02 Dec, 2024 - 07:04:11:411] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 7.233 ms[39m
+[02 Dec, 2024 - 07:04:22:422] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 4.309 ms[39m
+[02 Dec, 2024 - 07:04:25:425] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 4.935 ms[39m
+[02 Dec, 2024 - 07:04:47:447] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 8.073 ms[39m
+[02 Dec, 2024 - 07:04:47:447] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 7.722 ms[39m
+[02 Dec, 2024 - 07:04:56:456] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 5.567 ms[39m
+[02 Dec, 2024 - 07:04:59:459] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 4.798 ms[39m
+[02 Dec, 2024 - 07:05:04:54] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 5.471 ms[39m
+[02 Dec, 2024 - 07:05:11:511] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 5.626 ms[39m
+[02 Dec, 2024 - 07:05:28:528] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 9.271 ms[39m
+[02 Dec, 2024 - 07:05:30:530] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 15.099 ms[39m
+[02 Dec, 2024 - 07:05:30:530] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 12.611 ms[39m
+[02 Dec, 2024 - 07:05:39:539] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 7.628 ms[39m
+[02 Dec, 2024 - 07:05:42:542] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 5.173 ms[39m
+[02 Dec, 2024 - 07:05:45:545] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 12.010 ms[39m
+[02 Dec, 2024 - 07:05:45:545] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 6.360 ms[39m
+[02 Dec, 2024 - 07:05:51:551] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 17.343 ms[39m
+[02 Dec, 2024 - 07:05:51:551] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 12.671 ms[39m
+[02 Dec, 2024 - 07:06:32:632] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 23.315 ms[39m
+[02 Dec, 2024 - 07:06:32:632] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 14.058 ms[39m
+[02 Dec, 2024 - 07:06:56:656] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 6.522 ms[39m
+[02 Dec, 2024 - 07:06:59:659] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 7.154 ms[39m
+[02 Dec, 2024 - 07:07:09:79] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 5.188 ms[39m
+[02 Dec, 2024 - 07:07:19:719] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 4.298 ms[39m
+[02 Dec, 2024 - 07:07:45:745] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 6.921 ms[39m
+[02 Dec, 2024 - 07:07:45:745] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 6.967 ms[39m
+[02 Dec, 2024 - 07:08:31:831] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 9.999 ms[39m
+[02 Dec, 2024 - 07:08:31:831] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 13.156 ms[39m
+[02 Dec, 2024 - 07:08:42:842] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 15.614 ms[39m
+[02 Dec, 2024 - 07:08:42:842] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 13.031 ms[39m
+[02 Dec, 2024 - 07:08:52:852] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 7.662 ms[39m
+[02 Dec, 2024 - 07:08:54:854] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 12.879 ms[39m
+[02 Dec, 2024 - 07:08:54:854] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 9.949 ms[39m
+[02 Dec, 2024 - 07:09:02:92] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 9.362 ms[39m
+[02 Dec, 2024 - 07:09:02:92] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 8.939 ms[39m
+[02 Dec, 2024 - 07:09:04:94] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 11.610 ms[39m
+[02 Dec, 2024 - 07:09:18:918] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 13.734 ms[39m
+[02 Dec, 2024 - 07:09:18:918] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 13.882 ms[39m
+[02 Dec, 2024 - 07:09:25:925] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 10.828 ms[39m
+[02 Dec, 2024 - 07:09:25:925] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 11.316 ms[39m
+[02 Dec, 2024 - 07:09:29:929] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 9.030 ms[39m
+[02 Dec, 2024 - 07:09:38:938] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 13.575 ms[39m
+[02 Dec, 2024 - 07:09:38:938] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 10.580 ms[39m
+[02 Dec, 2024 - 07:09:56:956] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 7.061 ms[39m
+[02 Dec, 2024 - 07:09:57:957] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 7.916 ms[39m
+[02 Dec, 2024 - 07:10:09:109] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 12.368 ms[39m
+[02 Dec, 2024 - 07:10:09:109] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 12.081 ms[39m
+[02 Dec, 2024 - 07:10:19:1019] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 14.229 ms[39m
+[02 Dec, 2024 - 07:10:19:1019] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 14.085 ms[39m
+[02 Dec, 2024 - 07:10:26:1026] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 13.435 ms[39m
+[02 Dec, 2024 - 07:10:26:1026] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 13.756 ms[39m
+[02 Dec, 2024 - 07:10:31:1031] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 4.658 ms[39m
+[02 Dec, 2024 - 07:10:33:1033] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 11.842 ms[39m
+[02 Dec, 2024 - 07:10:33:1033] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 7.943 ms[39m
+[02 Dec, 2024 - 07:10:39:1039] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 13.063 ms[39m
+[02 Dec, 2024 - 07:10:39:1039] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 8.794 ms[39m
+[02 Dec, 2024 - 07:10:43:1043] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 5.655 ms[39m
+[02 Dec, 2024 - 07:10:47:1047] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 7.852 ms[39m
+[02 Dec, 2024 - 07:10:53:1053] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 12.451 ms[39m
+[02 Dec, 2024 - 07:11:02:112] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 6.165 ms[39m
+[02 Dec, 2024 - 07:11:05:115] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 6.474 ms[39m
+[02 Dec, 2024 - 07:11:10:1110] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 12.647 ms[39m
+[02 Dec, 2024 - 07:11:11:1111] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 4.279 ms[39m
+[02 Dec, 2024 - 07:11:17:1117] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 10.679 ms[39m
+[02 Dec, 2024 - 07:11:17:1117] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 10.957 ms[39m
+[02 Dec, 2024 - 07:11:31:1131] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 16.568 ms[39m
+[02 Dec, 2024 - 07:11:31:1131] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 13.487 ms[39m
+[02 Dec, 2024 - 07:11:39:1139] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 8.614 ms[39m
+[02 Dec, 2024 - 07:11:39:1139] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 13.476 ms[39m
+[02 Dec, 2024 - 07:11:45:1145] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 4.685 ms[39m
+[02 Dec, 2024 - 07:11:51:1151] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 8.611 ms[39m
+[02 Dec, 2024 - 07:12:20:1220] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 6.659 ms[39m
+[02 Dec, 2024 - 07:12:25:1225] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 5.761 ms[39m
+[02 Dec, 2024 - 07:12:25:1225] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 13.545 ms[39m
+[02 Dec, 2024 - 07:12:29:1229] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 6.085 ms[39m
+[02 Dec, 2024 - 07:12:32:1232] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 7.620 ms[39m
+[02 Dec, 2024 - 07:12:32:1232] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 14.128 ms[39m
+[02 Dec, 2024 - 07:12:44:1244] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 6.132 ms[39m
+[02 Dec, 2024 - 07:12:44:1244] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 13.763 ms[39m
+[02 Dec, 2024 - 07:12:53:1253] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 11.015 ms[39m
+[02 Dec, 2024 - 07:13:00:130] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 6.630 ms[39m
+[02 Dec, 2024 - 07:13:02:132] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 6.307 ms[39m
+[02 Dec, 2024 - 07:13:03:133] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 6.747 ms[39m
+[02 Dec, 2024 - 07:13:13:1313] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 7.488 ms[39m
+[02 Dec, 2024 - 07:13:17:1317] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 8.440 ms[39m
+[02 Dec, 2024 - 07:13:19:1319] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 9.165 ms[39m
+[02 Dec, 2024 - 07:13:19:1319] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 9.860 ms[39m
+[02 Dec, 2024 - 07:13:29:1329] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 8.952 ms[39m
+[02 Dec, 2024 - 07:13:29:1329] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 12.776 ms[39m
+[02 Dec, 2024 - 07:13:46:1346] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 11.051 ms[39m
+[02 Dec, 2024 - 07:13:49:1349] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 11.884 ms[39m
+[02 Dec, 2024 - 07:13:54:1354] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 19.728 ms[39m
+[02 Dec, 2024 - 07:13:54:1354] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 12.301 ms[39m
+[02 Dec, 2024 - 07:14:02:142] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 19.101 ms[39m
+[02 Dec, 2024 - 07:14:02:142] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 17.343 ms[39m
+[02 Dec, 2024 - 07:14:11:1411] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 9.315 ms[39m
+[02 Dec, 2024 - 07:14:11:1411] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 11.257 ms[39m
+[02 Dec, 2024 - 07:14:30:1430] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 5.353 ms[39m
+[02 Dec, 2024 - 07:14:30:1430] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 13.407 ms[39m
+[02 Dec, 2024 - 07:14:34:1434] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 8.254 ms[39m
+[02 Dec, 2024 - 07:15:04:154] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 5.068 ms[39m
+[02 Dec, 2024 - 07:15:04:154] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 10.968 ms[39m
+[02 Dec, 2024 - 07:15:30:1530] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 12.777 ms[39m
+[02 Dec, 2024 - 07:15:30:1530] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 13.292 ms[39m
+[02 Dec, 2024 - 07:15:50:1550] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 07:15:54:1554] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 57.552 ms[39m
+[02 Dec, 2024 - 07:15:54:1554] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 62.231 ms[39m
+[02 Dec, 2024 - 07:15:58:1558] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 8.615 ms[39m
+[02 Dec, 2024 - 07:15:58:1558] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 8.222 ms[39m
+[02 Dec, 2024 - 07:16:08:168] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 07:16:12:1612] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 200 - 29.705 ms[39m
+[02 Dec, 2024 - 07:16:17:1617] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 304 - 26.932 ms[39m
+[02 Dec, 2024 - 07:16:17:1617] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 26.261 ms[39m
+[02 Dec, 2024 - 07:16:34:1634] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 07:16:35:1635] [31merror[39m: [31m[39m
+[31mInvalid `prisma.transaction.findMany()` invocation in[39m
+[31m/home/ayomide/code/build/tranzact-app/server/src/controllers/transaction.control.ts:136:49[39m
+
+[31m  133 console.log(take);[39m
+[31m  134 [39m
+[31m  135 [39m
+[31m→ 136 const transactions = await prisma.transaction.findMany({[39m
+[31m        where: {[39m
+[31m          userId: "cm44nsr2900009f6upoxma1t7"[39m
+[31m        },[39m
+[31m        orderBy: {[39m
+[31m          updatedAt: "asc"[39m
+[31m        },[39m
+[31m        include: {[39m
+[31m          category: true[39m
+[31m        },[39m
+[31m      + take: Int[39m
+[31m      })[39m
+
+[31mArgument `take` is missing.[39m
+[02 Dec, 2024 - 07:16:35:1635] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 500 - 58.553 ms[39m
+[02 Dec, 2024 - 07:16:58:1658] [31merror[39m: [31m[39m
+[31mInvalid `prisma.transaction.findMany()` invocation in[39m
+[31m/home/ayomide/code/build/tranzact-app/server/src/controllers/transaction.control.ts:136:49[39m
+
+[31m  133 console.log(take);[39m
+[31m  134 [39m
+[31m  135 [39m
+[31m→ 136 const transactions = await prisma.transaction.findMany({[39m
+[31m        where: {[39m
+[31m          userId: "cm44nsr2900009f6upoxma1t7"[39m
+[31m        },[39m
+[31m        orderBy: {[39m
+[31m          updatedAt: "asc"[39m
+[31m        },[39m
+[31m        include: {[39m
+[31m          category: true[39m
+[31m        },[39m
+[31m      + take: Int[39m
+[31m      })[39m
+
+[31mArgument `take` is missing.[39m
+[02 Dec, 2024 - 07:16:58:1658] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 500 - 41.936 ms[39m
+[02 Dec, 2024 - 07:16:58:1658] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 46.919 ms[39m
+[02 Dec, 2024 - 07:17:04:174] [31merror[39m: [31m[39m
+[31mInvalid `prisma.transaction.findMany()` invocation in[39m
+[31m/home/ayomide/code/build/tranzact-app/server/src/controllers/transaction.control.ts:136:49[39m
+
+[31m  133 console.log(take);[39m
+[31m  134 [39m
+[31m  135 [39m
+[31m→ 136 const transactions = await prisma.transaction.findMany({[39m
+[31m        where: {[39m
+[31m          userId: "cm44nsr2900009f6upoxma1t7"[39m
+[31m        },[39m
+[31m        orderBy: {[39m
+[31m          updatedAt: "asc"[39m
+[31m        },[39m
+[31m        include: {[39m
+[31m          category: true[39m
+[31m        },[39m
+[31m      + take: Int[39m
+[31m      })[39m
+
+[31mArgument `take` is missing.[39m
+[02 Dec, 2024 - 07:17:04:174] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 500 - 33.846 ms[39m
+[02 Dec, 2024 - 07:17:41:1741] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 07:17:45:1745] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 07:17:48:1748] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 07:17:49:1749] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction 200 - 21.585 ms[39m
+[02 Dec, 2024 - 07:18:03:183] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 200 - 9.394 ms[39m
+[02 Dec, 2024 - 07:18:12:1812] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 07:18:26:1826] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 200 - 36.798 ms[39m
+[02 Dec, 2024 - 07:18:38:1838] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 07:18:41:1841] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 07:18:42:1842] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 200 - 25.825 ms[39m
+[02 Dec, 2024 - 07:18:56:1856] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 07:19:57:1957] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take= 200 - 43.204 ms[39m
+[02 Dec, 2024 - 07:19:59:1959] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 200 - 11.361 ms[39m
+[02 Dec, 2024 - 07:20:00:200] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 12.572 ms[39m
+[02 Dec, 2024 - 07:20:07:207] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 14.783 ms[39m
+[02 Dec, 2024 - 07:20:07:207] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 14.039 ms[39m
+[02 Dec, 2024 - 07:20:20:2020] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 16.211 ms[39m
+[02 Dec, 2024 - 07:20:20:2020] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 8.345 ms[39m
+[02 Dec, 2024 - 07:21:57:2157] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 16.871 ms[39m
+[02 Dec, 2024 - 07:21:57:2157] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 16.101 ms[39m
+[02 Dec, 2024 - 07:22:16:2216] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 8.330 ms[39m
+[02 Dec, 2024 - 07:22:16:2216] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 8.085 ms[39m
+[02 Dec, 2024 - 07:22:34:2234] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 12.439 ms[39m
+[02 Dec, 2024 - 07:22:34:2234] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 10.540 ms[39m
+[02 Dec, 2024 - 07:22:44:2244] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 26.984 ms[39m
+[02 Dec, 2024 - 07:22:44:2244] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 20.734 ms[39m
+[02 Dec, 2024 - 07:23:07:237] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 16.315 ms[39m
+[02 Dec, 2024 - 07:23:07:237] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 19.454 ms[39m
+[02 Dec, 2024 - 07:23:36:2336] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 13.407 ms[39m
+[02 Dec, 2024 - 07:23:36:2336] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 10.352 ms[39m
+[02 Dec, 2024 - 07:23:40:2340] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 18.003 ms[39m
+[02 Dec, 2024 - 07:23:40:2340] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 18.654 ms[39m
+[02 Dec, 2024 - 07:23:45:2345] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 8.726 ms[39m
+[02 Dec, 2024 - 07:23:45:2345] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 8.200 ms[39m
+[02 Dec, 2024 - 07:23:52:2352] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 4.290 ms[39m
+[02 Dec, 2024 - 07:23:52:2352] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 12.897 ms[39m
+[02 Dec, 2024 - 07:24:52:2452] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 19.257 ms[39m
+[02 Dec, 2024 - 07:24:52:2452] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 17.818 ms[39m
+[02 Dec, 2024 - 07:25:09:259] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 8.677 ms[39m
+[02 Dec, 2024 - 07:25:14:2514] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 6.640 ms[39m
+[02 Dec, 2024 - 07:25:19:2519] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 11.240 ms[39m
+[02 Dec, 2024 - 07:25:23:2523] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 5.471 ms[39m
+[02 Dec, 2024 - 07:25:29:2529] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 7.789 ms[39m
+[02 Dec, 2024 - 07:25:34:2534] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 4.547 ms[39m
+[02 Dec, 2024 - 07:25:42:2542] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 8.409 ms[39m
+[02 Dec, 2024 - 07:25:42:2542] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 9.429 ms[39m
+[02 Dec, 2024 - 07:25:54:2554] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 16.876 ms[39m
+[02 Dec, 2024 - 07:25:54:2554] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 18.133 ms[39m
+[02 Dec, 2024 - 07:26:00:260] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 8.269 ms[39m
+[02 Dec, 2024 - 07:26:00:260] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 7.291 ms[39m
+[02 Dec, 2024 - 07:26:08:268] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 5.904 ms[39m
+[02 Dec, 2024 - 07:26:10:2610] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 12.193 ms[39m
+[02 Dec, 2024 - 07:26:10:2610] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 13.479 ms[39m
+[02 Dec, 2024 - 07:26:37:2637] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 14.737 ms[39m
+[02 Dec, 2024 - 07:26:37:2637] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 12.916 ms[39m
+[02 Dec, 2024 - 07:27:55:2755] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 7.999 ms[39m
+[02 Dec, 2024 - 07:28:01:281] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 4.407 ms[39m
+[02 Dec, 2024 - 07:28:11:2811] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 7.522 ms[39m
+[02 Dec, 2024 - 07:28:31:2831] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 9.198 ms[39m
+[02 Dec, 2024 - 07:28:46:2846] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 7.634 ms[39m
+[02 Dec, 2024 - 07:28:49:2849] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 4.509 ms[39m
+[02 Dec, 2024 - 07:28:54:2854] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 9.533 ms[39m
+[02 Dec, 2024 - 07:28:57:2857] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 5.616 ms[39m
+[02 Dec, 2024 - 07:29:03:293] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 6.545 ms[39m
+[02 Dec, 2024 - 07:29:05:295] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 12.784 ms[39m
+[02 Dec, 2024 - 07:29:05:295] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 8.245 ms[39m
+[02 Dec, 2024 - 07:29:09:299] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 6.550 ms[39m
+[02 Dec, 2024 - 07:29:09:299] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 7.181 ms[39m
+[02 Dec, 2024 - 07:29:13:2913] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 7.179 ms[39m
+[02 Dec, 2024 - 07:29:13:2913] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 8.016 ms[39m
+[02 Dec, 2024 - 07:29:19:2919] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 7.141 ms[39m
+[02 Dec, 2024 - 07:29:19:2919] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 7.346 ms[39m
+[02 Dec, 2024 - 07:29:23:2923] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 5.192 ms[39m
+[02 Dec, 2024 - 07:29:23:2923] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 5.475 ms[39m
+[02 Dec, 2024 - 07:29:34:2934] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 7.968 ms[39m
+[02 Dec, 2024 - 07:29:36:2936] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 5.267 ms[39m
+[02 Dec, 2024 - 07:29:42:2942] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 9.765 ms[39m
+[02 Dec, 2024 - 07:29:54:2954] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 15.878 ms[39m
+[02 Dec, 2024 - 07:30:03:303] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 6.770 ms[39m
+[02 Dec, 2024 - 07:30:08:308] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 6.772 ms[39m
+[02 Dec, 2024 - 07:30:10:3010] [35mhttp[39m: [35m::1 GET /api/v1/transactions/transaction?take=4 304 - 10.719 ms[39m
+[02 Dec, 2024 - 07:30:10:3010] [35mhttp[39m: [35m::1 GET /api/v1/transactions/balance 304 - 10.952 ms[39m

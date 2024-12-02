@@ -110,3 +110,66 @@
 [02 Dec, 2024 - 04:41:26:4126] [31merror[39m: [31mUnauthorized request[39m
 [02 Dec, 2024 - 04:41:32:4132] [31merror[39m: [31mUnauthorized request[39m
 [02 Dec, 2024 - 04:41:42:4142] [31merror[39m: [31mUnauthorized request[39m
+[02 Dec, 2024 - 07:16:35:1635] [31merror[39m: [31m[39m
+[31mInvalid `prisma.transaction.findMany()` invocation in[39m
+[31m/home/ayomide/code/build/tranzact-app/server/src/controllers/transaction.control.ts:136:49[39m
+
+[31m  133 console.log(take);[39m
+[31m  134 [39m
+[31m  135 [39m
+[31m→ 136 const transactions = await prisma.transaction.findMany({[39m
+[31m        where: {[39m
+[31m          userId: "cm44nsr2900009f6upoxma1t7"[39m
+[31m        },[39m
+[31m        orderBy: {[39m
+[31m          updatedAt: "asc"[39m
+[31m        },[39m
+[31m        include: {[39m
+[31m          category: true[39m
+[31m        },[39m
+[31m      + take: Int[39m
+[31m      })[39m
+
+[31mArgument `take` is missing.[39m
+[02 Dec, 2024 - 07:16:58:1658] [31merror[39m: [31m[39m
+[31mInvalid `prisma.transaction.findMany()` invocation in[39m
+[31m/home/ayomide/code/build/tranzact-app/server/src/controllers/transaction.control.ts:136:49[39m
+
+[31m  133 console.log(take);[39m
+[31m  134 [39m
+[31m  135 [39m
+[31m→ 136 const transactions = await prisma.transaction.findMany({[39m
+[31m        where: {[39m
+[31m          userId: "cm44nsr2900009f6upoxma1t7"[39m
+[31m        },[39m
+[31m        orderBy: {[39m
+[31m          updatedAt: "asc"[39m
+[31m        },[39m
+[31m        include: {[39m
+[31m          category: true[39m
+[31m        },[39m
+[31m      + take: Int[39m
+[31m      })[39m
+
+[31mArgument `take` is missing.[39m
+[02 Dec, 2024 - 07:17:04:174] [31merror[39m: [31m[39m
+[31mInvalid `prisma.transaction.findMany()` invocation in[39m
+[31m/home/ayomide/code/build/tranzact-app/server/src/controllers/transaction.control.ts:136:49[39m
+
+[31m  133 console.log(take);[39m
+[31m  134 [39m
+[31m  135 [39m
+[31m→ 136 const transactions = await prisma.transaction.findMany({[39m
+[31m        where: {[39m
+[31m          userId: "cm44nsr2900009f6upoxma1t7"[39m
+[31m        },[39m
+[31m        orderBy: {[39m
+[31m          updatedAt: "asc"[39m
+[31m        },[39m
+[31m        include: {[39m
+[31m          category: true[39m
+[31m        },[39m
+[31m      + take: Int[39m
+[31m      })[39m
+
+[31mArgument `take` is missing.[39m

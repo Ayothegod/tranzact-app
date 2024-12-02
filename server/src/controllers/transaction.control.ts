@@ -129,7 +129,7 @@ const createTransaction = asyncHandler(async (req: Request, res: Response) => {
 
 // DONE:
 const allTransactions = asyncHandler(async (req: Request, res: Response) => {
-  const { take } = req.body;
+  const take = req.query.take
 
   const transactions = await prisma.transaction.findMany({
     where: {

@@ -211,8 +211,6 @@ export default function Dashboard() {
           <div className="bg-white shadow rounded-lg p-4 col-span-3">
             <RecentTransactions />
           </div>
-
-          {/* <div className"bg-white shadow rounded-lg p-4">Item 2</div> */}
         </div>
       </div>
 

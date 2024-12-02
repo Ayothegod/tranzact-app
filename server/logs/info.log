@@ -388,3 +388,78 @@
 [02 Dec, 2024 - 06:00:07:07] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
 [02 Dec, 2024 - 06:00:13:013] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
 [02 Dec, 2024 - 06:00:25:025] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 06:35:29:3529] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 06:49:42:4942] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 07:15:50:1550] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 07:16:08:168] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 07:16:34:1634] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 07:16:35:1635] [31merror[39m: [31m[39m
+[31mInvalid `prisma.transaction.findMany()` invocation in[39m
+[31m/home/ayomide/code/build/tranzact-app/server/src/controllers/transaction.control.ts:136:49[39m
+
+[31m  133 console.log(take);[39m
+[31m  134 [39m
+[31m  135 [39m
+[31m→ 136 const transactions = await prisma.transaction.findMany({[39m
+[31m        where: {[39m
+[31m          userId: "cm44nsr2900009f6upoxma1t7"[39m
+[31m        },[39m
+[31m        orderBy: {[39m
+[31m          updatedAt: "asc"[39m
+[31m        },[39m
+[31m        include: {[39m
+[31m          category: true[39m
+[31m        },[39m
+[31m      + take: Int[39m
+[31m      })[39m
+
+[31mArgument `take` is missing.[39m
+[02 Dec, 2024 - 07:16:58:1658] [31merror[39m: [31m[39m
+[31mInvalid `prisma.transaction.findMany()` invocation in[39m
+[31m/home/ayomide/code/build/tranzact-app/server/src/controllers/transaction.control.ts:136:49[39m
+
+[31m  133 console.log(take);[39m
+[31m  134 [39m
+[31m  135 [39m
+[31m→ 136 const transactions = await prisma.transaction.findMany({[39m
+[31m        where: {[39m
+[31m          userId: "cm44nsr2900009f6upoxma1t7"[39m
+[31m        },[39m
+[31m        orderBy: {[39m
+[31m          updatedAt: "asc"[39m
+[31m        },[39m
+[31m        include: {[39m
+[31m          category: true[39m
+[31m        },[39m
+[31m      + take: Int[39m
+[31m      })[39m
+
+[31mArgument `take` is missing.[39m
+[02 Dec, 2024 - 07:17:04:174] [31merror[39m: [31m[39m
+[31mInvalid `prisma.transaction.findMany()` invocation in[39m
+[31m/home/ayomide/code/build/tranzact-app/server/src/controllers/transaction.control.ts:136:49[39m
+
+[31m  133 console.log(take);[39m
+[31m  134 [39m
+[31m  135 [39m
+[31m→ 136 const transactions = await prisma.transaction.findMany({[39m
+[31m        where: {[39m
+[31m          userId: "cm44nsr2900009f6upoxma1t7"[39m
+[31m        },[39m
+[31m        orderBy: {[39m
+[31m          updatedAt: "asc"[39m
+[31m        },[39m
+[31m        include: {[39m
+[31m          category: true[39m
+[31m        },[39m
+[31m      + take: Int[39m
+[31m      })[39m
+
+[31mArgument `take` is missing.[39m
+[02 Dec, 2024 - 07:17:41:1741] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 07:17:45:1745] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 07:17:48:1748] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 07:18:12:1812] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 07:18:38:1838] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 07:18:41:1841] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m
+[02 Dec, 2024 - 07:18:56:1856] [34minfo[39m: [34m⚙️  Server is running on port: 8080[39m

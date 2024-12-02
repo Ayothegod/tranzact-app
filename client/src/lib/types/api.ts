@@ -30,12 +30,19 @@ export interface TransactionRequest {
   categoryName?: string;
 }
 
-// export interface SpaceInterface {
-//   id: string;
-//   status: string;
-//   createdAt: Date;
-//   updatedAt: string;
-
-//   name: string;
-//   participants: UserInterface[];
-// }
+export type Transaction = {
+  id: string;
+  type: "income" | "expense";
+  description: string | null;
+  amount: string;
+  createdAt: string;
+  updatedAt: string | null;
+  categoryId: string;
+  category: {
+    id: string;
+    name: string;
+    createdAt: string | null;
+    userId: string;
+  };
+  userId: string;
+};
