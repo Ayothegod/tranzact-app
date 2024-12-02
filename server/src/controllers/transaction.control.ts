@@ -362,67 +362,40 @@ const totalIncome = asyncHandler(async (req: Request, res: Response) => {
 
 // DONE:
 const totalBalance = asyncHandler(async (req: Request, res: Response) => {
-  const balance = await prisma.transaction.aggregate({
-    _sum: {
-      amount: true,
-    },
-    where: {
-      type: "income",
-      userId: req.user?.id,
-    },
+  const result = await prisma.transaction.groupBy({
+    by: ["type"],
+    where: { userId: req.user?.id },
+    _sum: { amount: true },
   });
 
-  const highest = await prisma.transaction.aggregate({
-    where: {
-      type: "income",
-      userId: req.user?.id,
-    },
-    _max: {
-      amount: true,
-    },
-  });
+  if (!result) {
+    return res
+      .status(400)
+      .json(
+        new ApiResponse(
+          400,
+          ErrorEventEnum.RESOURCE_NOT_FOUND,
+          "Unable to get balance!"
+        )
+      );
+  }
 
-  // const get = await prisma.transaction.findFirst({
-  //   where: {
-  //     type: "income",
-  //     userId: req.user?.id,
-  //   },
-  //   // _sum: {
-  //   //   amount: true,
-  //   // },
-  // });
+  const income = Number(
+    result.find((r) => r.type === "income")?._sum.amount || 0
+  );
+  const expense = Number(
+    result.find((r) => r.type === "expense")?._sum.amount || 0
+  );
 
-  const check = await prisma.transaction.count({
-    where: {
-      type: "income",
-      userId: req.user?.id,
-    },
-  });
-
-  // const group = await prisma.transaction.groupBy({
-  //   where: {
-  //     userId: req.user?.id,
-  //   },
-  // });
-
-  // if (!allIncome) {
-  //   return res
-  //     .status(400)
-  //     .json(
-  //       new ApiResponse(
-  //         400,
-  //         ErrorEventEnum.RESOURCE_NOT_FOUND,
-  //         "Unable to get total income!"
-  //       )
-  //     );
-  // }
+  const balance = Number(income) - Number(expense);
+  // console.log(income, expense, balance);
 
   return res
     .status(200)
     .json(
       new ApiResponse(
         200,
-        { balance, check, highest },
+        { income, expense, balance },
         "Balance fetched successfully!"
       )
     );

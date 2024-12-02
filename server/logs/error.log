@@ -105,3 +105,8 @@
 [31m     })[39m
 
 [31mInvalid value for argument `deadline`: premature end of input. Expected ISO-8601 DateTime.[39m
+[02 Dec, 2024 - 04:15:16:1516] [31merror[39m: [31mUnauthorized request[39m
+[02 Dec, 2024 - 04:25:57:2557] [31merror[39m: [31mUnauthorized request[39m
+[02 Dec, 2024 - 04:41:26:4126] [31merror[39m: [31mUnauthorized request[39m
+[02 Dec, 2024 - 04:41:32:4132] [31merror[39m: [31mUnauthorized request[39m
+[02 Dec, 2024 - 04:41:42:4142] [31merror[39m: [31mUnauthorized request[39m

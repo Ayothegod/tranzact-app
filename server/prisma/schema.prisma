@@ -70,7 +70,12 @@ model Goal {
   updatedAt     DateTime  @updatedAt
   userId        String
   user          User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([isCompleted])
 }
+
+// avatar, bg-color
+// cache + rate limiter
 
 model Investment {
   id          String   @id @default(cuid())
