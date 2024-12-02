@@ -102,7 +102,7 @@ export default function RecentTransactions() {
         </div>
       </div>
 
-      <div className="py-2">
+      <div className="py-3">
         {isLoading ? (
           <Skeleton className="w-full h-64 rounded-md" />
         ) : (

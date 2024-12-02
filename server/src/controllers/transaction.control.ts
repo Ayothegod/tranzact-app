@@ -129,7 +129,7 @@ const createTransaction = asyncHandler(async (req: Request, res: Response) => {
 
 // DONE:
 const allTransactions = asyncHandler(async (req: Request, res: Response) => {
-  const take = req.query.take
+  const take = req.query.take;
 
   const transactions = await prisma.transaction.findMany({
     where: {
@@ -366,6 +366,16 @@ const totalBalance = asyncHandler(async (req: Request, res: Response) => {
     by: ["type"],
     where: { userId: req.user?.id },
     _sum: { amount: true },
+    _max: {
+      amount: true,
+      createdAt: true,
+    },
+  });
+
+  const categories = await prisma.category.groupBy({
+    where: { userId: req.user?.id },
+    by: ["name"],
+    _count: { name: true },
   });
 
   if (!result) {
@@ -387,18 +397,37 @@ const totalBalance = asyncHandler(async (req: Request, res: Response) => {
     result.find((r) => r.type === "expense")?._sum.amount || 0
   );
 
-  const balance = Number(income) - Number(expense);
-  // console.log(income, expense, balance);
+  const incomeMax = Number(
+    result.find((r) => r.type === "income")?._max.amount || 0
+  );
+  const expenseMax = Number(
+    result.find((r) => r.type === "expense")?._max.amount || 0
+  );
 
-  return res
-    .status(200)
-    .json(
-      new ApiResponse(
-        200,
-        { income, expense, balance },
-        "Balance fetched successfully!"
-      )
-    );
+  const incomeMaxDate = result.find((r) => r.type === "income")?._max.createdAt;
+
+  const expenseMaxDate = result.find((r) => r.type === "expense")?._max
+    .createdAt;
+
+  const balance = Number(income) - Number(expense);
+  // console.log(categories);
+
+  return res.status(200).json(
+    new ApiResponse(
+      200,
+      {
+        income,
+        expense,
+        balance,
+        incomeMax,
+        expenseMax,
+        incomeMaxDate,
+        expenseMaxDate,
+        categories,
+      },
+      "Balance fetched successfully!"
+    )
+  );
 });
 
 export {

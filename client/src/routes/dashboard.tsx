@@ -5,9 +5,11 @@
 import RecentTransactions from "@/components/build/RecentTransactions";
 import { Progress } from "@/components/ui/progress";
 import { Skeleton } from "@/components/ui/skeleton";
+import RenderPieChart from "@/components/utils/RenderPieChart";
 import RenderProgress from "@/components/utils/RenderProgress";
 import { fetcher, formatAmount, formatPercent } from "@/lib/fetch";
 import { Goal } from "@/lib/types/api";
+import { format } from "date-fns";
 import {
   ArrowDownNarrowWide,
   ArrowUpNarrowWide,
@@ -34,52 +36,69 @@ export default function Dashboard() {
   );
 
   const { data: goalData, isLoading: goalsLoading } = useSWR(
-    `${import.meta.env.VITE_SERVER_BASEURI}/goals?take=2`,
+    `${import.meta.env.VITE_SERVER_BASEURI}/goals?take=3`,
     fetcher,
     { errorRetryCount: 1 }
   );
   // console.log(goalData?.data);
 
   return (
-    <div className="body py-2 flex gap-x-4 h-hero ">
-      <div className="max-w-[30%] flex-grow flex-shrink-0 flex flex-col gap-1">
+    <div className="body py-2 flex gap-x-4 min-h-hero">
+     
+      {/* NOTE: first section */}
+      <div className="max-w-[30%] flex-grow flex-shrink-0 flex flex-col gap-2">
         {/* DONE: first row */}
-        <div className="h-[30%] bg-white rounded-md p-3 shadow flex flex-col gap-y-2">
+        <div className="max-h-[60%] bg-white rounded-md p-3 shadow flex flex-col gap-y-2">
           <h3 className="font-bold">Highest transactions</h3>
-          <div className="grid grid-cols-2 flex-grow gap-2">
-            <div className="bg-light-bg rounded-md border border-neutral-100 p-2 relative">
+          <div className="grid grid-cols-2 flex-grow gap-2 ">
+            <div className="bg-light-bg rounded-md border border-neutral-100 p-2 relative flex flex-col gap-2">
               <span className="absolute top-1 right-1 text-xs bg-white p-1 font-bold rounded-md">
                 income
               </span>
               <aside className="p-2 text-white bg-green-500 w-max rounded-full">
                 <ArrowUpNarrowWide className="w-5 h-5" />
               </aside>
-              <div className="relative">
+
+              <div className="mt-auto">
                 <label
                   htmlFor=""
                   className="text-xs font-medium text-neutral-500"
                 >
                   From 3 days ago
                 </label>
-                <p className="font-bold text-xl">$5,200.00</p>
+                <div>
+                  {balanceLoading ? (
+                    <Skeleton className="w-full h-6 rounded-md bg-white" />
+                  ) : (
+                    <p className="font-bold text-xl">
+                      ${formatAmount(data?.data.incomeMax)}
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
 
-            <div className="bg-light-bg rounded-md border border-neutral-100 p-2 relative">
+            <div className="bg-light-bg rounded-md border border-neutral-100 p-2 relative flex flex-col gap-2">
               <span className="absolute top-1 right-1 text-xs bg-white p-1 font-bold rounded-md">
                 expense
               </span>
               <aside className="p-2 text-white bg-red-500 w-max rounded-full">
                 <ArrowDownNarrowWide className="w-5 h-5" />
               </aside>
-              <div className="relative">
-                <label
-                  htmlFor=""
-                  className="text-xs font-medium text-neutral-500"
-                >
+
+              <div className="mt-auto">
+                <label className="text-xs font-medium text-neutral-500">
                   From 3 days ago
                 </label>
-                <p className="font-bold text-xl">$5,200.00</p>
+                <div>
+                  {balanceLoading ? (
+                    <Skeleton className="w-full h-6 rounded-md bg-white" />
+                  ) : (
+                    <p className="font-bold text-xl">
+                      ${formatAmount(data?.data.expenseMax)}
+                    </p>
+                  )}
+                </div>
               </div>
             </div>
           </div>
@@ -91,7 +110,7 @@ export default function Dashboard() {
 
           {goalsLoading ? (
             <div className="flex flex-col gap-2">
-              {Array.from({ length: 2 }).map((_, i) => (
+              {Array.from({ length: 3 }).map((_, i) => (
                 <div
                   key={i}
                   className="h-24 border rounded-md flex flex-col justify-between p-3"
@@ -146,10 +165,16 @@ export default function Dashboard() {
           )}
         </div>
 
-        <div className="h-[30%] bg-white shadow">
+        {/* <div className="h-[40%] bg-white rounded-md p-3 shadow flex flex-col flex-grow">
           <h3 className="font-bold">Quick Actions</h3>
-          <div className="w-full flex flex-col gap-2 mt-4"></div>
-        </div>
+          <div className="w-full flex-grow ">
+            <RenderPieChart
+              expense={data?.data.expense}
+              income={data?.data.income}
+              categories={data?.data.categories}
+            />
+          </div>
+        </div> */}
       </div>
 
       {/* NOTE: second section */}
@@ -189,7 +214,7 @@ export default function Dashboard() {
                 <p className="font-medium">Total Income</p>
               </div>
             </div>
-            <p className="text-2xl font-bold">
+            <div className="text-2xl font-bold">
               {balanceLoading ? (
                 <Skeleton className="w-20 h-8 rounded-md" />
               ) : (
@@ -197,7 +222,7 @@ export default function Dashboard() {
                   ${formatAmount(data?.data.income)}
                 </p>
               )}
-            </p>
+            </div>
             <div className="flex justify-between items-center text-xs">
               <p className="text-neutral-500">from last month</p>
               <div className="bg-green-200 p-1 rounded-lg text-[10px] text-green-600">
@@ -216,7 +241,7 @@ export default function Dashboard() {
                 <p className="font-medium">Total Expense</p>
               </div>
             </div>
-            <p className="text-2xl font-bold">
+            <div className="text-2xl font-bold">
               {balanceLoading ? (
                 <Skeleton className="w-20 h-8 rounded-md" />
               ) : (
@@ -224,7 +249,7 @@ export default function Dashboard() {
                   ${formatAmount(data?.data.expense)}
                 </p>
               )}
-            </p>
+            </div>
             <div className="flex justify-between items-center text-xs">
               <p className="text-neutral-500">from last month</p>
               <div className="bg-green-200 p-1 rounded-lg text-[10px] text-green-600">
@@ -233,7 +258,7 @@ export default function Dashboard() {
             </div>
           </div>
 
-          <div className="bg-white shadow rounded-lg p-4 col-span-3">
+          <div className="bg-white shadow h-full rounded-lg p-4 col-span-3">
             <RecentTransactions />
           </div>
         </div>
