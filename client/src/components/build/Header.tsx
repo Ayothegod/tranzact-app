@@ -26,8 +26,8 @@ export function Header() {
                   <Link
                     key={data.title}
                     to={data.url}
-                    className={`text-neutral-500 border px-4 h-full rounded-full hover:bg-blue-200 text-sm flex items-center justify-center gap-2
-                      ${path === data.url && "font-medium bg-blue-500 text-white hover:bg-blue-500"}`}
+                    className={`text-neutral-500 border px-4 h-full rounded-full hover:bg-special/20 text-sm flex items-center justify-center gap-2
+                      ${path === data.url && "font-medium bg-special text-white hover:bg-special"}`}
                   >
                     <data.icon className="h-4 w-4" />
                     <li>{data.title}</li>

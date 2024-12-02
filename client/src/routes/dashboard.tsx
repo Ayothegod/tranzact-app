@@ -5,7 +5,9 @@
 import RecentTransactions from "@/components/build/RecentTransactions";
 import { Progress } from "@/components/ui/progress";
 import { Skeleton } from "@/components/ui/skeleton";
-import { fetcher, formatAmount } from "@/lib/fetch";
+import RenderProgress from "@/components/utils/RenderProgress";
+import { fetcher, formatAmount, formatPercent } from "@/lib/fetch";
+import { Goal } from "@/lib/types/api";
 import {
   ArrowDownNarrowWide,
   ArrowUpNarrowWide,
@@ -25,15 +27,18 @@ export default function Dashboard() {
   const navigate = useNavigate();
   const [openModal, setOpenModal] = useState(false);
 
-  const {
-    data,
-    // error: balanceError,
-    isLoading: balanceLoading,
-  } = useSWR(
+  const { data, isLoading: balanceLoading } = useSWR(
     `${import.meta.env.VITE_SERVER_BASEURI}/transactions/balance`,
     fetcher,
     { errorRetryCount: 1 }
   );
+
+  const { data: goalData, isLoading: goalsLoading } = useSWR(
+    `${import.meta.env.VITE_SERVER_BASEURI}/goals?take=2`,
+    fetcher,
+    { errorRetryCount: 1 }
+  );
+  // console.log(goalData?.data);
 
   return (
     <div className="body py-2 flex gap-x-4 h-hero ">
@@ -81,49 +86,64 @@ export default function Dashboard() {
         </div>
 
         {/* DONE: second row */}
-        <div className="h-[40%] bg-white rounded-md p-3 shadow flex flex-col gap-y-2">
+        <div className="flex-grow bg-white rounded-md p-3 shadow flex flex-col gap-y-2">
           <h3 className="font-bold">Savings</h3>
-          <div className="flex flex-col flex-grow gap-2">
-            <div className="bg-light-bg rounded-md border border-neutral-100 p-2 relative flex flex-col gap-3">
-              <div className="flex items-center gap-2">
-                <aside className="p-2 text-white bg-green-500 w-max rounded-full">
-                  <ArrowUpNarrowWide className="w-4 h-4" />
-                </aside>
-                <div className="relative">
-                  <p className="font-bold text-sm leading-3">$5,200.00</p>
-                  <label className="text-xs font-medium text-neutral-500 ">
-                    Healthcare
-                  </label>
-                </div>
-              </div>
 
-              <div>
-                <aside className="flex items-center justify-between text-xs font-medium">
-                  <p className="text-neutral-500">Target: $500</p>
-                  <span className="text-black">80%</span>
-                </aside>
-                <Progress className="h-2" value={33} />
-              </div>
-            </div>
-
-            {/* <div className="bg-light-bg rounded-md border border-neutral-100 p-2 relative">
-              <span className="absolute top-1 right-1 text-xs bg-white p-1 font-bold rounded-md">
-                expense
-              </span>
-              <aside className="p-2 text-white bg-red-500 w-max rounded-full">
-                <ArrowDownNarrowWide className="w-5 h-5" />
-              </aside>
-              <div className="relative">
-                <label
-                  htmlFor=""
-                  className="text-xs font-medium text-neutral-500"
+          {goalsLoading ? (
+            <div className="flex flex-col gap-2">
+              {Array.from({ length: 2 }).map((_, i) => (
+                <div
+                  key={i}
+                  className="h-24 border rounded-md flex flex-col justify-between p-3"
                 >
-                  From 3 days ago
-                </label>
-                <p className="font-bold text-xl">$5,200.00</p>
-              </div>
-            </div> */}
-          </div>
+                  <div className="flex items-center gap-2">
+                    <Skeleton className="h-9 w-9 rounded-full" />
+                    <Skeleton className="h-9 w-32 rounded-full" />
+                  </div>
+                  <Skeleton className="h-4 w-full rounded-full" />
+                </div>
+              ))}
+            </div>
+          ) : (
+            <div className="flex flex-col gap-2 flex-grow">
+              {goalData?.data.map((goal: Goal) => (
+                <div
+                  key={goal.id}
+                  className="bg-light-bg rounded-md border border-neutral-100 p-2 relative flex flex-col gap-3"
+                >
+                  <div className="flex items-center gap-2">
+                    <aside className="p-2 text-white bg-green-500 w-max rounded-full">
+                      <ArrowUpNarrowWide className="w-4 h-4" />
+                    </aside>
+                    <div className="relative">
+                      <p className="font-bold text-sm leading-3">
+                        ${formatAmount(goal.currentAmount)}
+                      </p>
+                      <label className="text-xs font-medium text-neutral-500 ">
+                        {goal.name}
+                      </label>
+                    </div>
+                  </div>
+
+                  <div className="flex flex-col gap-1">
+                    <aside className="flex items-center justify-between text-xs font-medium">
+                      <p className="text-neutral-500">
+                        Target: ${goal.targetAmount}
+                      </p>
+                      <span className="text-black">
+                        {formatPercent(goal.currentAmount, goal.targetAmount)}%
+                      </span>
+                    </aside>
+                    <RenderProgress
+                      className="h-2.5 bg-special/20"
+                      currentProgress={goal.currentAmount}
+                      max={goal.targetAmount}
+                    />
+                  </div>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         <div className="h-[30%] bg-white shadow">

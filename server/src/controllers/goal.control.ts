@@ -64,14 +64,30 @@ const getGoal = asyncHandler(async (req: Request, res: Response) => {
     .json(new ApiResponse(200, goal, "Goal fetched successfully!"));
 });
 
+// how to get the isCompled field based on query params eg 
+// where: {
+//   userId: req.user?.id,
+//   isCompleted:  isActive === "true" ? false : true,
+// },
+// and get all isrespective of isCompleted if no isActive
+// and how do i query prisma fields conditionally
+
 // DONE:
 const getAllGoals = asyncHandler(async (req: Request, res: Response) => {
-  const { name, targetAmount, deadline, description, currentAmount } = req.body;
+  const take = req.query.take;
+  // const isActive = req.query.isActive;
+  // console.log(isActive);
+  // const type = isActive === "true" ? true : false
 
   const goals = await prisma.goal.findMany({
     where: {
       userId: req.user?.id,
+      isCompleted:  false,
     },
+    orderBy: {
+      currentAmount: "desc",
+    },
+    take: take ? Number(take) : 10,
   });
 
   if (!goals) {
@@ -84,7 +100,7 @@ const getAllGoals = asyncHandler(async (req: Request, res: Response) => {
 
   return res
     .status(200)
-    .json(new ApiResponse(200, goals, "Goals created successfully!"));
+    .json(new ApiResponse(200, goals, "Goals fetched successfully!"));
 });
 
 // DONE: create category

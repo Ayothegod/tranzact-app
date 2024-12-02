@@ -8,11 +8,15 @@ export const BASEURL = import.meta.env.VITE_SERVER_BASEURI;
 export type NewAxiosResponse = AxiosResponse<APIStatusResponseInterface, any>;
 
 export function formatAmount(amount: number) {
-  return amount.toLocaleString('en-US', {
-    style: 'decimal',
+  return amount.toLocaleString("en-US", {
+    style: "decimal",
     minimumFractionDigits: 2,
     maximumFractionDigits: 2,
   });
+}
+
+export function formatPercent(currentAmount: number, targetAmount: number) {
+  return (currentAmount / targetAmount) * 100
 }
 
 export const axiosInstance = axios.create({
@@ -37,6 +41,10 @@ export const createTransaction = (data: TransactionRequest) => {
 
 export const getAllTransaction = () => {
   return axiosInstance.get("/transactions/transaction");
+};
+
+export const getAllGoals = () => {
+  return axiosInstance.get("/goals");
 };
 
 export const balance = () => {
