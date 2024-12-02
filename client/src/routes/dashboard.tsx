@@ -3,6 +3,7 @@
 // import AddTransaction from "@/components/build/AddTransaction";
 // import Logout from "@/components/build/Logout";
 import RecentTransactions from "@/components/build/RecentTransactions";
+import { Progress } from "@/components/ui/progress";
 import { Skeleton } from "@/components/ui/skeleton";
 import { fetcher, formatAmount } from "@/lib/fetch";
 import {
@@ -39,7 +40,7 @@ export default function Dashboard() {
       <div className="max-w-[30%] flex-grow flex-shrink-0 flex flex-col gap-1">
         {/* DONE: first row */}
         <div className="h-[30%] bg-white rounded-md p-3 shadow flex flex-col gap-y-2">
-          <h3 className="font-bold">Highest tranzactions</h3>
+          <h3 className="font-bold">Highest transactions</h3>
           <div className="grid grid-cols-2 flex-grow gap-2">
             <div className="bg-light-bg rounded-md border border-neutral-100 p-2 relative">
               <span className="absolute top-1 right-1 text-xs bg-white p-1 font-bold rounded-md">
@@ -82,22 +83,26 @@ export default function Dashboard() {
         {/* DONE: second row */}
         <div className="h-[40%] bg-white rounded-md p-3 shadow flex flex-col gap-y-2">
           <h3 className="font-bold">Savings</h3>
-          <div className="grid grid-cols-2 flex-grow gap-2">
-            <div className="bg-light-bg rounded-md border border-neutral-100 p-2 relative">
-              <span className="absolute top-1 right-1 text-xs bg-white p-1 font-bold rounded-md">
-                income
-              </span>
-              <aside className="p-2 text-white bg-green-500 w-max rounded-full">
-                <ArrowUpNarrowWide className="w-5 h-5" />
-              </aside>
-              <div className="relative">
-                <label
-                  htmlFor=""
-                  className="text-xs font-medium text-neutral-500"
-                >
-                  From 3 days ago
-                </label>
-                <p className="font-bold text-xl">$5,200.00</p>
+          <div className="flex flex-col flex-grow gap-2">
+            <div className="bg-light-bg rounded-md border border-neutral-100 p-2 relative flex flex-col gap-3">
+              <div className="flex items-center gap-2">
+                <aside className="p-2 text-white bg-green-500 w-max rounded-full">
+                  <ArrowUpNarrowWide className="w-4 h-4" />
+                </aside>
+                <div className="relative">
+                  <p className="font-bold text-sm leading-3">$5,200.00</p>
+                  <label className="text-xs font-medium text-neutral-500 ">
+                    Healthcare
+                  </label>
+                </div>
+              </div>
+
+              <div>
+                <aside className="flex items-center justify-between text-xs font-medium">
+                  <p className="text-neutral-500">Target: $500</p>
+                  <span className="text-black">80%</span>
+                </aside>
+                <Progress className="h-2" value={33} />
               </div>
             </div>
 
