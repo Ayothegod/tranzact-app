@@ -6,6 +6,7 @@ import { APIStatusResponseInterface } from "./types/api";
 export const fetcher = (url: string) =>
   axiosInstance.get(url).then((res) => res.data);
 
+export const BASEURL = import.meta.env.VITE_SERVER_BASEURI
 export type NewAxiosResponse = AxiosResponse<APIStatusResponseInterface, any>;
 
 export const axiosInstance = axios.create({

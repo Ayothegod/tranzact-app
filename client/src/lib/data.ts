@@ -1,3 +1,11 @@
+import {
+  DiamondPercent,
+  Inbox,
+  LayoutDashboard,
+  Receipt,
+  Target,
+} from "lucide-react";
+
 export const rootHeaderNav = [
   { title: "Home", url: "/home" },
   { title: "Features", url: "/home" },
@@ -25,10 +33,11 @@ export const sidebarData = [
 ];
 
 export const userNav = [
-  { id: 1, title: "Dashboard", url: "/dashboard" },
-  { id: 2, title: "Transactions", url: "/transactions" },
-  { id: 3, title: "My Wallet", url: "/wallet" },
-  { id: 4, title: "Account", url: "/account" },
+  { title: "Dashboard", url: "/dashboard", icon: LayoutDashboard },
+  { title: "Transactions", url: "/transactions", icon: Receipt },
+  { title: "Goals", url: "/goals", icon: Target },
+  { title: "Investments", url: "/investments", icon: DiamondPercent },
+  { title: "Invoice", url: "/invoice", icon: Inbox },
 ];
 
 export const uoUserNav = [

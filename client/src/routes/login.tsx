@@ -49,12 +49,11 @@ export default function Login() {
 
       toast({
         title: `${response.data ? response.data.message : "Success"}`,
-        description: `welcome back, ${data.email}`,
+        description: `welcome back, ${response.data.data.fullname}`,
       });
 
-      return navigate("/onboard");
+      return navigate("/dashboard");
     } catch (error: any) {
-      console.log(error);
 
       if (error.request) {
         toast({

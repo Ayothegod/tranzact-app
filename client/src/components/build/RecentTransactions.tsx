@@ -51,28 +51,28 @@ const columns: ColumnDef<Transaction>[] = [
 ];
 
 export default function RecentTransactions() {
-  const {
-    data: allTransactions,
-    error: transactionsError,
-    isLoading: transactionsLoading,
-  } = useSWR(`${BASEURL}/all-transactions?n=5`, fetcher);
-  console.log(allTransactions);
+  // const {
+  //   data: allTransactions,
+  //   error: transactionsError,
+  //   isLoading: transactionsLoading,
+  // } = useSWR(`${BASEURL}/all-transactions?n=5`, fetcher);
+  // console.log(allTransactions);
 
-  if (transactionsLoading) {
-    return <div>Loading...</div>;
-  }
+  // if (transactionsLoading) {
+  //   return <div>Loading...</div>;
+  // }
 
-  if (transactionsError) {
-    return <div>Error loading transactions</div>;
-  }
+  // if (transactionsError) {
+  //   return <div>Error loading transactions</div>;
+  // }
 
-  const data = allTransactions || [];
+  // const data = allTransactions || [];
 
   return (
     <div>
       <h1 className="font-medium text-xl">Recent Transactions</h1>
       <div className="py-4">
-        <DataTable columns={columns} data={data} />
+        {/* <DataTable columns={columns} data={data} /> */}
       </div>
     </div>
   );

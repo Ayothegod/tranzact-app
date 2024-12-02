@@ -45,12 +45,11 @@ export default function Register() {
 
       toast({
         title: `${response.data ? response.data.message : "Success"}`,
-        description: `welcome to bondspace, ${data.fullname}`,
+        description: `welcome to Tranzact, ${data.fullname}`,
       });
 
-      return navigate("/onboard");
+      return navigate("/dashboard");
     } catch (error: any) {
-      // console.log(error.response.data);
 
       if (error.request) {
         toast({
@@ -134,7 +133,7 @@ export default function Register() {
                 name="intent"
                 value="register"
               >
-                {loading ? <Loader2 className="animate-spin" /> : "Login"}
+                {loading ? <Loader2 className="animate-spin" /> : "Register"}
               </Button>
 
               <p className="flex items-center gap-2 text-center text-sm font-medium text-neutral-500">
