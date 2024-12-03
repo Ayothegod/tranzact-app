@@ -173,3 +173,5 @@
 [31m      })[39m
 
 [31mArgument `take` is missing.[39m
+[03 Dec, 2024 - 03:48:42:4842] [31merror[39m: [31mCannot access 'monthData' before initialization[39m
+[03 Dec, 2024 - 03:49:12:4912] [31merror[39m: [31mCannot access 'monthData' before initialization[39m

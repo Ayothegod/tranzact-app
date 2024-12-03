@@ -15,6 +15,13 @@ export function formatAmount(amount: number) {
   });
 }
 
+// january:{
+//   Label, color, categoryName
+// }
+
+// select data for any month
+// 
+
 export function formatPercent(currentAmount: number, targetAmount: number) {
   return (currentAmount / targetAmount) * 100
 }

@@ -430,6 +430,89 @@ const totalBalance = asyncHandler(async (req: Request, res: Response) => {
   );
 });
 
+// PENDING:
+const transactionChartsData = asyncHandler(
+  async (req: Request, res: Response) => {
+    const result = await prisma.transaction.groupBy({
+      where: { userId: req.user?.id },
+      by: ["type"],
+      _sum: { amount: true },
+      _max: {
+        amount: true,
+        createdAt: true,
+      },
+    });
+    if (!result) {
+      return res
+        .status(400)
+        .json(
+          new ApiResponse(
+            400,
+            ErrorEventEnum.RESOURCE_NOT_FOUND,
+            "Unable to get charts data!"
+          )
+        );
+    }
+    const income = Number(
+      result.find((r) => r.type === "income")?._sum.amount || 0
+    );
+    const expense = Number(
+      result.find((r) => r.type === "expense")?._sum.amount || 0
+    );
+
+    // async function getMonthlyData(userId: string) {
+    //   const transactions = await prisma.transaction.groupBy({
+    //     by: ["createdAt", "type"],
+    //     _sum: {
+    //       amount: true,
+    //     },
+    //     where: {
+    //       userId: userId,
+    //     },
+    //     orderBy: {
+    //       createdAt: "asc",
+    //     },
+    //   });
+
+    //   // Group by month (YYYY-MM)
+    //   const monthlyData: Record<string, { income: number; expense: number }> =
+    //     {};
+
+    //   transactions.forEach((tx) => {
+    //     const month = tx.createdAt.toISOString().slice(0, 7); // Extract "YYYY-MM"
+    //     const amount = Number(tx._sum.amount) || 0;
+    //     console.log(amount, tx.type);
+
+    //     if (!monthlyData[month]) {
+    //       monthlyData[month] = { income: 0, expense: 0 };
+    //     }
+
+    //     if (tx.type === "income") {
+    //       monthlyData[month].income += Number(amount);
+    //     } else {
+    //       monthlyData[month].expense += Number(amount); // Negative for expense
+    //     }
+    //   });
+
+    //   return monthlyData;
+    // }
+    // const monthData = await getMonthlyData(req.user?.id as string);
+
+    return res.status(200).json(
+      new ApiResponse(
+        200,
+        {
+          // monthData,
+          income,
+          expense,
+          // balance,
+        },
+        "Category data fetched successfully!"
+      )
+    );
+  }
+);
+
 export {
   createTransaction,
   createCategory,
@@ -441,4 +524,5 @@ export {
   totalExpense,
   totalIncome,
   totalBalance,
+  transactionChartsData,
 };
