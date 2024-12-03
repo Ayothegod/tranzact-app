@@ -54,32 +54,3 @@ export const useAuthStore = create<authStore>()(
 //     })),
 // }));
 
-// interface spaceStore {
-//   space: SpaceInterface | null;
-//   setSpace: (
-//     updateType: "updateState" | "trial",
-//     space?: SpaceInterface
-//     // chatId?: string
-//   ) => void;
-//   clearSpace: () => void;
-// }
-
-// export const useSpaceStore = create<spaceStore>()(
-//   persist(
-//     (set) => ({
-//       space: null,
-//       setSpace: (updateType, space) =>
-//         set((state) => {
-//           if (updateType === "updateState" && space) {
-//             return { space: space };
-//           }
-//           return { space: state.space };
-//         }),
-//       clearSpace: () => set(() => ({ space: null })),
-//     }),
-//     {
-//       name: "active-space",
-//     }
-//   )
-// );
-
