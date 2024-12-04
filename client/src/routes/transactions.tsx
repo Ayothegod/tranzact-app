@@ -1,5 +1,4 @@
 import DataTable from "@/components/build/DataTable";
-import CategoryPieChart from "@/components/pages/transaction/CategoryPieChart";
 import { CategoryPieChart2 } from "@/components/pages/transaction/CategoryPieChart2";
 import TypePieChart from "@/components/pages/transaction/TypePieChart";
 import { fetcher } from "@/lib/fetch";
