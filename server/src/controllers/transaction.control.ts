@@ -442,6 +442,44 @@ const transactionChartsData = asyncHandler(
         createdAt: true,
       },
     });
+
+    const categoryCounts = await prisma.transaction.groupBy({
+      by: ["categoryId"],
+      _count: {
+        categoryId: true,
+      },
+      where: {
+        userId: req.user?.id,
+      },
+    });
+
+    const categoryData = [
+      {
+        categoryName: "funds",
+        count: 1,
+      },
+      {
+        categoryName: "beg",
+        count: 1,
+      },
+      {
+        categoryName: "null",
+        count: 4,
+      },
+    ];
+
+    const enrichedCounts = await Promise.all(
+      categoryCounts.map(async (count) => {
+        const category = await prisma.category.findUnique({
+          where: { id: count.categoryId },
+        });
+        return {
+          categoryName: category?.name || "Unknown",
+          count: count._count.categoryId,
+        };
+      })
+    );
+
     if (!result) {
       return res
         .status(400)
@@ -502,6 +540,8 @@ const transactionChartsData = asyncHandler(
       new ApiResponse(
         200,
         {
+          categoryCounts,
+          enrichedCounts,
           // monthData,
           income,
           expense,

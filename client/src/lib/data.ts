@@ -37,7 +37,7 @@ export const userNav = [
   { title: "Transactions", url: "/transactions", icon: Receipt },
   { title: "Goals", url: "/goals", icon: Target },
   { title: "Investments", url: "/investments", icon: DiamondPercent },
-  { title: "Invoice", url: "/invoice", icon: Inbox },
+  // { title: "Invoice", url: "/invoice", icon: Inbox },
 ];
 
 export const uoUserNav = [
